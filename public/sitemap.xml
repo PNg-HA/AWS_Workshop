@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>//localhost:1313/en/sitemap.xml</loc>
+    
+      <lastmod>1970-01-01T07:33:42+07:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>//localhost:1313/vi/sitemap.xml</loc>
+    
+      <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+    
+  </sitemap>
+  
+</sitemapindex>

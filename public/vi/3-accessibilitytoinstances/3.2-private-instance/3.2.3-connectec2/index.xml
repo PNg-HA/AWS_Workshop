@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kết nối EC2 Private on AWS System Manager</title>
+    <link>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/</link>
+    <description>Recent content in Kết nối EC2 Private on AWS System Manager</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
