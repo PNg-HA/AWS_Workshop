@@ -1,5 +1,5 @@
 ---
-title : "Session Management"
+title : "Threat Detection & Response Workshop"
 date :  "`r Sys.Date()`" 
 weight : 1 
 chapter : false
