@@ -1,39 +1,17 @@
 ---
-title : "Create IAM Role"
+title : "Amazon GuardDuty"
 date : "`r Sys.Date()`"
-weight : 2
+weight : 1
 chapter : false
 pre : " <b> 2.2 </b> "
 ---
 
-### Create IAM Role
-
-In this step, we will proceed to create IAM Role. In this IAM Role, the policy **AmazonSSMManagedInstanceCore** will be assigned, this is the policy that allows the EC2 server to communicate with the Session Manager.
-
-1. Go to [IAM service administration interface](https://console.aws.amazon.com/iamv2/)
-2. In the left navigation bar, click **Roles**.
-
-![role](/images/2.prerequisite/038-iamrole.png)
-
-3. Click **Create role**.
-
-![role1](/images/2.prerequisite/039-iamrole.png)
-
-4. Click **AWS service** and click **EC2**.
-  + Click **Next: Permissions**.
-
-![role1](/images/2.prerequisite/40-iamrole.png)
-
-5. In the Search box, enter **AmazonSSMManagedInstanceCore** and press Enter to search for this policy.
-  + Click the policy **AmazonSSMManagedInstanceCore**.
-  + Click **Next: Tags.**
-
-![createpolicy](/images/2.prerequisite/041-iamrole.png)
-
-6. Click **Next: Review**.
-7. Name the Role **SSM-Role** in Role Name
-  + Click **Create Role** \.
-
-![namerole](/images/2.prerequisite/042-iamrole.png)
-
-Next, we will make the connection to the EC2 servers we created with **Session Manager**.
+### Content
+  - [GuardDuty - Overview](2.2.1-GuardDuty-Overview/)
+  - [GuardDuty - Findings](2.2.2-GuardDuty-Findings/)
+  - [GuardDuty - Protection plans](2.2.3-GuardDuty-Protection-plans/)
+  - [GuardDuty - Building your own threat list](2.2.4-GuardDuty-Building-your-own-threat-list/)
+  - [GuardDuty - Suppressing findings](2.2.4-GuardDuty-Suppressing-findings/)
+  - [Security Hub - Pricing](2.2.5-GuardDuty-Pricing/)
+  - [GuardDuty - Notifications](2.2.5-GuardDuty-Notifications/)
+  - [GuardDuty - Retaining findings](2.2.6-GuardDuty-Retaining-findings/)

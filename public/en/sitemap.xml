@@ -15,6 +15,18 @@
                 href="//localhost:1313/"
                 />
   </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/"
+                />
+  </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/</loc>
     <xhtml:link
                 rel="alternate"
@@ -61,6 +73,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.1-guardduty-overview/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.1-guardduty-overview/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.1-guardduty-overview/"
                 />
   </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/</loc>
@@ -123,18 +147,6 @@
                 href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/"
                 />
   </url><url>
-    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/"
-                />
-  </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/</loc>
     <xhtml:link
                 rel="alternate"
@@ -181,6 +193,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.2-guardduty-findings/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.2-guardduty-findings/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.2-guardduty-findings/"
                 />
   </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/</loc>
@@ -255,6 +279,18 @@
                 href="//localhost:1313/4-s3log/4.3-creategwes3/"
                 />
   </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.3-guardduty-protection-plans/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.3-guardduty-protection-plans/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.3-guardduty-protection-plans/"
+                />
+  </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.3-security-hub-findings/</loc>
     <xhtml:link
                 rel="alternate"
@@ -265,6 +301,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.3-security-hub-findings/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.4-guardduty-building-your-own-threat-list/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.4-guardduty-building-your-own-threat-list/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.4-guardduty-building-your-own-threat-list/"
                 />
   </url><url>
     <loc>//localhost:1313/4-s3log/</loc>
@@ -303,6 +351,18 @@
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.4-security-hub-pricing/"
                 />
   </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.5-guardduty-suppressing-findings/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.5-guardduty-suppressing-findings/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.5-guardduty-suppressing-findings/"
+                />
+  </url><url>
     <loc>//localhost:1313/5-portfwd/</loc>
     <xhtml:link
                 rel="alternate"
@@ -338,6 +398,42 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/6-cleanup/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.6-guradduty-pricing/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.6-guradduty-pricing/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.6-guradduty-pricing/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.7-guardduty-notifications/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.7-guardduty-notifications/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.7-guardduty-notifications/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.8-guardduty-retaining-findings/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.8-guardduty-retaining-findings/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.8-guardduty-retaining-findings/"
                 />
   </url><url>
     <loc>//localhost:1313/categories/</loc>

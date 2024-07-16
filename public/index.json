@@ -7,6 +7,13 @@
 	"content": "Threat Detection \u0026amp; Response Workshop Overall This workshop is designed to give you an introduction and then take you deeper into AWS threat detection and response services use cases, best practices, and specific scenarios. This workshop starts with an introduction to services and then focuses on advanced topics of threat detection and response with modules focusing on multi-service solutions, integrations, custom orchestration examples, and examples of responding to specific detections. All of this is designed to prepare you and help you operate more securely on AWS.\nContent Introduction Introduction to threat detection and response services Connect to EC2 instance Manage session logs Port Forwarding Clean up resources "
 },
 {
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/",
+	"title": "Amazon GuardDuty",
+	"tags": [],
+	"description": "",
+	"content": "Content GuardDuty - Overview GuardDuty - Findings GuardDuty - Protection plans GuardDuty - Building your own threat list GuardDuty - Suppressing findings Security Hub - Pricing GuardDuty - Notifications GuardDuty - Retaining findings "
+},
+{
 	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/",
 	"title": "AWS Security Hub",
 	"tags": [],
@@ -33,6 +40,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Enable DNS hostnames on VPC. To create VPC Endpoint we will need to enable DNS hostnames feature on VPC. Go to VPC service management console\nClick Your VPCs.\nSelect Lab VPC.\nClick Actions.\nClick Edit DNS hostnames.\nClick Endpoint, then click Create Endpoint.\nAt the Edit DNS hostnames page. Click to select Enable. Click Save changes. "
+},
+{
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.1-guardduty-overview/",
+	"title": "GuardDuty - Overview",
+	"tags": [],
+	"description": "",
+	"content": "GuardDuty - Overview Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior across your AWS environment. GuardDuty combines machine learning (ML), anomaly detection, and malicious file discovery, using both AWS and industry-leading third-party sources to help protect your AWS accounts, workloads, and data. GuardDuty is capable of analyzing tens of billions of events across multiple AWS data sources, including AWS CloudTrail logs, Amazon Virtual Private Cloud (Amazon VPC) Flow Logs, and DNS query logs. GuardDuty also monitors Amazon Simple Storage Service (Amazon S3) data events, Amazon Aurora login events, and runtime activity for Amazon Elastic Kubernetes Service (Amazon EKS), Amazon Elastic Compute Cloud (Amazon EC2), and Amazon Elastic Container Service (Amazon ECS)—including serverless container workloads on AWS Fargate.\nGuardDuty gives you accurate threat detection of compromised accounts, which can be difficult to detect quickly if you are not continuously monitoring factors in near real time. GuardDuty can detect signs of account compromise, such as AWS resource access from an unusual geolocation at an atypical time of day. For programmatic AWS accounts, GuardDuty checks for unusual API calls, such as attempts to obscure account activity by disabling CloudTrail logging or taking snapshots of a database from a malicious IP address.\nGuardDuty continuously monitors and analyzes your AWS account and workload event data found in CloudTrail, VPC Flow Logs, and DNS logs. There is no additional security software or infrastructure to deploy and maintain for the foundational protections in GuardDuty. By associating your AWS accounts together, you can aggregate threat detection instead of working on an account-by-account basis. In addition, you do not have to collect, analyze, and correlate large volumes of AWS data from multiple accounts. Focus on how to respond quickly, how to keep your organization secure, and continuing to scale and innovate on AWS.\n"
 },
 {
 	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/",
@@ -70,13 +84,6 @@
 	"content": "Create VPC Endpoint SSMMESSAGES Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter SSMMESSAGES. In the Service Category section, select AWS Services. In the Service Name section, In the Service category select: AWS services In the Service Name field enter: ssmmessages then select Service Name: com.amazonaws.ap-southeast-1.ssmmessages. In the Service Name column, click com.amazonaws.ap-southeast-1.ssmmessages. In the VPC section, select Lab VPC. Select the first AZ, then select the Lab Private Subnet subnet. Scroll down. In the Security Group section, select the Security group SG VPC Endpoint that we created earlier. In the Policy section, select Full access Scroll down. Click Create endpoint. We have created the VPC Interface Endpoint SSMMESSAGES. "
 },
 {
-	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/",
-	"title": "Create IAM Role",
-	"tags": [],
-	"description": "",
-	"content": "Create IAM Role In this step, we will proceed to create IAM Role. In this IAM Role, the policy AmazonSSMManagedInstanceCore will be assigned, this is the policy that allows the EC2 server to communicate with the Session Manager.\nGo to IAM service administration interface In the left navigation bar, click Roles. Click Create role. Click AWS service and click EC2. Click Next: Permissions. In the Search box, enter AmazonSSMManagedInstanceCore and press Enter to search for this policy. Click the policy AmazonSSMManagedInstanceCore. Click Next: Tags. Click Next: Review. Name the Role SSM-Role in Role Name Click Create Role . Next, we will make the connection to the EC2 servers we created with Session Manager.\n"
-},
-{
 	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/",
 	"title": "Create IAM Role",
 	"tags": [],
@@ -103,6 +110,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Create VPC Endpoint SSM We will create 3 interface endpoints required by the Session Manager:\nInterface endpoints: com.amazonaws.region.ssm com.amazonaws.region.ec2messages com.amazonaws.region.ssmmessages You can refer to more here\nContent: Create Endpoint ssm Create Endpoint ssmmessages Create Endpoint ec2messages "
+},
+{
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.2-guardduty-findings/",
+	"title": "GuardDuty - Findings",
+	"tags": [],
+	"description": "",
+	"content": "A GuardDuty finding represents a potential security issue detected within your network. GuardDuty generates a finding whenever it detects unexpected and potentially malicious activity in your AWS environment. You can view and manage your GuardDuty findings on the Findings page in the GuardDuty console or by using the GuardDuty CLI or API operations.\nReview a GuarDuty finding Navigate to Findings in Amazon GuardDuty by clicking Findings in the left hand navigation. Select one of the findings on the page by clicking on the row. This will open the finding summary on the right side of the page. Finding details vary based on finding type. Review the finding that you opened.\nUnderstanding GuardDuty finding severity Find the Severity of the finding you selected. If you want to view or download the finding in JSON form, you can click the Finding ID at the top of the finding summary. Click the X in the top right of the finding summary to close it. Searching and Filtering GuardDuty Findings Click on the Search bar where it says Add filter criteria.\nType Severity in the search bar and click on Severity, which then opens to a sub-menu with Low, Medium, and High options.\nCheck the box for High and click Apply. This will then update the list of displayed findings accordingly. Managing GuardDuty findings With a finding selected, click the Actions dropdown (top right of the page). Click \u0026ldquo;Archive\u0026rdquo; to archive the finding. Archiving the finding will hide it from the list of Current findings. To view it, click the \u0026ldquo;Current\u0026rdquo; dropdown, and select \u0026ldquo;Archived\u0026rdquo; to see the finding you just archived. To unarchive the finding, select it, and then click the Actions dropdown again (top right of the page). This time, click \u0026ldquo;Unarchive\u0026rdquo; to unarchive the finding. "
 },
 {
 	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/",
@@ -147,11 +161,25 @@
 	"content": " Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter S3GW. In the Service Category section, click AWS services. In the search box enter S3, then select com.amazonaws.[region].s3 In the Services section, select com.amazonaws.[region].s3 with the Type of Gateway. In the VPC section, select Lab VPC. In the Route tables section, select both route tables. Scroll down, click Create endpoint. The next step is to configure Session Manager to store session logs to the S3 bucket we created.\n"
 },
 {
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.3-guardduty-protection-plans/",
+	"title": "GuardDuty - Protection plans",
+	"tags": [],
+	"description": "",
+	"content": "Prequisite Make sure the EC2 instance has the SSM Management Role.\nAmazon S3 protection in Amazon GuardDuty Visit the S3 Protection page under Protection plans in the GuardDuty console.\nMake sure that S3 Protection is enabled.\nEKS Protection in Amazon GuardDuty Visit the EKS Protection page under Protection plans in the GuardDuty console.\nMake sure that EKS Audit Log Monitoring is enabled. Note: Console experience for GuardDuty EKS Runtime Monitoring is now managed as part of the new Runtime Monitoring feature.\nRuntime Monitoring in Amazon GuardDuty Visit the Runtime Monitoring page under Protection plans in the GuardDuty console.\nMake sure that Runtime Monitoring is enabled along with Automated agent configuration for each Amazon EKS, AWS Fargate (ECS only), and Amazon EC2.\nOn the Runtime Monitoring page, switch to the tab Runtime coverage. What are the \u0026ldquo;Coverage statistics\u0026rdquo;? While out of scope for this workshop, learn more about setting up Runtime Monitoring at https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html .\nNote: If the EC2 Instance Coverage status is unhealthy and the Issue status is \u0026ldquo;No Agent Reporting\u0026rdquo;, it may be due to SSM agent can not be installed in the EC2 instance. You can clarify by check /var/log/amzn-guardduty-agent in the instance (AL2, AL2023). Further read https://docs.aws.amazon.com/guardduty/latest/ug/gdu-assess-coverage-ec2.html#ec2-runtime-monitoring-coverage-issues-troubleshoot\nMalware Protection for EC2 in Amazon GuardDuty Visit the Malware Protection page under Protection plans in the GuardDuty console.\nGuardDuty automatically initiates a malware scan after generating a finding indicative of malware in an EC2 instance or a container workload. Make sure that GuardDuty-initiated malware scan is enabled.\nScroll down and toggle Retain scanned snapshots when malware is detected on.\nRDS Protection in Amazon GuardDuty Visit the RDS Protection page under Protection plans in the GuardDuty console.\nMake sure that RDS Login Activity Monitoring is enabled.\nLambda Protection in Amazon GuardDuty Visit the Lambda Protection page under Protection plans in the GuardDuty console.\nMake sure that Lambda Network Activity Monitoring is enabled.\n"
+},
+{
 	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.3-security-hub-findings/",
 	"title": "Security Hub - Findings",
 	"tags": [],
 	"description": "",
 	"content": "Findings in Security Hub Click on Findings from the navigation on the left in Security Hub. You can use filters to narrow the list of findings displayed. Click the input Add filter. Select Product name and then input \u0026ldquo;GuardDuty\u0026rdquo; (case-sensitive). Click Apply. This will display all the findings that Security Hub has received from the threat detection service, GuardDuty. There are many Security Hub findings listed here. Try adding a filter to narrow the list down to high severity findings. Click the Add filters again. From the dropdown, select Severity label and choose is and then input HIGH. This is case-sensitive. Click Apply. Pick one of the findings and click on the title. This opens the finding details pane. Expand all the sections and take a few minutes to review the information here. You can see the description, a link to remediation instructions, information about the resource, and more. In the finding details pane click the finding ID link at the top of the pane to display the complete JSON for the finding. The finding JSON can be downloaded to a file if ever needed for further investigation. Close out of the JSON pop-up by clicking the X in the top right. At the top of the finding details, open the History tab to view a chronological list of all changes that have been made to the finding. The transparency of finding history helps you identify potential security risks more quickly and take proactive steps to mitigate them. Close the finding details pane by clicking the X in the top right, but stay on the Findings page.\nTry to understand what resources in our environment are generating the most findings. Remove all the filters. Then add a new filter, select Resource type and choose is not and then input AwsAccount. Click Apply. Add another filter. Select Record state, choose is, and then input ACTIVE. Click Apply. Click Add filters in the search bar again. This time, select Group by and choose ResourceId. Click Apply. This list shows you the number of findings per resource. View detail by clicking Insight details: "
+},
+{
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.4-guardduty-building-your-own-threat-list/",
+	"title": "GuardDuty - Building your own threat list",
+	"tags": [],
+	"description": "",
+	"content": "Implementing a threat list with a fictitious address Navigate to Amazon S3 in the AWS console.\nFind the bucket with \u0026ldquo;-threatlistbucket-\u0026rdquo; in the name and click on the name.\nUpload the threat list you created above to the S3 bucket.\nRecord the S3 URI of the file you have just uploaded. To find the URI, open the bucket, click to open the file, and copy the S3 URI.\nNow we will add the list your uploaded to the S3 bucket to the Threat lists in GuardDuty. Return to Amazon GuardDuty.\nIn the left navigation of GuardDuty, select Lists.\nClick the button Add a threat IP list.\nIn the List name box, give your list a friendly name like \u0026ldquo;Test Threat List\u0026rdquo;.\nUnder location type the S3 URI for the uploaded file that you recorded earlier.\nSelect Plaintext as the Format.\nClick I Agree and then click Add list\nYou will need to activate the list once it has been added to GuardDuty. Select the newly added list. Click Actions, and then select Activate.\nA green status banner will appear saying \u0026ldquo;Successfully updated the list\u0026hellip;\u0026rdquo;.\n"
 },
 {
 	"uri": "//localhost:1313/4-s3log/",
@@ -175,6 +203,13 @@
 	"content": "Security Hub - Pricing During the free trial, you will get an estimate of your monthly bill if you were to continue to use Security Hub across the same accounts and Regions.\nFrom Security Hub, open the Usage page from the navigation on the left under Settings. Review your current trial usage and pricing dimensions.\n"
 },
 {
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.5-guardduty-suppressing-findings/",
+	"title": "GuardDuty - Suppressing findings",
+	"tags": [],
+	"description": "",
+	"content": "Configure a rule to suppress unwanted findings for your vulnerability assessment tool From the GuardDuty console, open the Findings page.\nClick the button, Suppress Findings.\nThe suppression rule should consist of two filter criteria. The first criteria should use the Finding type attribute with a value of Recon:EC2/Portscan. In the field Add filter criteria, select Finding Type and type \u0026ldquo;Recon:EC2/Portscan\u0026rdquo;. Click Apply.\nNotice that after adding the first filter, the preview at the bottom of the page shows the finding(s) that would be suppressed by this rule. To ensure that you don\u0026rsquo;t accidently suppress a finding you want to be alerted to, add a second filter criteria to narrow the rule.\nThe second filter criteria should match the instance or instances that host these vulnerability assessment tools. You can use either the Instance image ID attribute or the Tag value attribute depending on which criteria are identifiable with the instances that host these tools. Click Add filter criteria again, and select Instance Tag Value and type \u0026ldquo;Scanner\u0026rdquo;. Click Apply.\nNotice that only one finding will be suppressed by this rule.\nEnter \u0026ldquo;VulnerabilityAssessmentTool\u0026rdquo; in the Name field.\nEnter \u0026ldquo;Suppress findings from Vulnerability Assessment Tool.\u0026rdquo; in the Description field.\nClick Save.\n"
+},
+{
 	"uri": "//localhost:1313/5-portfwd/",
 	"title": "Port Forwarding",
 	"tags": [],
@@ -194,6 +229,27 @@
 	"tags": [],
 	"description": "",
 	"content": "We will take the following steps to delete the resources we created in this exercise.\nDelete EC2 instance Go to EC2 service management console\nClick Instances. Select both Public Linux Instance and Private Windows Instance instances. Click Instance state. Click Terminate instance, then click Terminate to confirm. Go to IAM service management console\nClick Roles. In the search box, enter SSM. Click to select SSM-Role. Click Delete, then enter the role name SSM-Role and click Delete to delete the role. Click Users. Click on user Portfwd. Click Delete, then enter the user name Portfwd and click Delete to delete the user. Delete S3 bucket Access System Manager - Session Manager service management console.\nClick the Preferences tab. Click Edit. Scroll down. In the section S3 logging. Uncheck Enable to disable logging. Scroll down. Click Save. Go to S3 service management console\nClick on the S3 bucket we created for this lab. (Example: lab-fcj-bucket-0001 ) Click Empty. Enter permanently delete, then click Empty to proceed to delete the object in the bucket. Click Exit. After deleting all objects in the bucket, click Delete\nEnter the name of the S3 bucket, then click Delete bucket to proceed with deleting the S3 bucket. Delete VPC Endpoints Go to VPC service management console Click Endpoints. Select the 4 endpoints we created for the lab including SSM, SSMMESSAGES, EC2MESSAGES, S3GW. Click Actions. Click Delete VPC endpoints. In the confirm box, enter delete.\nClick Delete to proceed with deleting endpoints. Click the refresh icon, check that all endpoints have been deleted before proceeding to the next step.\nDelete VPC Go to VPC service management console\nClick Your VPCs. Click on Lab VPC. Click Actions. Click Delete VPC. In the confirm box, enter delete to confirm, click Delete to delete Lab VPC and related resources.\n"
+},
+{
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.6-guradduty-pricing/",
+	"title": "Security Hub - Pricing",
+	"tags": [],
+	"description": "",
+	"content": "Security Hub - Pricing The GuardDuty console indicates how many days are left in the free trial as well as average daily cost (based on volume of data analyzed and scanned), taking the guesswork out of budget planning.\nFrom GuardDuty, open the Usage page from the navigation on the left under Settings.\nReview your current trial usage and estimated cost. The estimates displayed in the GuardDuty console may differ slightly than those in your AWS Billing and Cost Management console. For more information, see https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html .\n"
+},
+{
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.7-guardduty-notifications/",
+	"title": "GuardDuty - Notifications",
+	"tags": [],
+	"description": "",
+	"content": "Configure SNS topic Navigate to Amazon SNS. https://console.aws.amazon.com/sns/v3/home 2. Click Topics in the left navigation. Click Create topic. Select Standard type.\nFor the name, enter \u0026ldquo;guardduty-findings\u0026rdquo;.\nLeave everything else as is and click Create topic at the bottom of the page. This will create the topic.\nSbscribe to the topic From the guardduty-findings topic page, click Create subscription.\nOn the Create subscription page, under Protocol, select email.\nOn the Create subscription page, under Endpoint, enter your email address that you want to use for this workshop to receive notifications. You can unsubscribe at the end of the workshop.\nClick Create subscription.\nCheck the email you entered. Within a couple minutes, you will receive an email at the email address you entered.\nConfirm the subscription by clicking \u0026ldquo;Confirm subscription\u0026rdquo; in the email. This will open a confirmation webpage.\nCreate an EventBridge Rule to send findings to the topic Now that you have subscribed to the SNS topic, you are ready to send findings there. Create an EventBridge rule to listen for events from Security Hub. Navigate to Amazon EventBridge. https://console.aws.amazon.com/events/home Click the Create rule button on the right with \u0026ldquo;EventBridge Rule\u0026rdquo; selected. On the Define rule detail page, name your rule \u0026ldquo;guardduty-findings\u0026rdquo;. Click Next.\nOn the Build event pattern page, scroll down to the Event pattern section, click Edit pattern in the bottom right.\nAdd the following event pattern (JSON). This pattern will identify events for Security Hub findings labeled CRITICAL severity.\n{ \u0026#34;source\u0026#34;: [\u0026#34;aws.guardduty\u0026#34;], \u0026#34;detail-type\u0026#34;: [\u0026#34;GuardDuty Finding\u0026#34;], \u0026#34;detail\u0026#34;: { \u0026#34;severity\u0026#34;: [ 4, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.0, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.0, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9 ] } } Click Next.\nOn the Select target(s) page, from the Select a target dropdown, select SNS topic.\nThen from the Topic dropdown, select guardduty-findings.\nClick Next.\nOn the Configure tags - optional page, click Next.\nOn the Review and create page, click Create rule. Keep an eye on your email through the rest of the workshop.\n"
+},
+{
+	"uri": "//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.8-guardduty-retaining-findings/",
+	"title": "GuardDuty - Retaining findings",
+	"tags": [],
+	"description": "",
+	"content": "Configure SNS topic GuardDuty retains the generated findings for a period of 90 days. GuardDuty exports the active findings to Amazon EventBridge. You can optionally export the generated findings to an Amazon Simple Storage Service (Amazon S3) bucket. This will help you to track the historical data of potentially suspicious activities in your account and evaluate whether the recommended remediation steps were successful.\nAny new active findings that GuardDuty generates are automatically exported within about 5 minutes after the finding is generated. You can set the frequency for how often updates to the active findings are exported to EventBridge. The frequency that you select applies to the exporting of new occurrences of existing findings to EventBridge, your S3 bucket (when configured), and Detective (when integrated).\nWhen you configure settings to export findings to an Amazon S3 bucket, GuardDuty uses AWS Key Management Service (AWS KMS) to encrypt the findings data in your S3 bucket. This requires you to add permissions to your S3 bucket and the AWS KMS key so that GuardDuty can use them to export findings in your account.\n"
 },
 {
 	"uri": "//localhost:1313/categories/",
