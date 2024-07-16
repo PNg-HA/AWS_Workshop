@@ -1,7 +1,7 @@
 ---
 title : "Amazon GuardDuty"
 date : "`r Sys.Date()`"
-weight : 1
+weight : 2
 chapter : false
 pre : " <b> 2.2 </b> "
 ---
