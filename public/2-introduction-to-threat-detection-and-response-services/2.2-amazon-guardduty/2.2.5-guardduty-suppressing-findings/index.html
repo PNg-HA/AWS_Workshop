@@ -12,21 +12,21 @@
     <title>GuardDuty - Suppressing findings :: AWS System Manager</title>
 
     
-    <link href="//localhost:1313/css/nucleus.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/fontawesome-all.min.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/hybrid.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/featherlight.min.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/auto-complete.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/theme.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/hugo-theme.css?1721159804" rel="stylesheet">
+    <link href="//localhost:1313/css/nucleus.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/fontawesome-all.min.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/hybrid.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/featherlight.min.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/auto-complete.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/theme.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/hugo-theme.css?1721160907" rel="stylesheet">
     
-    <link href="//localhost:1313/css/theme-workshop.css?1721159804" rel="stylesheet">
+    <link href="//localhost:1313/css/theme-workshop.css?1721160907" rel="stylesheet">
     
     
 
-    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1721159804"></script>
+    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1721160907"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1721159804"></script>
-<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1721159804"></script>
+<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1721160907"></script>
+<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1721160907"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="//localhost:1313/js/search.js?1721159804"></script>
+<script type="text/javascript" src="//localhost:1313/js/search.js?1721160907"></script>
 
     
   </div>
@@ -1325,31 +1325,31 @@
 </li>
 <li>
 <p>Click the button, <strong>Suppress Findings</strong>.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s2.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s2.png"></p>
 </li>
 <li>
 <p>The suppression rule should consist of two filter criteria. The first criteria should use the Finding type attribute with a value of Recon:EC2/Portscan. In the field <strong>Add filter criteria</strong>, select <strong>Finding Type</strong> and type <strong>&ldquo;Recon:EC2/Portscan&rdquo;</strong>. Click <strong>Apply</strong>.</p>
 </li>
 </ol>
-<p><img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s3.png"></p>
+<p><img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s3.png"></p>
 <ol start="4">
 <li>
 <p>Notice that after adding the first filter, the preview at the bottom of the page shows the finding(s) that would be suppressed by this rule. To ensure that you don&rsquo;t accidently suppress a finding you want to be alerted to, add a second filter criteria to narrow the rule.</p>
 </li>
 <li>
 <p>The second filter criteria should match the instance or instances that host these vulnerability assessment tools. You can use either the Instance image ID attribute or the Tag value attribute depending on which criteria are identifiable with the instances that host these tools. Click <strong>Add filter criteria</strong> again, and select <strong>Instance Tag Value</strong> and type &ldquo;<strong>Scanner</strong>&rdquo;. Click <strong>Apply</strong>.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s5.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s5.png"></p>
 </li>
 <li>
 <p>Notice that only one finding will be suppressed by this rule.</p>
 </li>
 <li>
 <p>Enter &ldquo;<strong>VulnerabilityAssessmentTool</strong>&rdquo; in the <strong>Name</strong> field.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s7.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s7.png"></p>
 </li>
 <li>
 <p>Enter &ldquo;<strong>Suppress findings from Vulnerability Assessment Tool.</strong>&rdquo; in the <strong>Description</strong> field.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s8.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s8.png"></p>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
@@ -2001,19 +2001,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="//localhost:1313/js/clipboard.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/jquery.sticky.js?1721159804"></script>
-    <script src="//localhost:1313/js/featherlight.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/highlight.pack.js?1721159804"></script>
+    <script src="//localhost:1313/js/clipboard.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/jquery.sticky.js?1721160907"></script>
+    <script src="//localhost:1313/js/featherlight.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/highlight.pack.js?1721160907"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1721159804"></script>
-    <script src="//localhost:1313/js/learn.js?1721159804"></script>
-    <script src="//localhost:1313/js/hugo-learn.js?1721159804"></script>
+    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1721160907"></script>
+    <script src="//localhost:1313/js/learn.js?1721160907"></script>
+    <script src="//localhost:1313/js/hugo-learn.js?1721160907"></script>
 
-    <link href="//localhost:1313/mermaid/mermaid.css?1721159804" rel="stylesheet" />
-    <script src="//localhost:1313/mermaid/mermaid.js?1721159804"></script>
+    <link href="//localhost:1313/mermaid/mermaid.css?1721160907" rel="stylesheet" />
+    <script src="//localhost:1313/mermaid/mermaid.js?1721160907"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,21 +12,21 @@
     <title>GuardDuty - Building your own threat list :: AWS System Manager</title>
 
     
-    <link href="//localhost:1313/css/nucleus.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/fontawesome-all.min.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/hybrid.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/featherlight.min.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/auto-complete.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/theme.css?1721159804" rel="stylesheet">
-    <link href="//localhost:1313/css/hugo-theme.css?1721159804" rel="stylesheet">
+    <link href="//localhost:1313/css/nucleus.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/fontawesome-all.min.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/hybrid.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/featherlight.min.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/auto-complete.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/theme.css?1721160907" rel="stylesheet">
+    <link href="//localhost:1313/css/hugo-theme.css?1721160907" rel="stylesheet">
     
-    <link href="//localhost:1313/css/theme-workshop.css?1721159804" rel="stylesheet">
+    <link href="//localhost:1313/css/theme-workshop.css?1721160907" rel="stylesheet">
     
     
 
-    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1721159804"></script>
+    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1721160907"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1721159804"></script>
-<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1721159804"></script>
+<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1721160907"></script>
+<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1721160907"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="//localhost:1313/js/search.js?1721159804"></script>
+<script type="text/javascript" src="//localhost:1313/js/search.js?1721160907"></script>
 
     
   </div>
@@ -1325,28 +1325,28 @@
 </li>
 <li>
 <p>Find the bucket with &ldquo;<strong>-threatlistbucket-</strong>&rdquo; in the name and click on the name.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s2.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s2.png"></p>
 </li>
 <li>
 <p>Upload the threat list you created above to the S3 bucket.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s3.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s3.png"></p>
 </li>
 <li>
 <p>Record the S3 URI of the file you have just uploaded. To find the URI, open the bucket, click to open the file, and copy the S3 URI.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s4.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s4.png"></p>
 </li>
 <li>
 <p>Now we will add the list your uploaded to the S3 bucket to the Threat lists in GuardDuty. Return to Amazon GuardDuty.</p>
 </li>
 <li>
 <p>In the left navigation of GuardDuty, select <strong>Lists</strong>.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s6.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s6.png"></p>
 </li>
 <li>
 <p>Click the button <strong>Add a threat IP list</strong>.</p>
 </li>
 </ol>
-<p><img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s7.png"></p>
+<p><img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s7.png"></p>
 <ol start="8">
 <li>
 <p>In the List name box, give your list a friendly name like &ldquo;Test Threat List&rdquo;.</p>
@@ -1356,20 +1356,20 @@
 </li>
 <li>
 <p>Select <strong>Plaintext</strong> as the Format.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s10.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s10.png"></p>
 </li>
 <li>
 <p>Click <strong>I Agree</strong> and then click <strong>Add list</strong></p>
 </li>
 <li>
 <p>You will need to activate the list once it has been added to GuardDuty. Select the newly added list. Click <strong>Actions</strong>, and then select <strong>Activate</strong>.
-<img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s12.png"></p>
+<img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s12.png"></p>
 </li>
 <li>
 <p>A green status banner will appear saying &ldquo;Successfully updated the list&hellip;&rdquo;.</p>
 </li>
 </ol>
-<p><img alt="VPC" src="//localhost:1313/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s13.png"></p>
+<p><img alt="VPC" src="//localhost:1313/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s13.png"></p>
 
 
 
@@ -2016,19 +2016,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="//localhost:1313/js/clipboard.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/jquery.sticky.js?1721159804"></script>
-    <script src="//localhost:1313/js/featherlight.min.js?1721159804"></script>
-    <script src="//localhost:1313/js/highlight.pack.js?1721159804"></script>
+    <script src="//localhost:1313/js/clipboard.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/jquery.sticky.js?1721160907"></script>
+    <script src="//localhost:1313/js/featherlight.min.js?1721160907"></script>
+    <script src="//localhost:1313/js/highlight.pack.js?1721160907"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1721159804"></script>
-    <script src="//localhost:1313/js/learn.js?1721159804"></script>
-    <script src="//localhost:1313/js/hugo-learn.js?1721159804"></script>
+    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1721160907"></script>
+    <script src="//localhost:1313/js/learn.js?1721160907"></script>
+    <script src="//localhost:1313/js/hugo-learn.js?1721160907"></script>
 
-    <link href="//localhost:1313/mermaid/mermaid.css?1721159804" rel="stylesheet" />
-    <script src="//localhost:1313/mermaid/mermaid.js?1721159804"></script>
+    <link href="//localhost:1313/mermaid/mermaid.css?1721160907" rel="stylesheet" />
+    <script src="//localhost:1313/mermaid/mermaid.js?1721160907"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

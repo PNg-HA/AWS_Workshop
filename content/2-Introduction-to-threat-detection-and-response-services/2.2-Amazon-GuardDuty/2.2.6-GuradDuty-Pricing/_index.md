@@ -14,7 +14,7 @@ pre : " <b> 2.2.6 </b> "
 
 
 2. From GuardDuty, open the **Usage** page from the navigation on the left under Settings.
-![VPC](/images/2-Introduction-to-threat-detection-and-response-services/2.2-Amazon-GuardDuty/2.2.6-GuradDuty-Pricing/s2.png)
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.6-GuradDuty-Pricing/s2.png)
 
 
 

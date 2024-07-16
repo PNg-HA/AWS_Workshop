@@ -14,5 +14,5 @@ pre : " <b> 2.1.4 </b> "
 
 
 2. From Security Hub, open the **Usage** page from the navigation on the left under Settings.
-![VPC](/images/2-Introduction-to-threat-detection-and-response-services/2.1-AWS-Security-Hub/2.1.4-Security-Hub-Pricing/s1.png)
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.4-Security-Hub-Pricing/s1.png)
 3. Review your current trial usage and pricing dimensions.
