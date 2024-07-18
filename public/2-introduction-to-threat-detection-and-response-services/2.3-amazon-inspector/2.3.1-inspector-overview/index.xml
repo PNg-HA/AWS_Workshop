@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inspector - Overview on AWS System Manager</title>
+    <link>/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.1-inspector-overview/</link>
+    <description>Recent content in Inspector - Overview on AWS System Manager</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.1-inspector-overview/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
