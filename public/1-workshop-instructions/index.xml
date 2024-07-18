@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workshop Instructions on AWS System Manager</title>
-    <link>/1-workshop-instructions/</link>
+    <link>//localhost:1313/1-workshop-instructions/</link>
     <description>Recent content in Workshop Instructions on AWS System Manager</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="/1-workshop-instructions/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/1-workshop-instructions/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

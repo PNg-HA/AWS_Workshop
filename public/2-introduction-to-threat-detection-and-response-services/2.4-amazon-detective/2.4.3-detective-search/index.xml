@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Detective - Search on AWS System Manager</title>
-    <link>/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/</link>
+    <link>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/</link>
     <description>Recent content in Detective - Search on AWS System Manager</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
