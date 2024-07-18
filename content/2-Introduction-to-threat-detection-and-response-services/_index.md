@@ -9,5 +9,5 @@ pre : " <b> 2. </b> "
 ### Content
   - [AWS Security Hub](2.1-AWS-Security-Hub/)
   - [Amazon GuardDuty](2.2-Amazon-GuardDuty/)
-  - [Amazon Inspector](2.2-Amazon-Inspector/)
-  - [Amazon Detective](2.2-Amazon-Detective/)
+  - [Amazon Inspector](2.3-Amazon-Inspector/)
+  - [Amazon Detective](2.4-Amazon-Detective/)
