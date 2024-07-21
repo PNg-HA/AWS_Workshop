@@ -16,7 +16,8 @@ pre : " <b> 2.4.7 </b> "
 
 
 3. Click **Edit** next to **Optional source packages**.
-
+![VPC](/images/2/2.4/2.4.7/s3.png)
 
 
 4. Make sure there is a checkbox next to **EKS audit logs**.
+![VPC](/images/2/2.4/2.4.7/s4.png)

@@ -13,14 +13,10 @@ pre : " <b> 2.3.2 </b> "
 
 2. At the top of the page you can see the **Environment coverage**. Notice that only a percentage of Instances are covered. You can optionally click on the percentage to dive deeper into which of your instances are being scanned.
 
+![VPC](/images/2/2.3/2.3.2/s2.png)
 
-
-3. On the Dashboard, check out **Risk Based Remediations** near the top of the page. 
-
-
-
-<!-- The risk-based remediations section shows the top five software packages with critical vulnerabilities that impact the most resources in your environment. Remediating these packages can significantly reduce the number of critical risks to your environment. Choose the software package name to see associated vulnerability details and impacted resources. -->
-
+3. On the Dashboard, check out **Risk Based Remediations** near the top of the page. The risk-based remediations section shows the top five software packages with critical vulnerabilities that impact the most resources in your environment. Remediating these packages can significantly reduce the number of critical risks to your environment. Choose the software package name to see associated vulnerability details and impacted resources.
+![VPC](/images/2/2.3/2.3.2/s3.png)
 
 
 4. On the Dashboard, you can also review:
@@ -30,3 +26,11 @@ pre : " <b> 2.3.2 </b> "
 - Amazon Machine Images (AMI) with most critical findings
 - AWS Lambda functions with the most critical findings
 - Code detectors for Lambda code scanning
+![VPC](/images/2/2.3/2.3.2/s4.png)
+
+Take a look at some findings. Pick one finding for more detail
+![VPC](/images/2/2.3/2.3.2/e1.png)
+Some more information
+![VPC](/images/2/2.3/2.3.2/e2.png)
+You can click the techniques for more information
+![VPC](/images/2/2.3/2.3.2/e3.png)

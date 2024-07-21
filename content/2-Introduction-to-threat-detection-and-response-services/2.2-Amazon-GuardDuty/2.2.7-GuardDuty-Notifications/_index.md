@@ -36,11 +36,11 @@ pre : " <b> 2.2.7 </b> "
 9. On the **Create subscription** page, under **Endpoint**, enter your email address that you want to use for this workshop to receive notifications. You can unsubscribe at the end of the workshop.
 
 
-10. Click **Create subscription**.
-![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.7-GuardDuty-Notifications/s10.png)
+10. Click **Create subscription**. 
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.7-GuardDuty-Notifications/s10a.png)
 
 11. Check the email you entered. Within a couple minutes, you will receive an email at the email address you entered.
-
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.7-GuardDuty-Notifications/s11.png)
 
 12. Confirm the subscription by clicking "Confirm subscription" in the email. This will open a confirmation webpage.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.7-GuardDuty-Notifications/s12.png)
@@ -92,3 +92,4 @@ pre : " <b> 2.2.7 </b> "
 
 
 23. On the **Review and create** page, click **Create rule**. Keep an eye on your email through the rest of the workshop.
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.7-GuardDuty-Notifications/s23.png)

@@ -11,9 +11,14 @@ A GuardDuty finding represents a potential security issue detected within your n
 #### Review a GuarDuty finding
 1. Navigate to **Findings** in Amazon GuardDuty by clicking **Findings** in the left hand navigation.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s1.png)
+Here is findings in the AWS Workshop account:
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s1b.png)
 
 2. Select one of the findings on the page by clicking on the row. This will open the finding summary on the right side of the page. Finding details vary based on finding type.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s2.png)
+
+Check another finding in the workshop:
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s2b.png)
 
 3. Review the finding that you opened. 
 

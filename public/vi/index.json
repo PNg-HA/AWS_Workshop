@@ -35,25 +35,11 @@
 	"content": "Trong bước này, chúng ta sẽ cần tạo một VPC có 2 subnet public / private. Sau đó tạo 1 EC2 Instance Linux nằm trong public subnet, 1 EC2 Instance Windows nằm trong private subnet.\nTổng quan kiến trúc sau khi các bạn hoàn tất bước này sẽ như sau:\nĐể tìm hiểu cách tạo các EC2 instance và VPC với public/private subnet các bạn có thể tham khảo bài lab :\nGiới thiệu về Amazon EC2 Làm việc với Amazon VPC Nội dung Tạo VPC Tạo Public subnet Tạo Private subnet Tạo security group Tạo máy chủ Linux public Tạo máy chủ Windows private "
 },
 {
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.1-public-instance/",
+	"uri": "//localhost:1313/vi/3/3.1/",
 	"title": "Kết nối đến máy chủ Public",
 	"tags": [],
 	"description": "",
 	"content": "\nTruy cập vào giao diện quản trị của dịch vụ EC2. Click chọn Public Linux Instance. Click Actions. Click Security. Click Modify IAM role. Tại trang Modify IAM role. Click chọn SSM-Role. Click Save. Bạn sẽ cần chờ khoảng 10 phút trước khi thực hiện bước tiếp theo. Thời gian này EC2 instance của chúng ta sẽ tự động đăng ký với Session Manager.\nTruy cập vào giao diện quản trị của dịch vụ AWS Systems Manager Kéo thanh trượt menu bên trái xuống dưới. Click Session Manager. Click Start Session. Sau đó chọn Public Linux Instance và click Start session để truy cập vào instance. Terminal sẽ xuất hiện trên trình duyệt. Kiểm tra với câu lệnh sudo tcpdump -nn port 22 và sudo tcpdump chúng ta sẽ thấy không có traffic của SSH mà chỉ có traffic HTTPS. Ở trên, chúng ta đã tạo kết nối vào public instance mà không cần mở cổng SSH 22, giúp cho việc bảo mật tốt hơn, tránh mọi sự tấn công tới cổng SSH.\nMột nhược điểm của cách làm trên là ta phải mở Security Group outbound ở cổng 443 ra ngoài internet. Vì là public instance nên có thể sẽ không vấn đề gì nhưng nếu bạn muốn bảo mật hơn nữa, bạn có thể khoá cổng 443 ra ngoài internet mà vẫn sử dụng được Session Manager. Chúng ta sẽ đi qua cách làm này ở phần private instance dưới đây.\nBạn có thể terminate để kết thúc session đang kết nối trước khi qua bước tiếp theo.\n"
-},
-{
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/",
-	"title": "Kích hoạt DNS hostnames",
-	"tags": [],
-	"description": "",
-	"content": "Kích hoạt tính năng DNS hostnames trên VPC. Để tạo được VPC Endpoint chúng ta sẽ cần bật tính năng DNS hostnames trên VPC. Truy cập đến giao diện quản trị của dịch vụ VPC\nClick Your VPCs.\nChọn Lab VPC.\nClick Actions.\nClick Edit DNS hostnames.\nClick Endpoint, sau đó click Create Endpoint.\nTại trang Edit DNS hostnames. Click chọn Enable. Click Save changes. "
-},
-{
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/",
-	"title": "Tạo Endpoint ssm",
-	"tags": [],
-	"description": "",
-	"content": "Tạo VPC Endpoint SSM Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSM. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: SSM sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ssm. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ssm. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint cho SSM. "
 },
 {
 	"uri": "//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/",
@@ -98,13 +84,6 @@
 	"content": "\rBạn cần tạo sẵn 1 Linux instance thuộc public subnet và 1 Window instance thuộc private subnet để thực hiện bài thực hành này.\nĐể tìm hiểu cách tạo các EC2 instance và VPC với public/private subnet các bạn có thể tham khảo bài lab :\nGiới thiệu về Amazon EC2 Làm việc với Amazon VPC Để sử dụng System Manager để quản lý window instance nói riêng và các instance nói chung của chúng ta trên AWS, ta cần phải cung cấp quyền cho các instance của chúng ta có thể làm việc với System Manager.Trong phần chuẩn bị này, chúng ta cũng sẽ tiến hành tạo IAM Role để cấp quyền cho các instance có thể làm việc với System Manager.\nNội dung Chuẩn bị VPC và EC2 Instance Tạo IAM Role "
 },
 {
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/",
-	"title": "Tạo Endpoint ssmmessages",
-	"tags": [],
-	"description": "",
-	"content": "Tạo VPC Endpoint SSMMESSAGES Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSMMESSAGES. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: ssmmessages sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ssmmessages. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ssmmessages. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint SSMMESSAGES. "
-},
-{
 	"uri": "//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/",
 	"title": "Tạo IAM Role",
 	"tags": [],
@@ -112,7 +91,28 @@
 	"content": "Tạo IAM Role Trong bước này chúng ta sẽ tiến hành tạo IAM Role. Trong IAM Role này sẽ được gán policy AmazonSSMManagedInstanceCore, đây là policy cho phép máy chủ EC2 có thể giao tiếp với Session Manager.\nTruy cập vào giao diện quản trị dịch vụ IAM Ở thanh điều hướng bên trái, click Roles. Click Create role. Click AWS service và click EC2. Click Next: Permissions. Trong ô Search, điền AmazonSSMManagedInstanceCore và ấn phím Enter để tìm kiếm policy này. Click chọn policy AmazonSSMManagedInstanceCore. Click Next: Tags. Click Next: Review. Đặt tên cho Role là SSM-Role ở Role Name Click Create Role . Tiếp theo chúng ta sẽ thực hiện kết nối đến các máy chủ EC2 chúng ta đã tạo bằng Session Manager.\n"
 },
 {
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/",
+	"uri": "//localhost:1313/vi/3/3.2/",
+	"title": "Tạo kết nối đến máy chủ EC2 Private",
+	"tags": [],
+	"description": "",
+	"content": "Đối với Windows instance nằm trong private subnet, không có public IP, không có internet gateway nên không thể đi ra ngoài internet.\nVới loại instance này, cách làm truyền thống là ta sẽ sử dụng kỹ thuật Bastion host tốn nhiều chi phí và công sức, nhưng ở đây chúng ta sẽ sử dụng Session Manager với loại này.\nCơ bản là private instance vẫn phải mở cổng TCP 443 tới System Manager, nhưng không cho kết nối đó đi ra ngoài internet mà chỉ cho đi trong chính VPC của mình, nên đảm bảo được vấn đề bảo mật.\nĐể làm được điều đó, ta phải đưa endpoint của System Manager vào trong VPC, nghĩa là sử dụng VPC interface endpoint:\nVPC interface endpoint được gắn với subnet nên cách làm này không những với private subnet mà còn có thể làm với public subnet, nghĩa là với public subnet, bạn hoàn toàn có thể không cho TCP 443 đi ra ngoài internet.\nNội dung: Kích hoạt DNS hostnames Tạo VPC Endpoint Kết nối Private Instance "
+},
+{
+	"uri": "//localhost:1313/vi/3/3.3/",
+	"title": "Tạo kết nối đến máy chủ EC2 Private",
+	"tags": [],
+	"description": "",
+	"content": "Đối với Windows instance nằm trong private subnet, không có public IP, không có internet gateway nên không thể đi ra ngoài internet.\nVới loại instance này, cách làm truyền thống là ta sẽ sử dụng kỹ thuật Bastion host tốn nhiều chi phí và công sức, nhưng ở đây chúng ta sẽ sử dụng Session Manager với loại này.\nCơ bản là private instance vẫn phải mở cổng TCP 443 tới System Manager, nhưng không cho kết nối đó đi ra ngoài internet mà chỉ cho đi trong chính VPC của mình, nên đảm bảo được vấn đề bảo mật.\nĐể làm được điều đó, ta phải đưa endpoint của System Manager vào trong VPC, nghĩa là sử dụng VPC interface endpoint:\nVPC interface endpoint được gắn với subnet nên cách làm này không những với private subnet mà còn có thể làm với public subnet, nghĩa là với public subnet, bạn hoàn toàn có thể không cho TCP 443 đi ra ngoài internet.\nNội dung: Kích hoạt DNS hostnames Tạo VPC Endpoint Kết nối Private Instance "
+},
+{
+	"uri": "//localhost:1313/vi/3/3.4/",
+	"title": "Tạo kết nối đến máy chủ EC2 Private",
+	"tags": [],
+	"description": "",
+	"content": "Đối với Windows instance nằm trong private subnet, không có public IP, không có internet gateway nên không thể đi ra ngoài internet.\nVới loại instance này, cách làm truyền thống là ta sẽ sử dụng kỹ thuật Bastion host tốn nhiều chi phí và công sức, nhưng ở đây chúng ta sẽ sử dụng Session Manager với loại này.\nCơ bản là private instance vẫn phải mở cổng TCP 443 tới System Manager, nhưng không cho kết nối đó đi ra ngoài internet mà chỉ cho đi trong chính VPC của mình, nên đảm bảo được vấn đề bảo mật.\nĐể làm được điều đó, ta phải đưa endpoint của System Manager vào trong VPC, nghĩa là sử dụng VPC interface endpoint:\nVPC interface endpoint được gắn với subnet nên cách làm này không những với private subnet mà còn có thể làm với public subnet, nghĩa là với public subnet, bạn hoàn toàn có thể không cho TCP 443 đi ra ngoài internet.\nNội dung: Kích hoạt DNS hostnames Tạo VPC Endpoint Kết nối Private Instance "
+},
+{
+	"uri": "//localhost:1313/vi/3/3.5/",
 	"title": "Tạo kết nối đến máy chủ EC2 Private",
 	"tags": [],
 	"description": "",
@@ -154,28 +154,7 @@
 	"content": "Trong bước này, chúng ta sẽ tạo 1 S3 bucket để lưu trữ các session logs được gửi từ các EC2 instance.\nTạo S3 Bucket Truy cập giao diện quản trị dịch vụ S3 Click Create bucket. Tại trang Create bucket. Tại mục Bucket name điền tên bucket lab-yourname-bucket-0001 Tại mục Region chọn Region bạn đang làm lab hiện tại. Tên S3 bucket phải đảm bảo không trùng với toàn bộ S3 bucket khác trong hệ thống. Bạn có thể thay thế tên mình và điền số ngẫu nhiên khi tạo tên S3 bucket.\nKéo chuột xuống phía dưới và click Create bucket. Khi tạo S3 bucket chúng ta đã thực hiện Block all public access nên các EC2 instance của chúng ta sẽ không thể kết nối tới S3 thông qua mạng internet. Trong bước tiếp theo chúng ta sẽ cấu hình tính năng S3 Gateway Endpoint để cho phép các EC2 instance có thể kết nối tới S3 bucket thông qua mạng nội bộ của VPC.\n"
 },
 {
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/",
-	"title": "Tạo VPC Endpoint",
-	"tags": [],
-	"description": "",
-	"content": "Tạo VPC Endpoint SSM Chúng ta sẽ tạo 3 interface endpoint yêu cầu bởi Session Manager: Interface endpoint: com.amazonaws.region.ssm com.amazonaws.region.ec2messages com.amazonaws.region.ssmmessages Bạn có thể tham khảo thêm tại đây\nNội dung: Tạo Endpoint ssm Tạo Endpoint ssmmessages Tạo Endpoint ec2messages "
-},
-{
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/",
-	"title": "Kết nối EC2 Private",
-	"tags": [],
-	"description": "",
-	"content": "Gán IAM role và restart EC2 instance. Truy cập giao diện quản trị dịch vụ EC2 Click chọn Private Windows Instance. Click Actions. Click Security. Click Modify IAM Role. Tại trang Modify IAM Role. Tại mục IAM role, chọn SSM-Role. Click Save. Click chọn Private Windows Instance. Click Instance state. Click Reboot instance để thực hiện restart, sau đó click Reboot để xác nhận. Bạn hãy đợi 5 phút trước khi làm bước tiếp theo nhé.\nKết nối tới máy chủ private EC2 instance. Truy cập vào giao diện quản trị dịch vụ System Manager - Session Manager Click Start session. Click chọn Private Windows Instance. Click Start session. Gõ lệnh ipconfig để kiểm tra thông tin địa chỉ IP của Private Windows Instance như dưới đây. "
-},
-{
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/",
-	"title": "Tạo Endpoint ec2messages",
-	"tags": [],
-	"description": "",
-	"content": "Tạo VPC Endpoint EC2MESSAGES Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSMMESSAGES. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: ec2 sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ec2messages. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ec2messages. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint EC2MESSAGES.\nĐảm bảo 3 endpoint cần thiết đã được tạo như hình dưới.\n"
-},
-{
-	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/",
+	"uri": "//localhost:1313/vi/3/",
 	"title": "Tạo kết nối đến máy chủ EC2",
 	"tags": [],
 	"description": "",

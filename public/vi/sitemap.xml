@@ -63,40 +63,16 @@
                 href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.1-public-instance/</loc>
+    <loc>//localhost:1313/vi/3/3.1/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.1-public-instance/"
+                href="//localhost:1313/3/3.1/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.1-public-instance/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/"
+                href="//localhost:1313/vi/3/3.1/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/</loc>
@@ -171,18 +147,6 @@
                 href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/"
-                />
-  </url><url>
     <loc>//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/</loc>
     <xhtml:link
                 rel="alternate"
@@ -195,16 +159,52 @@
                 href="//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/</loc>
+    <loc>//localhost:1313/vi/3/3.2/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/"
+                href="//localhost:1313/3/3.2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/"
+                href="//localhost:1313/vi/3/3.2/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/3/3.3/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/3/3.3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/3/3.3/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/3/3.4/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/3/3.4/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/3/3.4/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/3/3.5/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/3/3.5/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/3/3.5/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.2-security-hub-dashboard/</loc>
@@ -267,52 +267,16 @@
                 href="//localhost:1313/vi/4-s3log/4.2-creates3bucket/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/</loc>
+    <loc>//localhost:1313/vi/3/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/"
+                href="//localhost:1313/3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/"
+                href="//localhost:1313/vi/3/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.3-security-hub-findings/</loc>

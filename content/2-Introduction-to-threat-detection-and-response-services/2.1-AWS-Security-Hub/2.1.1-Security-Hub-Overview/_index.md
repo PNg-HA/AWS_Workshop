@@ -11,7 +11,8 @@ pre : " <b> 2.1.1 </b> "
 1. Navigate to the Summary page in Security Hub. [AWS Security Hub summary page](https://console.aws.amazon.com/securityhub/home?#/summary)
 
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s1.png) 
-
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s1b.png)
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s1c.png)  
 2. From the Summary page, you can see what standards have been enabled in your account, and you can see the number of passed and failed controls per standard. The percentage is the percent of controls in a "passed" compliance status compared to the number of controls that have a "passed" or "failed" compliance status.
 
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s2.png)

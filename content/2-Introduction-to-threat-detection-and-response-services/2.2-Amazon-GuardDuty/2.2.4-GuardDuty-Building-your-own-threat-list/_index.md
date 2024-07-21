@@ -15,7 +15,8 @@ pre : " <b> 2.2.4 </b> "
 2. Find the bucket with "**-threatlistbucket-**" in the name and click on the name.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s2.png)
 
-
+Here is the bucket that the AWS Workshop account has setup
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s2b.png)
 3. Upload the threat list you created above to the S3 bucket.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s3.png)
 

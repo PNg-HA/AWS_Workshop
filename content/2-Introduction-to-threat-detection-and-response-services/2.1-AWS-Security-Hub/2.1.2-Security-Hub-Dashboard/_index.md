@@ -16,6 +16,7 @@ pre : " <b> 2.1.2 </b> "
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s2.png)
 3. Take a few minutes to review the insights generated on the Summary page. Can you see which resources in your account are failing the most security checks? One of the widgets provides a summary of the resources that have generated the most findings, broken down by the resource types.
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s3.png)
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s3b.png)
 4. Scroll down to the graphs under **Most common threat type** and **Software vulnerabilities with exploits**. Review the threats and vulnerabilities aggregated in your account.
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s4.png)
 
