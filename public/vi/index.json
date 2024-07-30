@@ -7,7 +7,7 @@
 	"content": "Làm việc với Amazon System Manager - Session Manager Tổng quan Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon System Manager - Session Management. Thực hành tạo kết nối đến máy chủ public và máy chủ private trong VPC.\nNội dung Giới thiệu Các bước chuẩn bị Tạo kết nối đến máy chủ EC2 Quản lý session logs Port Forwarding Dọn dẹp tài nguyên "
 },
 {
-	"uri": "//localhost:1313/vi/4-s3log/4.1-updateiamrole/",
+	"uri": "//localhost:1313/vi/4/4.1/",
 	"title": "Cập nhật IAM Role",
 	"tags": [],
 	"description": "",
@@ -147,7 +147,7 @@
 	"content": "Tạo Public subnet Click Subnets. Click Create subnet. Tại trang Create subnet. Tại mục VPC ID click chọn Lab VPC. Tại mục Subnet name điền Lab Public Subnet. Tại mục Availability Zone chọn Availability zone đầu tiên. Tại mục IPv4 CIRD block điền 10.10.1.0/24. Kéo xuống cuối trang , click Create subnet.\nClick chọn Lab Public Subnet.\nClick Actions. Click Edit subnet settings. Click chọn Enable auto-assign public IPv4 address. Click Save. Click Internet Gateways. Click Create internet gateway. Tại trang Create internet gateway. Tại mục Name tag điền Lab IGW. Click Create internet gateway. Sau khi tạo thành công, click Actions. Click Attach to VPC. Tại trang Attach to VPC. Tại mục Available VPCs chọn Lab VPC. Click Attach internet gateway. Kiểm tra quá trình attach thành công như hình dưới. Tiếp theo chúng ta sẽ tạo một custom route table để gán vào Lab Public Subnet. Click Route Tables. Click Create route table. Tại trang Create route table. Tại mục Name, điền Lab Publicrtb. Tại mục VPC, chọn Lab VPC. Click Create route table. Sau khi tạo route table thành công. Click Edit routes. Tại trang Edit routes. Click Add route. Tại mục Destination điền 0.0.0.0/0 Tại mục Target chọn Internet Gateway sau đó chọn Lab IGW. Click Save changes. Click tab Subnet associations. Click Edit subnet associations để tiến hành associate custom routable chúng ta vừa tạo vào Lab Public Subnet. Tại trang Edit subnet associations. Click chọn Lab Public Subnet. Click Save associations. Kiểm tra thông tin route table đã được associate với Lab Public Subnet và thông tin route đi internet đã được trỏ đến Internet Gateway như hình dưới. "
 },
 {
-	"uri": "//localhost:1313/vi/4-s3log/4.2-creates3bucket/",
+	"uri": "//localhost:1313/vi/4/4.2/",
 	"title": "Tạo S3 Bucket",
 	"tags": [],
 	"description": "",
@@ -189,14 +189,14 @@
 	"content": "Tạo Private subnet Click Subnets. Click Create subnet. Tại trang Create subnet. Tại mục VPC ID click chọn Lab VPC. Tại mục Subnet name điền Lab Private Subnet. Tại mục Availability Zone chọn Availability zone đầu tiên. Tại mục IPv4 CIRD block điền 10.10.2.0/24. Kéo xuống cuối trang , click Create subnet. Bước tiếp theo chúng ta sẽ tạo các security group cần thiết cho bài lab.\n"
 },
 {
-	"uri": "//localhost:1313/vi/4-s3log/4.3-creategwes3/",
+	"uri": "//localhost:1313/vi/4/4.3/",
 	"title": "Tạo S3 Gateway endpoint",
 	"tags": [],
 	"description": "",
 	"content": " Truy cập vào giao diện quản trị dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền S3GW. Tại mục Service Category click chọn AWS services. Tại ô tìm kiếm điền S3, sau đó chọn com.amazonaws.[region].s3 Tại mục Services chọn com.amazonaws.[region].s3 có Type là Gateway. Tại mục VPC , chọn Lab VPC. Tại mục Route tables, chọn cả 2 route table. Kéo chuột xuống dưới cùng, click Create endpoint. Bước tiếp theo chúng ta sẽ tiến hành cấu hình Session Manager để có thể lưu trữ các session logs tới S3 bucket chúng ta đã tạo.\n"
 },
 {
-	"uri": "//localhost:1313/vi/4-s3log/",
+	"uri": "//localhost:1313/vi/4/",
 	"title": "Quản lý session logs",
 	"tags": [],
 	"description": "",
@@ -250,13 +250,6 @@
 	"tags": [],
 	"description": "",
 	"content": "Tạo các security group Trong bước này chúng ta sẽ tiến hành tạo các security group được sử dụng cho các instance của chúng ta. Các bạn có thể thấy, các securiy group này sẽ không cần phải mở các port truyền thống để ssh như port 22 hoặc remote desktop thông qua port 3389.\nTạo security group cho Linux instance nằm trong public subnet Truy cập giao diện quản trị dịch vụ VPC Click Security Group. Click Create security group. Tại mục Security group name, điền SG Public Linux Instance. Tại mục Description, điền SG Public Linux Instance. Tại mục VPC, click dấu X để chọn lại Lab VPC bạn đã tạo cho bài lab này. Giữ nguyên Outbound rule, kéo chuột xuống phía dưới. Click Create security group. Các bạn có thể thấy, security group chúng ta tạo sử dụng cho Linux public instance sẽ không cần phải mở các port truyền thống để ssh như port 22.\nTạo security group cho Windows instance nằm trong private subnet Sau khi tạo thành công security group cho Linux instance nằm trong public subnet, click vào link Security Groups để quay trở lại danh sách Security groups. Click Create security group.\nTại mục Security group name, điền SG Private Windows Instance.\nTại mục Description, điền SG Private Windows Instance. Tại mục VPC, click dấu X để chọn lại Lab VPC bạn đã tạo cho bài lab này. Kéo chuột xuống phía dưới. Thêm Outbound rule cho phép kết nối TCP 443 tới 10.10.0.0/16 ( CIDR của Lab VPC chúng ta đã tạo) Click Create security group. Đối với Instance trong private subnet, chúng ta sẽ kết nối tới endpoint của Session Manager qua kết nối đã được mã hóa TLS. vì thế chúng ta cần cho phép kết nối chiều ra từ instance của mình tới VPC CIDR thông qua port 443.\nTạo security group cho VPC Endpoint Trong bước này, chúng ta sẽ tạo security group cho VPC Endpoint của Session Manager. Sau khi tạo thành công security group cho Windows instance trong private subnet, click vào link Security Groups để quay trở lại danh sách Security groups. Click Create security group. Tại mục Security group name, điền SG VPC Endpoint. Tại mục Description, điền SG VPC Endpoint. Tại mục VPC, click dấu X để chọn lại Lab VPC bạn đã tạo cho bài lab này. Kéo chuột xuống phía dưới. Xóa Outbound rule. Thêm Inbound rule cho phép TCP 443 đến từ 10.10.0.0/16 ( CIDR của Lab VPC chúng ta đã tạo ). Click Create security group. Như vậy chúng ta đã tiến hành xong việc tạo các security group cần thiết cho các EC2 instance và VPC Endpoint.\n"
-},
-{
-	"uri": "//localhost:1313/vi/4-s3log/4.4-configsessionlogs/",
-	"title": "Theo dõi session logs",
-	"tags": [],
-	"description": "",
-	"content": "Theo dõi session logs Truy cập giao diện quản trị dịch vụ System Manager - Session Manager Click tab Preferences. Click Edit. Kéo chuột xuống phía dưới, tại mục S3 logging, click chọn Enable. Bỏ chọn Allow only encrypted S3 buckets. Click chọn Choose a bucket name from the list. Chọn S3 bucket bạn đã tạo. Kéo chuột xuống phía dưới, click Save để lưu cấu hình.\nTruy cập giao diện quản trị dịch vụ System Manager - Session Manager\nClick Start session. Click chọn Private Windows Instance. Click Start session. Gõ lệnh ipconfig. Gõ lệnh hostname. Click Terminate để thoát session, click Terminate 1 lần nữa để xác nhận. Kiểm tra Session logs trong S3 Truy cập vào giao diện quản trị dịch vụ S3 Click vào tên S3 bucket chúng ta đã tạo cho bài lab. Click vào tên file sessions log Tại trang chi tiết objects , click Open. File logs sẽ được mở ở 1 tab mới trên trình duyệt.Bạn có thể xem các câu lệnh đã được lưu trữ lại trong session logs. "
 },
 {
 	"uri": "//localhost:1313/vi/5-portfwd/",

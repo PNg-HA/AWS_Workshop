@@ -75,6 +75,18 @@
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.1-inspector-overview/"
                 />
   </url><url>
+    <loc>//localhost:1313/4/4.1/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4/4.1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4/4.1/"
+                />
+  </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/</loc>
     <xhtml:link
                 rel="alternate"
@@ -85,18 +97,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-s3log/4.1-updateiamrole/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.1-updateiamrole/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-s3log/4.1-updateiamrole/"
                 />
   </url><url>
     <loc>//localhost:1313/1-workshop-instructions/</loc>
@@ -135,40 +135,16 @@
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/"
                 />
   </url><url>
-    <loc>//localhost:1313/3/3.4/</loc>
+    <loc>//localhost:1313/4/4.2/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3/3.4/"
+                href="//localhost:1313/vi/4/4.2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3/3.4/"
-                />
-  </url><url>
-    <loc>//localhost:1313/3/3.5/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3/3.5/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3/3.5/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-s3log/4.2-creates3bucket/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.2-creates3bucket/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-s3log/4.2-creates3bucket/"
+                href="//localhost:1313/4/4.2/"
                 />
   </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.2-detective-summary/</loc>
@@ -255,16 +231,16 @@
                 href="//localhost:1313/3/3.3/"
                 />
   </url><url>
-    <loc>//localhost:1313/4-s3log/4.3-creategwes3/</loc>
+    <loc>//localhost:1313/4/4.3/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.3-creategwes3/"
+                href="//localhost:1313/vi/4/4.3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-s3log/4.3-creategwes3/"
+                href="//localhost:1313/4/4.3/"
                 />
   </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/</loc>
@@ -339,6 +315,18 @@
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/"
                 />
   </url><url>
+    <loc>//localhost:1313/3/3.4/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/3/3.4/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/3/3.4/"
+                />
+  </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.4-detective-investigations/</loc>
     <xhtml:link
                 rel="alternate"
@@ -375,28 +363,16 @@
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.4-inspector-vulnerability-database-search/"
                 />
   </url><url>
-    <loc>//localhost:1313/4-s3log/</loc>
+    <loc>//localhost:1313/4/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/"
+                href="//localhost:1313/vi/4/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-s3log/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-s3log/4.4-configsessionlogs/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.4-configsessionlogs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-s3log/4.4-configsessionlogs/"
+                href="//localhost:1313/4/"
                 />
   </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.4-security-hub-pricing/</loc>
@@ -409,6 +385,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.4-security-hub-pricing/"
+                />
+  </url><url>
+    <loc>//localhost:1313/3/3.5/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/3/3.5/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/3/3.5/"
                 />
   </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.5-detective-finding-groups/</loc>

@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.128.2">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="//localhost:1313/images/favicon.png" type="image/png">
+
+    <title>Create S3 Bucket :: AWS System Manager</title>
+
+    
+    <link href="//localhost:1313/css/nucleus.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/fontawesome-all.min.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/hybrid.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/featherlight.min.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/auto-complete.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/theme.css?1722366533" rel="stylesheet">
+    <link href="//localhost:1313/css/hugo-theme.css?1722366533" rel="stylesheet">
+    
+    <link href="//localhost:1313/css/theme-workshop.css?1722366533" rel="stylesheet">
+    
+    
+
+    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1722366533"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="//localhost:1313/4/4.2/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="//localhost:1313/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1722366533"></script>
+<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1722366533"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="//localhost:1313/js/search.js?1722366533"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-workshop-instructions/" title="Workshop Instructions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/1-workshop-instructions/">
+           <b> 1. </b> Workshop Instructions
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/" title="Introduction to threat detection and response services " class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/">
+           <b> 2. </b> Introduction to threat detection and response services 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/" title="AWS Security Hub" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/">
+           <b> 2.1 </b> AWS Security Hub
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/" title="Security Hub - Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.1-security-hub-overview/">
+           <b> 2.1.1 </b> Security Hub - Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.2-security-hub-dashboard/" title="Security Hub - Dashboard" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.2-security-hub-dashboard/">
+           <b> 2.1.2 </b> Security Hub - Dashboard
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.3-security-hub-findings/" title="Security Hub - Findings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.3-security-hub-findings/">
+           <b> 2.1.3 </b> Security Hub - Findings
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.4-security-hub-pricing/" title="Security Hub - Pricing" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.4-security-hub-pricing/">
+           <b> 2.1.4 </b> Security Hub - Pricing
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.5-security-hub-notifications/" title="Security Hub - Notifications" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.5-security-hub-notifications/">
+           <b> 2.1.5 </b> Security Hub - Notifications
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/" title="Amazon GuardDuty" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/">
+           <b> 2.2 </b> Amazon GuardDuty
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.1-guardduty-overview/" title="GuardDuty - Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.1-guardduty-overview/">
+           <b> 2.2.1 </b> GuardDuty - Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.2-guardduty-findings/" title="GuardDuty - Findings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.2-guardduty-findings/">
+           <b> 2.2.2 </b> GuardDuty - Findings
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.3-guardduty-protection-plans/" title="GuardDuty - Protection plans" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.3-guardduty-protection-plans/">
+           <b> 2.2.3 </b> GuardDuty - Protection plans
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.4-guardduty-building-your-own-threat-list/" title="GuardDuty - Building your own threat list" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.4-guardduty-building-your-own-threat-list/">
+           <b> 2.2.4 </b> GuardDuty - Building your own threat list
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.5-guardduty-suppressing-findings/" title="GuardDuty - Suppressing findings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.5-guardduty-suppressing-findings/">
+           <b> 2.2.5 </b> GuardDuty - Suppressing findings
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.6-guradduty-pricing/" title="GuradDuty - Pricing" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.6-guradduty-pricing/">
+           <b> 2.2.6 </b> GuradDuty - Pricing
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.7-guardduty-notifications/" title="GuardDuty - Notifications" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.7-guardduty-notifications/">
+           <b> 2.2.7 </b> GuardDuty - Notifications
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.8-guardduty-retaining-findings/" title="GuardDuty - Retaining findings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.2-amazon-guardduty/2.2.8-guardduty-retaining-findings/">
+           <b> 2.2.8 </b> GuardDuty - Retaining findings
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/" title="Amazon Inspector" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/">
+           <b> 2.3 </b> Amazon Inspector
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.1-inspector-overview/" title="Inspector - Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.1-inspector-overview/">
+           <b> 2.3.1 </b> Inspector - Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.2-inspector-dashboard/" title="Inspector - Dashboard" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.2-inspector-dashboard/">
+           <b> 2.3.2 </b> Inspector - Dashboard
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.3-inspector-findings/" title="Inspector  - Findings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.3-inspector-findings/">
+           <b> 2.3.3 </b> Inspector  - Findings
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.4-inspector-vulnerability-database-search/" title="Inspector - Vulnerability database search" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.4-inspector-vulnerability-database-search/">
+           <b> 2.3.4 </b> Inspector - Vulnerability database search
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.5-inspector-suppressing-findings/" title="Inspector - Suppressing findings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.5-inspector-suppressing-findings/">
+           <b> 2.3.5 </b> Inspector - Suppressing findings
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.6-inspector-pricing/" title="Inspector - Pricing" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.6-inspector-pricing/">
+           <b> 2.3.6 </b> Inspector - Pricing
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/" title="Amazon Detective" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/">
+           <b> 2.4 </b> Amazon Detective
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.1-detective-overview/" title="Detective - Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.1-detective-overview/">
+           <b> 2.4.1 </b> Detective - Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.2-detective-summary/" title="Detective - Summary" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.2-detective-summary/">
+           <b> 2.4.2 </b> Detective - Summary
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/" title="Detective - Search" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.3-detective-search/">
+           <b> 2.4.3 </b> Detective - Search
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.4-detective-investigations/" title="Detective - Investigations" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.4-detective-investigations/">
+           <b> 2.4.4 </b> Detective - Investigations
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.5-detective-finding-groups/" title="Detective - Finding Groups" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.5-detective-finding-groups/">
+           <b> 2.4.5 </b> Detective - Finding Groups
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.6-detective-pricing/" title="Detective - Pricing" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.6-detective-pricing/">
+           <b> 2.4.6 </b> Detective - Pricing
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.7-detective-eks-audit-logs/" title="Detective - EKS Audit Logs" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.4-amazon-detective/2.4.7-detective-eks-audit-logs/">
+           <b> 2.4.7 </b> Detective - EKS Audit Logs
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3/" title="Integrating AWS Services and Partner Solutions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/3/">
+           <b> 3. </b> Integrating AWS Services and Partner Solutions
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3/3.1/" title="Centralizing findings from AWS security services" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/3/3.1/">
+           <b> 3.1. </b> Centralizing findings from AWS security services
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3/3.2/" title="Aggregating findings from multiple AWS accounts" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/3/3.2/">
+           <b> 3.2. </b> Aggregating findings from multiple AWS accounts
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3/3.3/" title="Centralizing findings from AWS partner solutions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/3/3.3/">
+           <b> 3.3. </b> Centralizing findings from AWS partner solutions
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3/3.4/" title="Cross-region finding aggregation" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/3/3.4/">
+           <b> 3.4. </b> Cross-region finding aggregation
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3/3.5/" title="Building your own Security Hub integration" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/3/3.5/">
+           <b> 3.5. </b> Building your own Security Hub integration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4/" title="Managing and Prioritizing Security Findings" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="//localhost:1313/4/">
+           <b> 4. </b> Managing and Prioritizing Security Findings
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4/4.1/" title="Prioritizing findings at scale with automations" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/4/4.1/">
+           <b> 4.1 </b> Prioritizing findings at scale with automations
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4/4.2/" title="Create S3 Bucket" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="//localhost:1313/4/4.2/">
+           <b> 4.2 </b> Create S3 Bucket
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4/4.3/" title="Create S3 Gateway endpoint" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/4/4.3/">
+           <b> 4.3 </b> Create S3 Gateway endpoint
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-portfwd/" title="Port Forwarding" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/5-portfwd/">
+           <b> 5. </b> Port Forwarding
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-cleanup/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="//localhost:1313/6-cleanup/">
+          <b>6. </b>Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="//localhost:1313/4/4.2/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="//localhost:1313/vi/4/4.2/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>30-01-2022</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='//localhost:1313/'>Threat Detection & Response Workshop</a> > <a href='//localhost:1313/4/'>Managing and Prioritizing Security Findings</a> > Create S3 Bucket
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Create S3 Bucket
+            </h1>
+          
+
+        
+
+
+
+	<p>In this step, we will create an S3 bucket to store session logs sent from EC2 instances.</p>
+<h4 id="create-s3-bucket">Create <strong>S3 Bucket</strong></h4>
+<ol>
+<li>Access <a href="https://s3.console.aws.amazon.com/s3/home">S3 service management console</a></li>
+</ol>
+<ul>
+<li>Click <strong>Create bucket</strong>.</li>
+</ul>
+<p><img alt="S3" src="//localhost:1313/images/4.s3/005-s3.png"></p>
+<ol start="2">
+<li>At the <strong>Create bucket</strong> page.</li>
+</ol>
+<ul>
+<li>In the <strong>Bucket name</strong> field, enter the bucket name <strong>lab-yourname-bucket-0001</strong></li>
+<li>In the <strong>Region</strong> section, select <strong>Region</strong> you are doing the current lab.</li>
+</ul>
+<p><img alt="S3" src="//localhost:1313/images/4.s3/006-s3.png"></p>
+
+<div class="notices tip" ><p>The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.</p>
+</div>
+
+<ol start="3">
+<li>Scroll down and click <strong>Create bucket</strong>.</li>
+</ol>
+<p><img alt="S3" src="//localhost:1313/images/4.s3/007-s3.png"></p>
+
+<div class="notices tip" ><p>When we created the S3 bucket we did <strong>Block all public access</strong> so our EC2 instances won&rsquo;t be able to connect to S3 via the internet.
+In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC&rsquo;s internal network.</p>
+</div>
+
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="//localhost:1313/4/4.1/" title="Prioritizing findings at scale with automations"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="//localhost:1313/4/4.3/" title="Create S3 Gateway endpoint" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="//localhost:1313/js/clipboard.min.js?1722366533"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1722366533"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1722366533"></script>
+    <script src="//localhost:1313/js/jquery.sticky.js?1722366533"></script>
+    <script src="//localhost:1313/js/featherlight.min.js?1722366533"></script>
+    <script src="//localhost:1313/js/highlight.pack.js?1722366533"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1722366533"></script>
+    <script src="//localhost:1313/js/learn.js?1722366533"></script>
+    <script src="//localhost:1313/js/hugo-learn.js?1722366533"></script>
+
+    <link href="//localhost:1313/mermaid/mermaid.css?1722366533" rel="stylesheet" />
+    <script src="//localhost:1313/mermaid/mermaid.js?1722366533"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
