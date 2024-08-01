@@ -16,7 +16,7 @@ The first automation you will set up will be to elevate the severity of priority
 
 
 3. For this automation rule, we'll start with a template. Leave "Create a rule from template" selected and under **Rule template** pick **Elevate severity of findings that relate to important resources**.
-
+![VPC](/images/4/4.1/s3.png)
 
 4. Change the **Rule name** to "Elevate severity of GuardDuty findings that relate to production EC2 instances".
 
@@ -39,7 +39,7 @@ The first automation you will set up will be to elevate the severity of priority
 
 
 10. Click **Add criteria**. For **Key** select **ResourceTags**. For **Operator** select **EQUALS**. For **Value**, input "Environment" into the top box and "Production" into the bottom box (this is the key-value pair for the tag).
-
+![VPC](/images/4/4.1/s10.png)
 
 11. In the **Preview of findings that match criteria** click **Refresh** to make sure you configured everything correctly. You should see a preview of the existing findings that meet the criteria.
 
@@ -48,8 +48,8 @@ The first automation you will set up will be to elevate the severity of priority
 
 
 
-13. Leave the other default settings and click **Create rule**.
-
+13. Leave the other default settings and click **Create rule**. Result:
+![VPC](/images/4/4.1/s13.png)
 
 #### Automate adding user defined fields to production alerts
 There are circumstances where you may want to identify alerts on production resources, but not elevate the severity. One approach to this is adding notes and user defined fields. The next automation you will set up will be to add notes and user defined fields to any findings from an accounts we identify as production.
@@ -70,18 +70,21 @@ There are circumstances where you may want to identify alerts on production reso
 
 
 19. For this rule, we only need one criteria. Set the **Key** to **AwsAccountId**. Set **Operator** to **EQUALS**. Set **Value** to the ID of the account you are in right now. The account ID can be found in the top right-hand corner of the AWS console. Make sure there are no spaces or dashes when copying the account ID.
-
+![VPC](/images/4/4.1/s19.png)
 
 20.  Click **Refresh** to preview the findings that meet the criteria.
+![VPC](/images/4/4.1/s20.png)
 
+{{%notice warning%}}
 **Note to Participants**: Do to limitations in Workshop Studio, you only have one account, so this automation rule will apply to every one of your findings. However, in a multi-account architecture where you have set up a delegated admin through AWS Organization, you will be able to follow the same instructions and identify one or more accounts, selectively, as production.
+{{%/notice%}}
 
 21. Scroll down to **Automated** action. For **Note** input "This finding is in a production account (identified via automation rule)".
 
 
 
 22. Click **Add another key-value pair**. For **Key** input "Environment". For **Value** input "Production".
-
+![VPC](/images/4/4.1/s22.png)
 
 
 23. Leave the other default settings and click **Create rule**.
@@ -90,6 +93,9 @@ There are circumstances where you may want to identify alerts on production reso
 
 24. If you want to review a rule you created, you can click the **Name** of the rule from the Automations page. Click the name **Tag Production findings**.
 
+![VPC](/images/4/4.1/s24b.png)
+Another rule:
+![VPC](/images/4/4.1/s24a.png)
 
 #### Automate adding user defined fields to findings aligned to organization goals
 Next, set up automation similar to the last automation rule, but instead of adding user-defined fields to findings in production accounts, add them to findings that meet the criteria of an organization goal. In this case, the organization goal will be to secure AWS accounts and IAM. To implement this, your automation criteria will be findings from Security Hub controls for "Account" and "IAM". 
@@ -125,17 +131,17 @@ Next, set up automation similar to the last automation rule, but instead of addi
 
 
 44. For the second **Operator** and **Value**, input **PREFIX** and "security-control/IAM", respectively.
-
+![VPC](/images/4/4.1/s44.png)
 
 45. Click Refresh to preview the matching findings.
 
-
+![VPC](/images/4/4.1/s45.png)
 
 46. Under Automated action, click **Add another key-value pair**. For Key, input "security-goal". For **Value**, input "account-and-iam".
 
 
 47. Leave the other default settings and click **Create rule**. Remember, you can use user-defined fields for filtering findings and creating insights in Security Hub if you want an easy we way track goals at an organization and account level.
-
+![VPC](/images/4/4.1/s47.png)
 #### Review findings updated by automation rules
 
 48. Navigate to the **Findings** page in Security Hub.
@@ -145,9 +151,19 @@ Next, set up automation similar to the last automation rule, but instead of addi
 
 
 50. Click the title of a finding that has the comment icon next to the Updated at time to open the finding details.
-
+![VPC](/images/4/4.1/s50.png)
 
 51. Expand the **Notes** section to see the note created by our automation rule.
 
 
 52. Click the **History** tab at the top of the finding details. You can see the timestamp of when and how the finding was updated by the automation rule.
+![VPC](/images/4/4.1/s52.png)
+
+Watch another finding (after 5 minutes):
+![VPC](/images/4/4.1/s52b.png)
+
+See the whole history: 
+![VPC](/images/4/4.1/s52d.png)
+
+After 3 more minutes, the note is updated:
+![VPC](/images/4/4.1/s52c.png)

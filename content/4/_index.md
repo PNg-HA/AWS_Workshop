@@ -8,6 +8,6 @@ pre : " <b> 4. </b> "
 
 ### Content:
 
-   - [Prioritizing findings at scale with automations](./4.1/)
-   - [Suppressing findings at scale with automations](./4.2/)
-   - [Using insights for prioritization and metrics](./4.3)
+4.1 [Prioritizing findings at scale with automations](./4.1/)\
+4.2 [Suppressing findings at scale with automations](./4.2/)\
+4.3 [Using insights for prioritization and metrics](./4.3)
