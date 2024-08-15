@@ -26,9 +26,9 @@ Security Hub widgets
 As you can see, many of the integrations, including with "Amazon: GuardDuty" and "Amazon: Inspector", are automatically enabled for you. However, you still need to have each service turned on (in addition to the integration) to generate the respective findings.
 
 4. Security Hub provides you with the flexibility to enable and disable AWS integrations. Although not usually recommended, try disabling the AWS: Firewall Manager integration. Click Stop accepting findings in the box labeled AWS: Firewall Manager.
-![VPC](/images/3/3.1/s5a.png)
+![VPC](/images/3/3.1/s5a.png?featherlight=false&width=10pc)
 5. You will be presented with a popup stating "Not accepting findings from this integration means that the product can still try to send findings to Security Hub, but Security Hub will not ingest them." Click Cancel. We should leave this integration on.
-
+![VPC](/images/3/3.1/s5b.png)
 6. To see all the security findings from an individual service, you can click use this page to see that. Find the integration for "Amazon: GuardDuty" and click See findings. This will open the findings page and add a filter so you are only looking at findings from Amazon GuardDuty. Stay on the Findings page.
 
 7.  You can optionally remove or change some of the filters to adjust the list of filtered findings you are looking at.

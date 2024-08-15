@@ -86,3 +86,59 @@ This solution includes the playbook remediations for the security standards defi
 It may take about 3 to 5 minutes to run and update. After that, wait and refresh the page again.
 {{%/notice%}}
 
+### Deep dive to the solution
+#### Terminology
+- AWS Config rule: an ideal config setting
+- Security control: a representation of a rule -> in one or more security standards
+- Finding: a potential security issue generated after security check
+- Playbook: a set of remediation.
+- Remediation runbook: An implementation of a set of steps that resolves a finding.
+- Control runbook: SSM automation documents that Orchestrator uses to route an initiated remediation for a specific control to the correct remediation runbook.
+#### Workflow of the architecture
+With AWS Config rules for supported standards compliance, AWS Config executes security controls check and generates findings if there are failed compliances, including in the administrator and member accounts (in AWS Organazation). The findings are aggregated by AWS Security Hub. The admin can automatically or manually activate the Custom Action to remediate the relatively findings. Those events are triggered in relatively EventBridge rules to the Step Function Orchestrator, which routes to the corresponding playbooks remediation (e.g: findings for EC2.13 leads to EC2.13 playbook). Amazon SQS service is used to execute multi remediations in parallel. Orchestrator will notify to subscribed users about the remediation process and result. It will invoke the corresponding control runbook, which eventually invokes the appropriate remediation runbook for the findings.
+
+#### An example of security control
+In this dive-deep section, I use security control EC2.13 to check the resource configuration and remediate if non-compliant. There are other remediation examples below, but the remediation flows are same to EC2.13.
+![VPC](/images/5/5.3/d1.png)
+
+#### Control Runbook EC2.13
+![VPC](/images/5/5.3/d2.png)
+##### First step
+The first step of the Control Runbook is to parse the inputs received from the finding: 
+![VPC](/images/5/5.3/d_step1.png)
+The yaml version of the runbook:
+```
+expected_control_id:
+  - EC2.13
+  - EC2.14
+parse_id_pattern: ^arn:(?:aws|aws-cn|aws-us-gov):ec2:(?:[a-z]{2}(?:-gov)?-[a-z]+-\d):\d{12}:security-group\/(sg-[a-f\d]{8,17})$
+Finding: '{{ Finding }}'
+```
+And the expected output of this first step is:
+![VPC](/images/5/5.3/d3.png)
+
+##### Second step
+In step 2, the control runbook invokes the remediation runbook (SSM automation document) named AWS-DisablePublicAccessForSecurityGroup. You can refer more in [AWS Systems Manager Automation runbook reference](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-aws-disablepublicaccessforsecuritygroup.html), and check the logic flow at [System Manager page - Document section](https://ap-southeast-1.console.aws.amazon.com/systems-manager/documents/AWS-DisablePublicAccessForSecurityGroup/description?region=ap-southeast-1#).
+
+![VPC](/images/5/5.3/d_step2.png)
+Yaml version of this step:
+![VPC](/images/5/5.3/d_step2b.png)
+
+The remediation runbook will trigger Amazon EC2 API to remove inbound rules that meets your parameters in API call. In this automated document, it revokes any inbound rules with protocol TCP port 22 (SSH) and IP range 0.0.0.0/0:
+![VPC](/images/5/5.3/d_step2c.png)
+
+#### Demo
+##### Prerequisite
+![Prerequisite](/images/5/5.3/d4.png)
+
+##### Behind the scene: Orchestrator
+![Orchestrator](/images/5/5.3/d5.png)
+
+##### Scenarios
+Link demo: https://www.youtube.com/playlist?list=PL7IdJecfX87jHfO43NYd6MXL8mBYWBAIf
+1.1. Security groups should not allow ingress from 0.0.0.0/0 to port 22 - in member \
+1.2. Security groups should not allow ingress from 0.0.0.0/0 to port 22 - in admin \
+2. Ensure IAM password policy requires at least one number \
+3. RDS DB clusters should be configured for multiple AZs \
+4. EBS default encryption should be enabled \
+5. S3 general purpose buckets should have block public access settings enabled  
