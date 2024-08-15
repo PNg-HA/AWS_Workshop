@@ -8,7 +8,7 @@ pre : " <b> 2.1.1 </b> "
 
 
 #### Security Standards
-1. Navigate to the Summary page in Security Hub. [AWS Security Hub summary page](https://console.aws.amazon.com/securityhub/home?#/summary)
+1. Navigate to [AWS Security Hub summary page](https://console.aws.amazon.com/securityhub/home?#/summary).
 
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s1.png) 
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s1b.png)
