@@ -10,15 +10,29 @@ pre : " <b> 6.6 </b> "
 {{%/notice%}}
 
 1. Open Amazon GuardDuty select a finding titled UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom to open the finding details.
-At the top of the overview panel, click the link that is labeled Investigate with Detective
-In the investigate with Detective pop up, select EC2 Instance to investigate the compromised EC2 instance.
-Now you should be on the EC2 instance entity page in the Detective console with the UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom finding details on the right side of the screen. Proceed to answer some questions to accelerate you to root cause in your investigate.
-Note that the scope time at the top of the page is set from when the event was first seen to the time the event was last seen by GuardDuty. This is important to understand because the scope time determines the data set that Detective is returning to you.
-Look at the information presented in the top panel, EC2 instance details. AWS account, EC2 instance, Role, Associated VPC, and other information is listed. You can optionally click the links to pivot and learn more about the linked entities. For example, you could follow the linked role to understand the permissions of the role used by the EC2 instance or to see if there are other findings related to the role.
-Tip
-If you are interested in exlploring more of the information presented on this page, you should also complete the module titled: Respond to compromised IAM credentials.
 
-Scroll down. Look at the Findings associated with this resource section. Review the findings in the order they were observed.
+
+2. At the top of the overview panel, click the link that is labeled Investigate with Detective
+
+
+3. In the investigate with Detective pop up, select EC2 Instance to investigate the compromised EC2 instance.
+
+
+4. Now you should be on the EC2 instance entity page in the Detective console with the UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom finding details on the right side of the screen. Proceed to answer some questions to accelerate you to root cause in your investigate.
+
+
+5. Note that the scope time at the top of the page is set from when the event was first seen to the time the event was last seen by GuardDuty. This is important to understand because the scope time determines the data set that Detective is returning to you.
+
+
+6. Look at the information presented in the top panel, EC2 instance details. AWS account, EC2 instance, Role, Associated VPC, and other information is listed. You can optionally click the links to pivot and learn more about the linked entities. For example, you could follow the linked role to understand the permissions of the role used by the EC2 instance or to see if there are other findings related to the role.
+
+
+{{%notice tip%}}
+If you are interested in exlploring more of the information presented on this page, you should also complete the module titled: Respond to compromised IAM credentials.
+{{%/notice%}}
+
+
+7. Scroll down. Look at the Findings associated with this resource section. Review the findings in the order they were observed.
 
 Check out Overall VPC flow volume. Click on a spike in Inbound traffic and then click Set time interval. Review the Activity for time window. This shows the VPC flow data into and out of the EC2 instance. The Activity for time window will automatically adjust the time to the scope time of the column and list the IP address, ports, volume of inbound and outbound traffic, protocol and notate if the traffic was accepted or rejected.
 

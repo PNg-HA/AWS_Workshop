@@ -12,21 +12,21 @@
     <title>Respond to a compromised EC2 instance :: AWS System Manager</title>
 
     
-    <link href="//localhost:1313/css/nucleus.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/fontawesome-all.min.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/hybrid.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/featherlight.min.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/auto-complete.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/theme.css?1723823202" rel="stylesheet">
-    <link href="//localhost:1313/css/hugo-theme.css?1723823202" rel="stylesheet">
+    <link href="//localhost:1313/css/nucleus.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/fontawesome-all.min.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/hybrid.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/featherlight.min.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/auto-complete.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/theme.css?1723826758" rel="stylesheet">
+    <link href="//localhost:1313/css/hugo-theme.css?1723826758" rel="stylesheet">
     
-    <link href="//localhost:1313/css/theme-workshop.css?1723823202" rel="stylesheet">
+    <link href="//localhost:1313/css/theme-workshop.css?1723826758" rel="stylesheet">
     
     
 
-    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1723823202"></script>
+    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1723826758"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1723823202"></script>
-<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1723823202"></script>
+<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1723826758"></script>
+<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1723826758"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="//localhost:1313/js/search.js?1723823202"></script>
+<script type="text/javascript" src="//localhost:1313/js/search.js?1723826758"></script>
 
     
   </div>
@@ -1661,7 +1661,7 @@
         
         ">
       <a href="//localhost:1313/6/6.5/">
-           <b> 6.6 </b> Respond to a compromised EC2 instance
+           <b> 6.5 </b> Respond to a compromised EC2 instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -2083,17 +2083,29 @@
 </div>
 
 <ol start="9">
-<li>Select the link next to Finding ID. This will take you to a new page that displays only the trigger finding. Then select the finding and explore details about the trigger finding. The trigger finding also has a section titled Malware scan that lists details about the scan.
-Tip
-For each Amazon EC2 instance and container workload for which GuardDuty generates findings, an automatic GuardDuty-initiated malware scan gets invoked once every 24 hours. If multiple trigger findings are generated in a 24-hour period for an EC2 instance, only the first trigger finding will invoke a scan.</li>
+<li>Select the link next to Finding ID. This will take you to a new page that displays only the trigger finding. Then select the finding and explore details about the trigger finding. The trigger finding also has a section titled Malware scan that lists details about the scan.</li>
 </ol>
-<p>If this was the only EC2 instance that was compromised, you could proceed to investigate and isolate the instance following an incident response playbook (this is out of scope for this module). If you enabled the setting to retain snapshots for EBS volumes, these snapshots will be retained in your account only when malware is found, you can use these snapshots for further investigations.
-[Optional] Initiating a Malware scan on-demand
-If you want to detect the presence of malware in your Amazon EC2 instances on-demand, you can initiate an on-demand malware scan by providing the Amazon Resource Name (ARN) of the Amazon EC2 instance that you want to scan. You can also run an on-demand malware scan after you have remediated the files identified by GuardDuty as part of a previous malware finding and want to verify the file is no longer present.</p>
-<p>From the Findings page, open one of the Execution:EC2/MaliciousFile findings to view the details again.
-You need the Amazon Resource Name (ARN) of the EC2 instance in order to initiate an on-demand malware scan. The ARN looks like &ldquo;arn:aws:ec2:{region}:{account ID}:instance/{instance ID}&rdquo;. Construct the ARN using the information from the finding.
-Tip
-Your resource ID should look like &ldquo;arn:aws:ec2:us-east-1:012345678901:instance/i-123456xxyyzzaaabb2&rdquo;</p>
+
+<div class="notices tip" ><p>For each Amazon EC2 instance and container workload for which GuardDuty generates findings, an automatic GuardDuty-initiated malware scan gets invoked once every 24 hours. If multiple trigger findings are generated in a 24-hour period for an EC2 instance, only the first trigger finding will invoke a scan.</p>
+</div>
+
+<ol start="10">
+<li>If this was the only EC2 instance that was compromised, you could proceed to investigate and isolate the instance following an incident response playbook (this is out of scope for this module). If you enabled the setting to retain snapshots for EBS volumes, these snapshots will be retained in your account only when malware is found, you can use these snapshots for further investigations.</li>
+</ol>
+<h4 id="optional-initiating-a-malware-scan-on-demand">[Optional] Initiating a Malware scan on-demand</h4>
+<p>If you want to detect the presence of malware in your Amazon EC2 instances on-demand, you can initiate an on-demand malware scan by providing the Amazon Resource Name (ARN) of the Amazon EC2 instance that you want to scan. You can also run an on-demand malware scan after you have remediated the files identified by GuardDuty as part of a previous malware finding and want to verify the file is no longer present.</p>
+<ol start="11">
+<li>
+<p>From the Findings page, open one of the Execution:EC2/MaliciousFile findings to view the details again.</p>
+</li>
+<li>
+<p>You need the Amazon Resource Name (ARN) of the EC2 instance in order to initiate an on-demand malware scan. The ARN looks like &ldquo;arn:aws:ec2:{region}:{account ID}:instance/{instance ID}&rdquo;. Construct the ARN using the information from the finding.</p>
+</li>
+</ol>
+
+<div class="notices tip" ><p>Your resource ID should look like &ldquo;arn:aws:ec2:us-east-1:012345678901:instance/i-123456xxyyzzaaabb2&rdquo;</p>
+</div>
+
 <ol start="13">
 <li>
 <p>Open the Malware scans page from the navigation on the left.</p>
@@ -3156,19 +3168,19 @@ Your resource ID should look like &ldquo;arn:aws:ec2:us-east-1:012345678901:inst
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="//localhost:1313/js/clipboard.min.js?1723823202"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1723823202"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1723823202"></script>
-    <script src="//localhost:1313/js/jquery.sticky.js?1723823202"></script>
-    <script src="//localhost:1313/js/featherlight.min.js?1723823202"></script>
-    <script src="//localhost:1313/js/highlight.pack.js?1723823202"></script>
+    <script src="//localhost:1313/js/clipboard.min.js?1723826758"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1723826758"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1723826758"></script>
+    <script src="//localhost:1313/js/jquery.sticky.js?1723826758"></script>
+    <script src="//localhost:1313/js/featherlight.min.js?1723826758"></script>
+    <script src="//localhost:1313/js/highlight.pack.js?1723826758"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1723823202"></script>
-    <script src="//localhost:1313/js/learn.js?1723823202"></script>
-    <script src="//localhost:1313/js/hugo-learn.js?1723823202"></script>
+    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1723826758"></script>
+    <script src="//localhost:1313/js/learn.js?1723826758"></script>
+    <script src="//localhost:1313/js/hugo-learn.js?1723826758"></script>
 
-    <link href="//localhost:1313/mermaid/mermaid.css?1723823202" rel="stylesheet" />
-    <script src="//localhost:1313/mermaid/mermaid.js?1723823202"></script>
+    <link href="//localhost:1313/mermaid/mermaid.css?1723826758" rel="stylesheet" />
+    <script src="//localhost:1313/mermaid/mermaid.js?1723826758"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

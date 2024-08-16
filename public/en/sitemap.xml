@@ -591,6 +591,18 @@
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.5-inspector-suppressing-findings/"
                 />
   </url><url>
+    <loc>//localhost:1313/6/6.5/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/6/6.5/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/6/6.5/"
+                />
+  </url><url>
     <loc>//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.1-aws-security-hub/2.1.5-security-hub-notifications/</loc>
     <xhtml:link
                 rel="alternate"
@@ -637,18 +649,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-introduction-to-threat-detection-and-response-services/2.3-amazon-inspector/2.3.6-inspector-pricing/"
-                />
-  </url><url>
-    <loc>//localhost:1313/6/6.5/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/6/6.5/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/6/6.5/"
                 />
   </url><url>
     <loc>//localhost:1313/6/6.6/</loc>

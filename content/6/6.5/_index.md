@@ -1,9 +1,9 @@
 ---
 title : "Respond to a compromised EC2 instance"
 date : "`r Sys.Date()`"
-weight : 6
+weight : 5
 chapter : false
-pre : " <b> 6.6 </b> "
+pre : " <b> 6.5 </b> "
 ---
 {{%notice info%}}
 **Scenario / Problem Statement**: You have been tasked with determining (and investigating) if GuardDuty has detected malware on Amazon Elastic Block Store (Amazon EBS) volumes that are attached to the Amazon Elastic Compute Cloud (Amazon EC2) instances and container workloads.
@@ -39,17 +39,28 @@ The possible values for scan Status are Completed, Running, Skipped, and Failed.
 {{%/notice%}}
 
 9. Select the link next to Finding ID. This will take you to a new page that displays only the trigger finding. Then select the finding and explore details about the trigger finding. The trigger finding also has a section titled Malware scan that lists details about the scan.
-Tip
-For each Amazon EC2 instance and container workload for which GuardDuty generates findings, an automatic GuardDuty-initiated malware scan gets invoked once every 24 hours. If multiple trigger findings are generated in a 24-hour period for an EC2 instance, only the first trigger finding will invoke a scan.
 
-If this was the only EC2 instance that was compromised, you could proceed to investigate and isolate the instance following an incident response playbook (this is out of scope for this module). If you enabled the setting to retain snapshots for EBS volumes, these snapshots will be retained in your account only when malware is found, you can use these snapshots for further investigations.
-[Optional] Initiating a Malware scan on-demand
+
+{{%notice tip%}}
+For each Amazon EC2 instance and container workload for which GuardDuty generates findings, an automatic GuardDuty-initiated malware scan gets invoked once every 24 hours. If multiple trigger findings are generated in a 24-hour period for an EC2 instance, only the first trigger finding will invoke a scan.
+{{%/notice%}}
+
+
+10. If this was the only EC2 instance that was compromised, you could proceed to investigate and isolate the instance following an incident response playbook (this is out of scope for this module). If you enabled the setting to retain snapshots for EBS volumes, these snapshots will be retained in your account only when malware is found, you can use these snapshots for further investigations.
+
+#### [Optional] Initiating a Malware scan on-demand
 If you want to detect the presence of malware in your Amazon EC2 instances on-demand, you can initiate an on-demand malware scan by providing the Amazon Resource Name (ARN) of the Amazon EC2 instance that you want to scan. You can also run an on-demand malware scan after you have remediated the files identified by GuardDuty as part of a previous malware finding and want to verify the file is no longer present.
 
-From the Findings page, open one of the Execution:EC2/MaliciousFile findings to view the details again.
-You need the Amazon Resource Name (ARN) of the EC2 instance in order to initiate an on-demand malware scan. The ARN looks like "arn:aws:ec2:{region}:{account ID}:instance/{instance ID}". Construct the ARN using the information from the finding.
-Tip
+11. From the Findings page, open one of the Execution:EC2/MaliciousFile findings to view the details again.
+
+
+12. You need the Amazon Resource Name (ARN) of the EC2 instance in order to initiate an on-demand malware scan. The ARN looks like "arn:aws:ec2:{region}:{account ID}:instance/{instance ID}". Construct the ARN using the information from the finding.
+
+
+{{%notice tip%}}
 Your resource ID should look like "arn:aws:ec2:us-east-1:012345678901:instance/i-123456xxyyzzaaabb2"
+{{%/notice%}}
+
 
 13. Open the Malware scans page from the navigation on the left.
 
