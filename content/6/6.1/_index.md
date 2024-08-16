@@ -155,6 +155,7 @@ In this scenario, there is already automated remediation for this finding type s
 
 #### Verify that the remediation was successful
 18. To verify that the InstanceCredentialExfiltration finding was remediated, you can run one of the CLI commands you ran earlier on you local machine again. You should see an error response "with an explicit deny in an identity-based policy".
+
 ```aws dynamodb list-tables --profile badbob```
 
 {{%notice info%}}
