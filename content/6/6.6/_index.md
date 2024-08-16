@@ -34,22 +34,43 @@ If you are interested in exlploring more of the information presented on this pa
 
 7. Scroll down. Look at the Findings associated with this resource section. Review the findings in the order they were observed.
 
-Check out Overall VPC flow volume. Click on a spike in Inbound traffic and then click Set time interval. Review the Activity for time window. This shows the VPC flow data into and out of the EC2 instance. The Activity for time window will automatically adjust the time to the scope time of the column and list the IP address, ports, volume of inbound and outbound traffic, protocol and notate if the traffic was accepted or rejected.
 
-You can also check out the Distinct count of ports over time, Distinct IP addresses over time, and Observed IP address assignments based on VPC Flow.
 
-Scroll up to the top of the EC2 instance entity page and select the tab labeled New behavior. In this tab Detective develops a picture of what activity is normal in your organization and what activity is unusual. Scroll through the different panels to determine what information you might be able to gather related to investigating a security issue.
+8. Check out Overall VPC flow volume. Click on a spike in Inbound traffic and then click Set time interval. Review the Activity for time window. This shows the VPC flow data into and out of the EC2 instance. The Activity for time window will automatically adjust the time to the scope time of the column and list the IP address, ports, volume of inbound and outbound traffic, protocol and notate if the traffic was accepted or rejected.
 
-Search for the IP address of the actor
-In the GuardDuty finding details on the left, note the IP address V4 listed under Actor.
-Open the Search page from the navigation panel on the right.
-Click on the Choose type drop down and choose IP address.
-Input the IP address you noted from the GuardDuty finding details. Click Search.
-Select the IP address hyperlink to navigate to the IP address entity page.
-Just like in previous steps, take the to review information about the IP address. Search the page for:
-First observed
-Total times observed
-Findings associated with this resource
-Overall API call volume
-Also explore the tabs, New behavior, Resource interaction, and Kubernetes activity.
-In this scenario, you used Amazon Detective to find information to help with investigating a security issue with limited data. In a production environment with more data you will be able to leverage Detective even more effectively for things like newly observed activity, resource interaction, and traffic baselining. Now that you have used Amazon Detective to gather more information about the extent of the security issue you will have a better understanding of other resources that need to be remediated, permissions that need to be scoped down, and root cause analysis information to include in after action reports.
+
+
+9. You can also check out the Distinct count of ports over time, Distinct IP addresses over time, and Observed IP address assignments based on VPC Flow.
+
+
+
+10. Scroll up to the top of the EC2 instance entity page and select the tab labeled New behavior. In this tab Detective develops a picture of what activity is normal in your organization and what activity is unusual. Scroll through the different panels to determine what information you might be able to gather related to investigating a security issue.
+
+
+
+#### Search for the IP address of the actor
+11. In the GuardDuty finding details on the left, note the IP address V4 listed under Actor.
+
+
+12. Open the Search page from the navigation panel on the right.
+
+
+13. Click on the Choose type drop down and choose IP address.
+
+
+14. Input the IP address you noted from the GuardDuty finding details. Click Search.
+
+
+15. Select the IP address hyperlink to navigate to the IP address entity page.
+
+
+16. Just like in previous steps, take the to review information about the IP address. Search the page for:
+- First observed
+- Total times observed
+- Findings associated with this resource
+- Overall API call volume
+
+17. Also explore the tabs, New behavior, Resource interaction, and Kubernetes activity.
+
+
+18. In this scenario, you used Amazon Detective to find information to help with investigating a security issue with limited data. In a production environment with more data you will be able to leverage Detective even more effectively for things like newly observed activity, resource interaction, and traffic baselining. Now that you have used Amazon Detective to gather more information about the extent of the security issue you will have a better understanding of other resources that need to be remediated, permissions that need to be scoped down, and root cause analysis information to include in after action reports.

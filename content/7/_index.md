@@ -1,5 +1,5 @@
 ---
-title : "Managing and Prioritizing Security Findings"
+title : "Software Vulnerability Management"
 date : "`r Sys.Date()`"
 weight : 7
 chapter : false
@@ -8,6 +8,6 @@ pre : " <b> 7. </b> "
 
 ### Content:
 
-4.1 [Prioritizing findings at scale with automations](./4.1/)\
-4.2 [Suppressing findings at scale with automations](./4.2/)\
-4.3 [Using insights for prioritization and metrics](./4.3)
+7.1 [Patching EC2 with Patch Manager](./7.1/)\
+7.2 [Vulnerability management for serverless applications](./7.2/)\
+7.3 [Integrating Amazon Inspector into a CI/CD pipeline](./7.3)
