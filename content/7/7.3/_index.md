@@ -34,8 +34,6 @@ In this section, you will install Jenkins and the Amazon Inspector SBOM Generato
 
 
 5. Download the Jenkins repo.
-
-
 ```sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo ```
 
 6. Import a key file from Jenkins to enable installation.
@@ -60,7 +58,6 @@ In this section, you will install Jenkins and the Amazon Inspector SBOM Generato
 
 
 11. Start Jenkins as a service.
-
 ```sudo systemctl start jenkins```
 
 
