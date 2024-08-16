@@ -190,7 +190,6 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 
 
 42. We will need to get the initial administrator password to log into Jenkins.
-
 ```sudo cat /var/lib/jenkins/secrets/initialAdminPassword```
 
 
@@ -263,7 +262,6 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 
 
 63. In the text box add the following line:
-
 ```System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")```
 
 64. Click Run.

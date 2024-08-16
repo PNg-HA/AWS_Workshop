@@ -37,8 +37,6 @@ You'll start by using AWS Cloud9 to clone the application from AWS CodeCommit. A
 
 
 8.	Verify that your user is logged in by running the following command in Cloud9 terminal at the bottom of the page.
-
-
 ```aws sts get-caller-identity```
 
 9. You should receive a response that includes your Account, UserId, and Arn.
@@ -48,13 +46,10 @@ You'll start by using AWS Cloud9 to clone the application from AWS CodeCommit. A
 
 
 11. Let's clone the existing application to our Cloud9 environment. Run the following command in the terminal window in Cloud9.
-
 ```git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/appsec-serverless-demoapp```
 
 
 12. Navigate into the application directory by running the below command.
-
-
 ``` cd appsec-serverless-demoapp ```
 
 
@@ -125,7 +120,6 @@ You'll start by using AWS Cloud9 to clone the application from AWS CodeCommit. A
 ```logger.info("Processing %s", filename)```
 
 with this line of code:
-
 ```logger.info("Processing %s", urllib.parse.quote(filename))```
 
 If you get an error, it may be because the recommendation requires a new import. If you get an error, make sure to check your imports and spacing. Make the necessary changes. Your code should look something like:
