@@ -1,41 +1,63 @@
 ---
-title : "Respond to Malware on Amazon Elastic Block Store"
+title : "Respond to a compromised EC2 instance"
 date : "`r Sys.Date()`"
-weight : 5
+weight : 6
 chapter : false
-pre : " <b> 6.5 </b> "
+pre : " <b> 6.6 </b> "
 ---
 {{%notice info%}}
-**Scenario / Problem Statement**: In an earlier module, "Building your own automated response", you explore methods of automated response. This module is related, but rather on focusing on automated respond, your task is to investigate a potentially compromised EC2 instance associated with a "UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom" GuardDuty finding. For this, you will use Amazon Detecitve.
+**Scenario / Problem Statement**: You have been tasked with determining (and investigating) if GuardDuty has detected malware on Amazon Elastic Block Store (Amazon EBS) volumes that are attached to the Amazon Elastic Compute Cloud (Amazon EC2) instances and container workloads.
 {{%/notice%}}
 
-1. Open Amazon GuardDuty select a finding titled UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom to open the finding details.
-At the top of the overview panel, click the link that is labeled Investigate with Detective
-In the investigate with Detective pop up, select EC2 Instance to investigate the compromised EC2 instance.
-Now you should be on the EC2 instance entity page in the Detective console with the UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom finding details on the right side of the screen. Proceed to answer some questions to accelerate you to root cause in your investigate.
-Note that the scope time at the top of the page is set from when the event was first seen to the time the event was last seen by GuardDuty. This is important to understand because the scope time determines the data set that Detective is returning to you.
-Look at the information presented in the top panel, EC2 instance details. AWS account, EC2 instance, Role, Associated VPC, and other information is listed. You can optionally click the links to pivot and learn more about the linked entities. For example, you could follow the linked role to understand the permissions of the role used by the EC2 instance or to see if there are other findings related to the role.
+1. Before you begin, confirm that Malware Protection is setup in your account. Navigate to the GuardDuty console  and open the Malware Protection page.
+
+
+2. Confirm that "GuardDuty-initiated malware scan is enabled". Malware Protection helps you detect the potential presence of malware by scanning the Amazon Elastic Block Store (Amazon EBS) volumes that are attached to the Amazon Elastic Compute Cloud (Amazon EC2) instances and container workloads.
+
+
+3. GuardDuty provides you with the option to retain the snapshots of your EBS volumes in your AWS account when malware is found. By default, the snapshots retention setting is turned off. The snapshots will only be retained if you have this setting turned on before the scan initiates. If you turn on the snapshots retention setting for your account, when malware is found and the snapshots get retained, you will incur usage cost for the same. Toggle the "Retain scanned snapshots when malware is detected" on under General settings.
+
+
+#### Investigate Malware detected by GuardDuty
+Malware Protection offers two types of scans to detect potentially malicious activity in your Amazon EC2 instances and container workloads – GuardDuty-initiated malware scan and On-demand malware scan. A GuardDuty-initiated malware scan gets invoked when GuardDuty detects suspicious behavior indicative of malware on Amazon EC2 instance or container workloads. Review findings that invoke GuardDuty-initiated malware scan  to learn about such GuardDuty findings that can initiate a malware scan. These findings are referred to as trigger findings in this workshop. A new Malware Protection finding  is generated for each scan that detects malware.
+
+4. Open the Findings  page in GuardDuty.
+
+
+5. In the field Add filter criteria select Finding Type and type "Execution:EC2/MaliciousFile". Click Apply.
+
+6. Click on one of the matching findings to view details. Take a few minutes to review the finding and identify the affected EC2 instance, the malware file path and file name, and other information about the finding.
+
+
+7. If you update the Finding Type filter to "Execution:ECS/MaliciousFile", you will see malware findings for containers.
+
+8. Click the "Scan ID" link from the finding details to get further details of the scan. The link will take you to the malware scans page. Click again on the scan ID. Here you will see additional details such as the scanned volume size, the volume that is infected and the time it took to run the scan. You will also see the the Finding ID of the trigger finding that invoked the scan.
+
+
+{{%notice tip%}}
+The possible values for scan Status are Completed, Running, Skipped, and Failed. After the scan completes, the Scan result is populated for scans that have the Status as Completed. Possible values for Scan result are Clean and Infected. Using Scan type, you can identify if the malware scan was GuardDuty initiated or On demand.
+{{%/notice%}}
+
+9. Select the link next to Finding ID. This will take you to a new page that displays only the trigger finding. Then select the finding and explore details about the trigger finding. The trigger finding also has a section titled Malware scan that lists details about the scan.
 Tip
-If you are interested in exlploring more of the information presented on this page, you should also complete the module titled: Respond to compromised IAM credentials.
+For each Amazon EC2 instance and container workload for which GuardDuty generates findings, an automatic GuardDuty-initiated malware scan gets invoked once every 24 hours. If multiple trigger findings are generated in a 24-hour period for an EC2 instance, only the first trigger finding will invoke a scan.
 
-Scroll down. Look at the Findings associated with this resource section. Review the findings in the order they were observed.
+If this was the only EC2 instance that was compromised, you could proceed to investigate and isolate the instance following an incident response playbook (this is out of scope for this module). If you enabled the setting to retain snapshots for EBS volumes, these snapshots will be retained in your account only when malware is found, you can use these snapshots for further investigations.
+[Optional] Initiating a Malware scan on-demand
+If you want to detect the presence of malware in your Amazon EC2 instances on-demand, you can initiate an on-demand malware scan by providing the Amazon Resource Name (ARN) of the Amazon EC2 instance that you want to scan. You can also run an on-demand malware scan after you have remediated the files identified by GuardDuty as part of a previous malware finding and want to verify the file is no longer present.
 
-Check out Overall VPC flow volume. Click on a spike in Inbound traffic and then click Set time interval. Review the Activity for time window. This shows the VPC flow data into and out of the EC2 instance. The Activity for time window will automatically adjust the time to the scope time of the column and list the IP address, ports, volume of inbound and outbound traffic, protocol and notate if the traffic was accepted or rejected.
+From the Findings page, open one of the Execution:EC2/MaliciousFile findings to view the details again.
+You need the Amazon Resource Name (ARN) of the EC2 instance in order to initiate an on-demand malware scan. The ARN looks like "arn:aws:ec2:{region}:{account ID}:instance/{instance ID}". Construct the ARN using the information from the finding.
+Tip
+Your resource ID should look like "arn:aws:ec2:us-east-1:012345678901:instance/i-123456xxyyzzaaabb2"
 
-You can also check out the Distinct count of ports over time, Distinct IP addresses over time, and Observed IP address assignments based on VPC Flow.
+13. Open the Malware scans page from the navigation on the left.
 
-Scroll up to the top of the EC2 instance entity page and select the tab labeled New behavior. In this tab Detective develops a picture of what activity is normal in your organization and what activity is unusual. Scroll through the different panels to determine what information you might be able to gather related to investigating a security issue.
 
-Search for the IP address of the actor
-In the GuardDuty finding details on the left, note the IP address V4 listed under Actor.
-Open the Search page from the navigation panel on the right.
-Click on the Choose type drop down and choose IP address.
-Input the IP address you noted from the GuardDuty finding details. Click Search.
-Select the IP address hyperlink to navigate to the IP address entity page.
-Just like in previous steps, take the to review information about the IP address. Search the page for:
-First observed
-Total times observed
-Findings associated with this resource
-Overall API call volume
-Also explore the tabs, New behavior, Resource interaction, and Kubernetes activity.
-In this scenario, you used Amazon Detective to find information to help with investigating a security issue with limited data. In a production environment with more data you will be able to leverage Detective even more effectively for things like newly observed activity, resource interaction, and traffic baselining. Now that you have used Amazon Detective to gather more information about the extent of the security issue you will have a better understanding of other resources that need to be remediated, permissions that need to be scoped down, and root cause analysis information to include in after action reports.
+14. Click the Start new on-demand scan button.
+
+
+15. Input the EC2 instance ARN, then click Confirm.
+
+
+16. Now refresh the page, you will see a new scan ID with scan type as ‘On demand’ with a scan status of ‘Running’.

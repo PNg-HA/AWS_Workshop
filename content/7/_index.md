@@ -1,9 +1,9 @@
 ---
 title : "Managing and Prioritizing Security Findings"
 date : "`r Sys.Date()`"
-weight : 4
+weight : 7
 chapter : false
-pre : " <b> 4. </b> "
+pre : " <b> 7. </b> "
 ---
 
 ### Content:

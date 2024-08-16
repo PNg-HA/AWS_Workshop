@@ -1,168 +1,205 @@
 ---
-title : "Using insights for prioritization and metrics"
+title : "Integrating Amazon Inspector into a CI/CD pipeline"
 date : "`r Sys.Date()`"
 weight : 3
 chapter : false
-pre : " <b> 4.3 </b> "
+pre : " <b> 7.3 </b> "
 ---
 
-{{%notice info%}}
-**Scenario / Problem Statement**: Since your team turned on various AWS security services and aggregated everything in Security Hub, your leadership is asking for insights from all that data. In particular, you have been asked to glean insights on compliance, highest priority alerts, and resources generating the highest number of security alerts.
-{{%/notice%}}
+In this module, you will learn how to integrate Amazon Inspector container image scans directly into your CI/CD pipeline to scan for software vulnerabilities, and provide reports at the end of your build. This feature allows customers to investigate, and remediate, risks before deployment.
 
-An AWS Security Hub insight is a collection of related findings. It identifies a security area that requires attention and intervention. For example, an insight might point out EC2 instances that are the subject of findings that detect poor security practices. An insight brings together findings from across finding providers.
+The Amazon Inspector CI/CD integration utilizes a combination of the Amazon Inspector SBOM Generator, and the Amazon Inspector Scan API, to produce vulnerability reports for your container images. The Amazon Inspector SBOM Generator creates a software bill of materials (SBOM) from a provided container image, then, the Amazon Inspector Scan API scans that SBOM and creates a report with details on any vulnerabilities detected.
 
-Each insight is defined by a group by statement and optional filters. The group by statement indicates how to group the matching findings, and identifies the type of item that the insight applies to. For example, if an insight is grouped by resource identifier, then the insight produces a list of resource identifiers. The optional filters identify the matching findings for the insight. For example, you might want to only see findings from specific providers or findings that are associated with specific types of resources.
+You can achieve a CI/CD integration with Amazon Inspector through the Amazon Inspector plugins purposefully built for individual CI/CD solutions and available in their marketplace, or you can create your own custom scanning integration.
 
-Security Hub offers several built-in managed insights. You cannot modify or delete managed insights.
+Use the Jenkins plugin to integrate Amazon Inspector into your CI/CD pipeline. You will use images that are located in Docker Hub.
 
-An insight only returns results if you have enabled integrations or standards that produce matching findings. For example, the managed insight 29. Top resources by counts of failed CIS checks only returns results if you enable the CIS AWS Foundations standard.
+Install Jenkins on an EC2 instance
+In this section, you will install Jenkins and the Amazon Inspector SBOM Generator on an EC2 instance. Jenkins is an open-source automation server that integrates with a number of AWS Services, including: AWS CodeCommit, AWS CodeDeploy, Amazon EC2 Spot, and Amazon EC2 Fleet. The Amazon Inspector SBOM Generator (Sbomgen) is a binary tool that produces a software bill of materials (SBOM) for a container image. An SBOM is a collected inventory of the software installed on a system. Sbomgen works by scanning for files known to contain information about installed packages. If one of these files is found, the tool extracts package names, versions, and other metadata.
 
-#### Review the built in managed insights
-1. In Security Hub, navigate to the **Insights** page using the navigation on the left. Take a couple minutes to review the built-in insights.
+Navigate to Amazon EC2 console and open the Instances page. https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running 
 
+Select the Jenkins instance, and click the Connect button at the top of the page.
 
-2. From the Insights page, find the insight named **Insight: 23. Top products by counts of findings**, and click the title to open it. https://us-east-1.console.aws.amazon.com/securityhub/home?region=us-east-1#/insights/arn:aws:securityhub:::insight/securityhub/default/28 
+Switch to the Session Manager tab on the Connect to instance page.
 
-![VPC](/images/4/4.3/s2.png)
+Click Connect. This will open a Systems Manager session.
 
-3. This insight highlights how many active findings are aggregated from each product you have already integrated. Understanding your use case for each of the integrated products, this is helpful for measuring your organizations efforts to drive down the number of active vulnerabilities, threats, and resource-level compliance violations.
-![VPC](/images/4/4.3/s3.png)
+Download the Jenkins repo.
 
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
 
-4. From the Insights page, find the insight named **Insight: 24. Severity by counts of findings**, and click the title to open it. https://us-east-1.console.aws.amazon.com/securityhub/home?region=us-east-1#/insights/arn:aws:securityhub:::insight/securityhub/default/29 
+Import a key file from Jenkins to enable installation.
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 
+Upgrade any Jenkins components.
+sudo yum upgrade
 
+Install Java.
+sudo yum install java-11-amazon-corretto -y
 
-5. This insight highlights the number of active findings in your environment by severity label. These are useful numbers for reporting incremental improvement in your environment. Try to drive these numbers down over time starting with the number of findings that have a CRITICAL or HIGH severity label.
-![VPC](/images/4/4.3/s5.png)
+Install Jenkins.
+sudo yum install jenkins -y
 
-#### Create custom insight to track number of active threats
+Enable the Jenkins service to start at boot.
+sudo systemctl enable jenkins
 
-6. To track security issues that are unique to your AWS environment and usage, you can create custom insights. You will create custom insights to track your organization's key metrics. The first insight you've decided to create will highlight the number of active threats in your environment grouped by threat purpose, resource type affected, overall malicious activity, etc. Return to the **Insights** page and click Create insight.
+Start Jenkins as a service.
+sudo systemctl start jenkins
 
+Verify the Jenkins service is running.
+sudo systemctl status jenkins
 
-7. Click **Add filter**. Under Filters, select **Product name**, and then input "GuardDuty" (it is case-sensitive). We are filtering findings down to those from GuardDuty because that is the threat detection service you are using to continuously monitor your AWS accounts and workloads for malicious activity.
+Click Terminate.
 
+Return to the Instances page in the EC2 console. https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running;tag:Name=Jenkins 
 
-8. Click **Add filter** again, but this time select **Group** by under Grouping. Then select **Type**. One of the most useful pieces of information provided for findings by GuardDuty is the finding type. The purpose of the finding type is to provide a concise yet readable description of the potential security issue. By selecting "Group by Type" your insight will give you the count of findings matching each finding type.
+Select the Jenkins instance.
 
+Go to the Security tab of the instance details.
 
-9. Click **Create insight**. For insight name, input "Security alerts by GuardDuty finding type".
-![VPC](/images/4/4.3/s9.png)
+Note the IAM Role under Security details. You will look up the full ARN of this role later in this module.
 
-![VPC](/images/4/4.3/s9b.png)
-10. You can click **Insight details** to view the results charted at visualizations. Insights can also be fetched via Security Hub's API.
-![VPC](/images/4/4.3/s10.png)
+Under Security groups, click the security group attached to the instance. It will have a name starting with "sg-".
 
-11. Return to the **Insights** page that lists out all of your insights.
+You will be brought to the security group's configuration. Click the Edit inbound rules button.
 
+You will need to connect to the EC2 instance over port 8080 to reach the admin page of Jenkins. Click the Add rule button.
 
+For the new rule, set Type to Custom TCP. Set Port range to "8080". For Source, select My IP.
 
-12. Realizing this is rather easy to set up, you should consider how to accomplish the same in every account. The answer is to use infrastructure-as-code. Since that is how to want to set up insights long-term, go ahead and delete the custom insight you just created. Search the list of insights for "Security alerts by GuardDuty finding type".
+Click Save rules.
 
+Configure an IAM role for the Jenkins CI/CD integration
+We need to create an IAM role that allows access to the Amazon Scan API, that scans the software bill of materials, in Jenkins. Open the IAM console. https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/home 
 
-13. When you find it, select the small menu icon on the tile, and then click **Delete**.
+From the navigation pane of the IAM console, open Policies.
 
+Click Create Policy.
 
-#### CloudFormation to deploy custom insights in Security Hub
-{{%notice info%}}
-**Scenario / Problem Statement**: Having demonstrated how easy it is to get insights from Security Hub, you have been challenged to author infrastructure-as-code to deploy Security Hub custom insights to all of your organizations accounts, so each account owner can see the same insights for their individual account that the security team is rolling up for the entire organization.
-{{%/notice%}}
+In Policy Editor click the JSON button, and replace the policy with the following:
 
-AWS CloudFormation lets you model, provision, and manage AWS and third-party resources by treating infrastructure as code. For the purposes of this module, you can use the following CloudFormation code to implement several more custom insights. You are welcome to modify it and experiment. This example template assumes Security Hub is already enabled. To make this module slightly easier, the CloudFormation template has already been staged in an S3 bucket for you.
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "inspector-scan:ScanSbom",
+            "Resource": "*"
+        }
+    ]
+}
 
+Click Next.
+On the Review and create page, input "InspectorCICDscan-policy" for the Policy name. This policy will be attached to the role you’ll create in a few steps.
+Click Create policy.
+From the navigation pane of the IAM console, open Roles and search for the role you noted earlier (attached to the EC2 instance, Jenkins). The role should start with "cfn-InspectorLabsInfrastructure" and includes the term "SSMInstanceRole". Click the name of the role to open the details.
+Copy the ARN of the role. You will need this in a few steps.
+From the navigation pane of the IAM console, open Roles and then click Create Role.
+For Trusted entity type, select Custom trust policy.
+Replace the Custom trust policy with the following. Replace "ARN" with the ARN of the IAM role you copied a few steps previously (that includes the phrase "SSMInstanceRole").
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "ARN"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
 
-```
-AWSTemplateFormatVersion: 2010-09-09
-Description: Example template to create a Security Hub insights
-Resources:
-  SecurityHubInsightGDFindings:
-    Type: 'AWS::SecurityHub::Insight'
-    Properties:
-      Name: Security alerts by GuardDuty finding type
-      Filters:
-        ProductName:
-          - Value: GuardDuty
-            Comparison: EQUALS
-        WorkflowStatus:
-          - Value: NEW
-            Comparison: EQUALS
-          - Value: NOTIFIED
-            Comparison: EQUALS
-        RecordState:
-          - Value: ACTIVE
-            Comparison: EQUALS
-      GroupByAttribute: Type
-  SecurityHubInsightSHControls:
-    Type: 'AWS::SecurityHub::Insight'
-    Properties:
-      Name: Most Failed Security Hub Controls
-      Filters:
-        ProductName:
-          - Value: Security Hub
-            Comparison: EQUALS
-        WorkflowStatus:
-          - Value: NEW
-            Comparison: EQUALS
-          - Value: NOTIFIED
-            Comparison: EQUALS
-        RecordState:
-          - Value: ACTIVE
-            Comparison: EQUALS
-      GroupByAttribute: GeneratorId
-  SecurityHubInsightMostSev:
-    Type: 'AWS::SecurityHub::Insight'
-    Properties:
-      Name: Resources with the most security alerts Sev40+
-      Filters:
-        SeverityNormalized:
-          - Gte: 40
-            Lte: 100
-        ResourceType:
-          - Value: AwsAccount
-            Comparison: NOT_EQUALS
-        WorkflowStatus:
-          - Value: NEW
-            Comparison: EQUALS
-          - Value: NOTIFIED
-            Comparison: EQUALS
-        RecordState:
-          - Value: ACTIVE
-            Comparison: EQUALS
-      GroupByAttribute: ResourceId
-```
-The template above creates three custom Security Hub insights:
-+ Security alerts by GuardDuty finding type
-+ Most failed Security Hub controls
-+ Resources with the most security alerts (medium-critical severity)
+Click Next.
+In Add permissions search for and select the policy you created earlier, "InspectorCICDscan-policy". Then click Next.
+Give the role the name "InspectorCICDscan-role". Then click Create Role.
+Tip
+This IAM permission setup is used for the workshop, but may not be applicable to your own environment. In the workshop, the role attached to the EC2 instance that is hosting Jenkins, is given trust to the newly created InspectorCICDscan-role. The InspectorCICDscan-role will be used by Jenkins. Therefore, when Jenkins uses the InspectorCICDscan-role, it will assume the IAM role attached to the EC2 instance, which has permissions to the Inspector Scan service.
 
-#### Deploy your CloudFormation template with custom insights
+Configure Jenkins
+Now that the instance has the correct security group and AWS permissions, you can configure Jenkins to use Inspector to scan for vulnerabilities. Return to the EC2 console, and open the Instances page. https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running;tag:Name=Jenkins 
 
-14. Since the CloudFormation above has already been staged in S3, open the [Stacks](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/?filteringText=cfn&filteringStatus=active&viewNested=false)  page in the CloudFormation console.
+Select the Jenkins instance.
 
+Click the Connect button at the top of the page.
 
-15. Click the name of the stack, **cfn**.
+Under the Session Manager tab, select Connect.
 
+We will need to get the initial administrator password to log into Jenkins.
 
-16. Open the **Outputs** tab.
-![VPC](/images/4/4.3/s16.png)
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
+Copy the result. This is the initial Jenkins admin password. You will need this in a later step.
 
-17. Open "InsightsCloudFormationLink" in a new tab to launch the preconfigured CloudFormation template in us-east-1 (N. Virginia). This will open the "Create stack page" in us-east-1 (N. Virginia) and populate the link to the CloudFormation template in the form. Make sure it says "N. Virginia" in top right of the page.
+Click Terminate.
 
+Go back to the EC2 console, and select the Jenkins instance. https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running;tag:Name=Jenkins 
 
+Under the Details tab, copy the public IP address under Public IPv4 address.
 
-18. Click **Create stack** at the bottom of the page.
-![VPC](/images/4/4.3/s18.png)
+In a new browser tab, paste the IP address and add ":8080" to it. It should look similar to "xx.xx.xx.xx:8080".
 
+Input the initial admin password from earlier, and click Continue.
 
-19. Wait for the template to complete deployment.
+From the Customize Jenkins page, click Install suggested plugins.
 
+Once the installation is complete, the Create First Admin User page will open. Input your information, and then select Save and Continue.
 
+On the Instance Configuration page, click Save and Finish.
 
-20. Return to Security Hub and open the **Insights** page. 
-![VPC](/images/4/4.3/s18b.png)
-Find and review the insights you just created by switching the dropdown menu at the top of the page to **Custom insights**. For example:
+On the page displaying Jenkins is ready, click Start using Jenkins.
 
-![VPC](/images/4/4.3/s18c.png)
+From the navigation, open Manage Jenkins.
+
+Under System Configuration, open Plugins.
+
+Select Available plugins from the menu.
+
+Search available plugins for Amazon Inspector Scanner.
+
+Select the checkbox next to Amazon Inspector Scanner, and then click Install.
+
+Wait for the installation to complete. At the bottom of the page, click Go back to the top page.
+
+From the navigation, click Manage Jenkins.
+
+Under System Configuration, click Nodes.
+
+Click on Built-In Node.
+
+Open Script Console from the navigation.
+
+In the text box add the following line:
+
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+
+Click Run.
+Build a Jenkins job
+Go to the Jenkins dashboard using the link in the top left, and select Create a job.
+
+Under Enter an item name input "InspectorScan".
+
+Select Freestyle project, and then click OK.
+
+Scroll down to the Build Steps section, click the dropdown Add build step, and choose Amazon Inspector Scan.
+
+Select Automatic for the Inspector-sbomgen Installation Method, and then choose Linux, AMD64.
+
+For Image Id, input "centos:latest".
+
+For AWS Region, select us-east-1.
+
+In a new tab, open the IAM console and search for the role you created earlier named InspectorCICDscan-role. Copy the ARN. https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/roles/details/InspectorCICDscan-role 
+
+Paste the ARN of your IAM role into the Jenkins build configuration page.
+
+Click Save.
+
+This will bring you to a dashboard for your Jenkins build job. From the navigation, click Build Now to create your first build. If you run into an issue with the build, try clicking Build Now again or ask your facilitator for assistance.
+
+Review the build for vulnerabilities
+Under Build History, look for a green checkmark to indicate a successful build. Click on the green checkmark.
+This will bring you to the console output of the Jenkins job. You can see that Inspector scanned the image and provides links to reports. Click the link next to Build Artifacts.
+Click index.html. If there are any vulnerabilities, they will show in the report.
