@@ -1,5 +1,5 @@
 ---
-title : "Respond to a compromised EC2 instance"
+title : "Respond to Malware on Amazon Elastic Block Store"
 date : "`r Sys.Date()`"
 weight : 5
 chapter : false
@@ -28,11 +28,54 @@ Malware Protection offers two types of scans to detect potentially malicious act
 
 6. Click on one of the matching findings to view details. Take a few minutes to review the finding and identify the affected EC2 instance, the malware file path and file name, and other information about the finding.
 
+![VPC](/images/6/6.5/s6.png)
+affected instance: i-0c79413d9f0d9941e
+
+![VPC](/images/6/6.5/s6b.png)
+Malware file path: /eicar.com
+
+![VPC](/images/6/6.5/s6c.png)
+Malware file name: eicar.com
 
 7. If you update the Finding Type filter to "Execution:ECS/MaliciousFile", you will see malware findings for containers.
 
 8. Click the "Scan ID" link from the finding details to get further details of the scan. The link will take you to the malware scans page. Click again on the scan ID. Here you will see additional details such as the scanned volume size, the volume that is infected and the time it took to run the scan. You will also see the the Finding ID of the trigger finding that invoked the scan.
-
+![VPC](/images/6/6.5/s8a.png)
+![VPC](/images/6/6.5/s8b.png)
+View the finding: 
+```
+{
+  "DetectorId": "c8c860de84297606e66fe1417c3ba44a",
+  "AdminDetectorId": "c8c860de84297606e66fe1417c3ba44a",
+  "ScanId": "4b879e92a6a795433e66f10c577ef4e6",
+  "ScanStatus": "COMPLETED",
+  "ScanStartTime": "2024-07-17T17:50:12.000Z",
+  "ScanEndTime": "2024-07-17T18:02:01.000Z",
+  "TriggerDetails": {
+    "GuardDutyFindingId": "72c860e606f07b17804e7bf1b92dd4e4"
+  },
+  "ResourceDetails": {
+    "InstanceArn": "arn:aws:ec2:us-east-1:486547846362:instance/i-0c79413d9f0d9941e"
+  },
+  "ScanResultDetails": {
+    "ScanResult": "INFECTED"
+  },
+  "AccountId": "486547846362",
+  "TotalBytes": 2619136718,
+  "FileCount": 50898,
+  "AttachedVolumes": [
+    {
+      "VolumeArn": "arn:aws:ec2:us-east-1:486547846362:volume/vol-0179bcf64ae7ccba7",
+      "VolumeType": "gp3",
+      "DeviceName": "/dev/xvda",
+      "VolumeSizeInGB": 8,
+      "EncryptionType": "UNENCRYPTED",
+      "SnapshotArn": "arn:aws:ec2:us-east-1:486547846362:snapshot/snap-0c07cebc08b3eae39"
+    }
+  ],
+  "ScanType": "GUARDDUTY_INITIATED"
+}
+```
 
 {{%notice tip%}}
 The possible values for scan Status are Completed, Running, Skipped, and Failed. After the scan completes, the Scan result is populated for scans that have the Status as Completed. Possible values for Scan result are Clean and Infected. Using Scan type, you can identify if the malware scan was GuardDuty initiated or On demand.
@@ -72,3 +115,7 @@ Your resource ID should look like "arn:aws:ec2:us-east-1:012345678901:instance/i
 
 
 16. Now refresh the page, you will see a new scan ID with scan type as ‘On demand’ with a scan status of ‘Running’.
+
+![VPC](/images/6/6.5/s16.png)
+
+![VPC](/images/6/6.5/s16b.png)

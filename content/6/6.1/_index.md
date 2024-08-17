@@ -96,9 +96,12 @@ Continue to run the other commands:
 
 ```aws dynamodb delete-table --table-name GuardDuty-Example-Customer-DB --profile badbob```
 
+Check resources after deleting:
 ```aws dynamodb list-tables --profile badbob```
 
-10.  Do you have access to Systems Manager Parameter Store?
+
+
+10.  Do you have access to Systems Manager Parameter Store? Answer: No.
 
 ```aws ssm describe-parameters --profile badbob```
 
@@ -152,6 +155,62 @@ In this scenario, there is already automated remediation for this finding type s
 
 17. Let's check out the Lambda function that we are sending these findings to. Go to the Lambda console  and click the function named GDWorkshop-Remediation-InstanceCredentialExfiltration. The Lambda function retrieves the Role name from the finding details and then attaches an IAM policy that revokes all active sessions for the role.
 
+```
+from __future__ import print_function
+from botocore.exceptions import ClientError
+import json
+import datetime
+import boto3
+import os
+ 
+def handler(event, context):
+ 
+  # Log out event
+  print("log -- Event: %s " % json.dumps(event))
+ 
+  # Create generic function response
+  response = "Error auto-remediating the finding."
+ 
+  try:
+ 
+    # Set Clients
+    iam = boto3.client('iam')
+    ec2 = boto3.client('ec2')
+ 
+    # Set Role Variable
+    role = event['detail']['resource']['accessKeyDetails']['userName']
+ 
+    # Current Time
+    time = datetime.datetime.utcnow().isoformat()
+ 
+    # Set Revoke Policy
+    policy = """
+      {
+        "Version": "2012-10-17",
+        "Statement": {
+          "Effect": "Deny",
+          "Action": "*",
+          "Resource": "*",
+          "Condition": {"DateLessThan": {"aws:TokenIssueTime": "%s"}}
+        }
+      }
+    """ % time
+ 
+    # Add policy to Role to Revoke all Current Sessions
+    iam.put_role_policy(
+      RoleName=role,
+      PolicyName='RevokeOldSessions',
+      PolicyDocument=policy.replace('\n', '').replace(' ', '')
+    )
+ 
+    response = "GuardDuty Remediation | ID:%s: GuardDuty discovered EC2 IAM credentials (Role: %s) being used outside of the EC2 service.  All sessions have been revoked.  Please follow up with any additional remediation actions." % (event['detail']['id'], role)
+ 
+  except ClientError as e:
+    print(e)
+ 
+  print("log -- Response: %s " % response)
+  return response
+```
 
 #### Verify that the remediation was successful
 18. To verify that the InstanceCredentialExfiltration finding was remediated, you can run one of the CLI commands you ran earlier on you local machine again. You should see an error response "with an explicit deny in an identity-based policy".

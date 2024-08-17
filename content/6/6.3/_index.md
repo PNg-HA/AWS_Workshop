@@ -49,26 +49,47 @@ Before moving on, make sure you have noted the instance ID, IAM role ("User name
 
 10. Click on the Revoke sessions tab.
 
+Then, can not access to the instance.
+
+11. Click on Revoke active sessions.
 
 
-12. Click on Revoke active sessions.
+12. Select the acknowledgement check box and then click Revoke active sessions. You will see a banner appear at the top of the page stating "Active sessions have been successfully revoked".
 
-
-13. Select the acknowledgement check box and then click Revoke active sessions. You will see a banner appear at the top of the page stating "Active sessions have been successfully revoked".
-Restart the EC2 instance to rotate the access keys
+#### Restart the EC2 instance to rotate the access keys
 All active credentials for the compromised IAM role have been invalidated. This means the attacker can no longer use those access keys, but it also means that any applications that use this role can't as well. You knew this going in but decided it was necessary due to the high risk of a compromised IAM access key. In order to ensure the availability of your application you need to refresh the access keys on the instance by stopping and starting the instance. A simple reboot will not change the keys. If you waited, the temporary security credential on the instance would be refreshed but this procedure will speed things up. Since you are using AWS Systems Manager for administration on your EC2 instances you can use it to query the metadata to validate that the access keys were rotated after the instance restart.
 
-Open the Elastic Cloud Compute (EC2) console and navigate to the Instances page. https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running 
-Look for the instance ID that you copied earlier in step 3. Check the box next to that instance.
-Then click the Instance state dropdown, and select Stop instance.
-A confirmation box will appear. Click Stop again.
-Wait for the Instance State to say stopped under Instance State (you may need to refresh the EC2 console). You may need to remove a "running" filter on your list of instances to see the instance listed once it is stopped.
-The check the box next to the instance, and follow the same steps to start the instance.
-Verify the access keys have been rotated
-Go to AWS Systems Manager and open the Session Manager page. https://us-east-1.console.aws.amazon.com/systems-manager/session-manager?region=us-east-1# 
-Click Start Session on the right.
-Select the Instance ID from earlier (that you stopped and started) by clicking on the radio button next to it. Then click Start session. This will open a shell (a session with that instance).
-Run the following two commands and compare the access key ID to the one you copied down earlier to ensure it has changed. Make sure you replace the word "ROLE" at the end of the second command below with the "User name" or IAM role that you noted in step 4.
+13. Open the Elastic Cloud Compute (EC2) console and navigate to the Instances page. https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running 
+
+
+14. Look for the instance ID that you copied earlier in step 3. Check the box next to that instance.
+
+
+15. Then click the Instance state dropdown, and select Stop instance.
+
+
+16. A confirmation box will appear. Click Stop again.
+
+
+17. Wait for the Instance State to say stopped under Instance State (you may need to refresh the EC2 console). You may need to remove a "running" filter on your list of instances to see the instance listed once it is stopped.
+
+
+18. The check the box next to the instance, and follow the same steps to start the instance.
+
+
+#### Verify the access keys have been rotated
+
+19. Go to AWS Systems Manager and open the Session Manager page. https://us-east-1.console.aws.amazon.com/systems-manager/session-manager?region=us-east-1# 
+
+
+20. Click Start Session on the right.
+
+
+
+21. Select the Instance ID from earlier (that you stopped and started) by clicking on the radio button next to it. Then click Start session. This will open a shell (a session with that instance).
+
+
+22. Run the following two commands and compare the access key ID to the one you copied down earlier to ensure it has changed. Make sure you replace the word "ROLE" at the end of the second command below with the "User name" or IAM role that you noted in step 4.
 
 ```
 TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/
@@ -80,6 +101,8 @@ curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-da
 
 23. Compare the AccessKeyId in the response to the Access key ID you noted earlier to confirm the successful credential rotation (they should be different).
 
+Answer: Different to the old AccessKeyID ASIAXCSEC6TNGZ6EZUUO:
+![VPC](/images/6/6.3/s23.png)
 {{%notice tip%}}
 For further reading, check out the example Incident Response Playbook for Credential Leakage/Compromise on AWS Samples: https://github.com/aws-samples/aws-incident-response-playbooks/blob/master/playbooks/IRP-CredCompromise.md 
 {{%/notice%}}
@@ -106,6 +129,11 @@ Now that you have reviewed and remediated the GuardDuty finding "UnauthorizedAcc
 
 29. Look at when the role session was First observed and Last observed. How does this correspond to when the GuardDuty finding was first created and updated? This information can help you narrow down a time frame for when this role was compromised.
 
+GuardDuty and Detective time are not the same (GuardDuty console time is in laptop time, Detective time is in UTC). However, in GuardDuty finding json it is the same as Detective.
+![VPC](/images/6/6.3/s29a.png)
+
+Start from 07/17/2024 17:44 UTC
+![VPC](/images/6/6.3/s29b.png)
 
 #### In what account did this occur and what permissions did the assumed role have?
 30. Notice the AWS account under Role session details. You should check if this account includes sensitive data or production workloads by looking it up in whatever configuration management database (CMBD) or other tool you use to track this. Continue to the next step.
@@ -135,7 +163,8 @@ Now that you have reviewed and remediated the GuardDuty finding "UnauthorizedAcc
 
 37. Click Display details for scope time to see more details.
 
-
+Result: 
+![VPC](/images/6/6.3/s37.png)
 38. Under Successful calls, click on one of the bars of API calls exceeding the baseline (blue line). Then click Set time interval. This will update the Activity for time window.
 
 
