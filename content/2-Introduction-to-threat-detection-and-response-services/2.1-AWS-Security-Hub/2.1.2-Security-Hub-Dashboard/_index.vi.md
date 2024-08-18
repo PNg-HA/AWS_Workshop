@@ -1,99 +1,27 @@
 ---
-title : "Tạo Public subnet"
-date :  "`r Sys.Date()`" 
+title : "Security Hub - Bảng điều khiển"
+date : "`r Sys.Date()`"
 weight : 2
 chapter : false
 pre : " <b> 2.1.2 </b> "
 ---
 
-#### Tạo Public subnet
+#### Security Hub summary
 
-1. Click **Subnets**.
-  + Click **Create subnet**.
+1. Điều hướng đến trang Summary page trong Security Hub. [AWS Security Hub summary page](https://console.aws.amazon.com/securityhub/home?#/summary)
 
-![VPC](/images/2.prerequisite/003-createsubnet.png)
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s1.png)
 
-2. Tại trang **Create subnet**.
-  + Tại mục **VPC ID** click chọn **Lab VPC**.
-  + Tại mục **Subnet name** điền **Lab Public Subnet**.
-  + Tại mục **Availability Zone** chọn Availability zone đầu tiên.
-  + Tại mục **IPv4 CIRD block** điền **10.10.1.0/24**.
+2. Ở đầu trang, hãy xem lại tiện ích **Security standards**. Phần này hiển thị điểm số bảo mật tổng quan gần đây nhất của bạn và điểm số bảo mật cho từng tiêu chuẩn Security Hub. Điểm số bảo mật, dao động từ 0–100 phần trăm, đại diện cho tỷ lệ phần trăm của các kiểm soát đã vượt qua so với tất cả các kiểm soát đã bật của bạn.
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s2.png)
+3. Hãy dành vài phút để xem các insight được tạo ra trên trang Summary. Bạn có thể thấy những tài nguyên nào trong tài khoản của bạn đang gặp phải nhiều kiểm tra bảo mật nhất không? Một trong các tiện ích cung cấp cái nhìn tổng quan về các tài nguyên đã tạo ra nhiều phát hiện nhất, được phân loại theo các loại tài nguyên.
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s3.png)
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s3b.png)
+4. Cuộn xuống dưới các biểu đồ ở phần **Most common threat type** và **Software vulnerabilities with exploits**. Xem xét các mối đe dọa và lỗ hổng được tổng hợp trong tài khoản của bạn.
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s4.png)
 
-![VPC](/images/2.prerequisite/004-createsubnet.png)
+Xem chi tiết về các phát hiện từ AWS GuardDuty. Chọn một trong số đó để xem thêm chi tiết:
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s5.png)
 
-3. Kéo xuống cuối trang , click **Create subnet**.
-
-4. Click chọn **Lab Public Subnet**.
-  + Click **Actions**.
-  + Click **Edit subnet settings**.
-
-![VPC](/images/2.prerequisite/005-createsubnet.png)
-
-5. Click chọn **Enable auto-assign public IPv4 address**.
-  + Click **Save**.
-
-![VPC](/images/2.prerequisite/006-createsubnet.png)
-
-6. Click **Internet Gateways**.
-  + Click **Create internet gateway**.
-  
-![VPC](/images/2.prerequisite/007-createigw.png)
-
-7. Tại trang **Create internet gateway**.
-  + Tại mục **Name tag** điền **Lab IGW**.
-  + Click **Create internet gateway**.
-  
-![VPC](/images/2.prerequisite/008-createigw.png)
-
-8. Sau khi tạo thành công, click **Actions**.
-  + Click **Attach to VPC**.
- 
-![VPC](/images/2.prerequisite/009-createigw.png)
-
-9. Tại trang **Attach to VPC**.
-  + Tại mục **Available VPCs** chọn **Lab VPC**.
-  + Click **Attach internet gateway**.
-  + Kiểm tra quá trình attach thành công như hình dưới.
-
-![VPC](/images/2.prerequisite/010-createigw.png)
-
-10. Tiếp theo chúng ta sẽ tạo một custom route table để gán vào **Lab Public Subnet**.
-  + Click **Route Tables**.
-  + Click **Create route table**.
-
-![VPC](/images/2.prerequisite/011-creatertb.png)
-
-11. Tại trang **Create route table**.
-  + Tại mục **Name**, điền **Lab Publicrtb**.
-  + Tại mục **VPC**, chọn **Lab VPC**.
-  + Click **Create route table**.
-
-12. Sau khi tạo route table thành công.
-  + Click **Edit routes**.
-  
-![VPC](/images/2.prerequisite/012-creatertb.png)
-
-13. Tại trang **Edit routes**.
-  + Click **Add route**.
-  + Tại mục **Destination** điền 0.0.0.0/0
-  + Tại mục **Target** chọn **Internet Gateway** sau đó chọn **Lab IGW**.
-  + Click **Save changes**.
-
-![VPC](/images/2.prerequisite/013-creatertb.png)
-
-14. Click tab **Subnet associations**.
-  + Click **Edit subnet associations** để tiến hành associate custom routable chúng ta vừa tạo vào **Lab Public Subnet**.
-
-
-![VPC](/images/2.prerequisite/014-creatertb.png)
-
-15. Tại trang **Edit subnet associations**. 
-  + Click chọn **Lab Public Subnet**.
-  + Click **Save associations**.
-
-![VPC](/images/2.prerequisite/015-creatertb.png)
-
-16. Kiểm tra thông tin route table đã được associate với **Lab Public Subnet** và thông tin route đi internet đã được trỏ đến Internet Gateway như hình dưới.
-
-
-![VPC](/images/2.prerequisite/016-creatertb.png)
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s6.png)
+![VPC](/images/2/2.1-AWS-Security-Hub/2.1.2-Security-Hub-Dashboard/s7.png)

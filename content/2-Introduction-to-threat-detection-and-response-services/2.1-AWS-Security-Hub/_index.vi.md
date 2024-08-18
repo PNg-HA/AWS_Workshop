@@ -1,5 +1,5 @@
 ---
-title : "Chuẩn bị VPC và EC2"
+title : "AWS Security Hub"
 date :  "`r Sys.Date()`" 
 weight : 1 
 chapter : false

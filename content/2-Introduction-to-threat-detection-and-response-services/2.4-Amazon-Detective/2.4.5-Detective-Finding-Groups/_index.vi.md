@@ -1,66 +1,14 @@
 ---
-title : "Tạo Public Linux EC2"
-date :  "`r Sys.Date()`" 
+title : "Detective - Nhóm Phát Hiện"
+date : "`r Sys.Date()`"
 weight : 5
 chapter : false
-pre : " <b> 2.1.5 </b> "
+pre : " <b> 2.4.5 </b> "
 ---
+Nhóm phát hiện của Amazon Detective cho phép bạn kiểm tra nhiều hoạt động liên quan đến một sự kiện bảo mật tiềm ẩn. Bạn có thể phân tích nguyên nhân cốt lõi của các phát hiện nghiêm trọng từ GuardDuty bằng cách sử dụng các nhóm phát hiện. Nếu một tác nhân đe dọa đang cố gắng xâm nhập vào môi trường AWS của bạn, họ thường thực hiện một chuỗi hành động dẫn đến nhiều phát hiện bảo mật và hành vi bất thường. Những hành động này thường được phân tán theo thời gian và các thực thể khác nhau. Khi các phát hiện bảo mật được điều tra một cách riêng lẻ, có thể dẫn đến sự hiểu lầm về ý nghĩa của chúng và khó khăn trong việc tìm ra nguyên nhân cốt lõi. Amazon Detective giải quyết vấn đề này bằng cách áp dụng kỹ thuật phân tích đồ thị để suy luận mối quan hệ giữa các phát hiện và các thực thể, và nhóm chúng lại với nhau. Chúng tôi khuyến nghị nên coi các nhóm phát hiện là điểm khởi đầu để điều tra các thực thể và phát hiện liên quan.
 
-1. Truy cập [giao diện quản trị dịch vụ EC2](https://console.aws.amazon.com/ec2/v2/home)
-  + Click **Instances**.
-  + Click **Launch instances**.
-  
-![EC2](/images/2.prerequisite/027-createec2.png)
+Detective phân tích dữ liệu từ các phát hiện và nhóm chúng với các phát hiện khác có khả năng liên quan dựa trên các tài nguyên mà chúng chia sẻ. Ví dụ, các phát hiện liên quan đến các hành động thực hiện bởi cùng một phiên IAM role hoặc xuất phát từ cùng một địa chỉ IP rất có khả năng là một phần của cùng một hoạt động cơ bản. Việc điều tra các phát hiện và bằng chứng theo nhóm là rất có giá trị, ngay cả khi các mối liên hệ được tạo ra bởi Detective không liên quan.
 
-2. Tại trang **Step 1: Choose an Amazon Machine Image (AMI)**.
-  + Click **Select** để lựa chọn AMI **Amazon Linux 2 AMI**.
-  
-![EC2](/images/2.prerequisite/028-createec2.png)
+Ngoài các phát hiện, mỗi nhóm còn bao gồm các thực thể liên quan đến các phát hiện. Các thực thể có thể bao gồm các tài nguyên bên ngoài AWS như địa chỉ IP hoặc tác nhân người dùng.
 
-3. Tại trang **Step 2: Choose an Instance Type**.
- + Click chọn Instance type **t2.micro**.
- + Click **Next: Configure Instance Details**.
- 
-![EC2](/images/2.prerequisite/029-createec2.png)
-
-4. Tại trang **Step 3: Configure Instance Details**
-  + Tại mục **Network** chọn **Lab VPC**.
-  + Tại mục **Subnet** chọn **Lab Public Subnet**.
-  + Tại mục **Auto-assign Public IP** chọn **Use subnet setting (Enable)**
-  + Click **Next: Add Storage**.
-
-![EC2](/images/2.prerequisite/030-createec2.png)
-
-5. Click **Next: Add Tags** để chuyển sang bước kế tiếp.
-  + Click **Next: Configure Security Group** để chuyển sang bước kế tiếp.
-
-
-6. Tại trang **Step 6: Configure Security Group**.
-  + Chọn **Select an existing security group**.
-  + Chọn security group **SG Public Linux Instance**.
-  + Click **Review and Launch**.
-
-![EC2](/images/2.prerequisite/031-createec2.png)
-
-7. Hộp thoại cảnh báo hiện lên vì chúng ta không cấu hình tường lửa cho phép kết nối vào port 22, Click **Continue** để tiếp tục.
-
-8. Tại trang **Step 7: Review Instance Launch**.
-  + Click **Launch**.
-
-9. Tại hộp thoại **Select an existing key pair or create a new key pair**.
-  + Click chọn **Create a new key pair**.
-  + Tại mục **Key pair name** điền **LabKeypair**.
-  + Click **Download Key Pair** và lưu xuống máy tính của bạn.
-  + Click **Launch Instances** để tạo máy chủ EC2.
-
-![EC2](/images/2.prerequisite/032-createec2.png)
-
-10. Click **View Instances** để quay lại danh mục EC2 instances.
-
-11. Click vào biểu tượng edit dưới cột **Name**.
-  + Tại hộp thoại **Edit Name** điền **Public Linux Instance**.
-  + Click **Save**.
-
-![EC2](/images/2.prerequisite/033-createec2.png)
-
-Tiếp theo chúng ta sẽ thực hiện tương tự để tạo 1 EC2 Instance Windows chạy trong Private subnet.
+Sau khi một phát hiện GuardDuty ban đầu xảy ra và liên quan đến một phát hiện khác, nhóm phát hiện với tất cả các phát hiện liên quan và tất cả các thực thể liên quan sẽ được tạo ra trong vòng 48 giờ.

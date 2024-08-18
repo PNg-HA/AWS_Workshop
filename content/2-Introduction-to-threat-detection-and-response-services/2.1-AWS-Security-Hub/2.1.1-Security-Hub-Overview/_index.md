@@ -20,10 +20,10 @@ pre : " <b> 2.1.1 </b> "
 3. Click on **Security standards** from the navigation on the left.
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s3.png)
 
-1. Standards were enabled using CloudFormation when the workshop was provisioned.
+4. Standards were enabled using CloudFormation when the workshop was provisioned.
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s4.png)
 
-1. Let's dive into one of the standards. Click **View Results** for NIST Special Publication 800-53 Revision 5.
+5. Let's dive into one of the standards. Click **View Results** for NIST Special Publication 800-53 Revision 5.
 ![VPC](/images/2/2.1-AWS-Security-Hub/2.1.1-security-hub-overview/s5.png)
 
 #### Controls

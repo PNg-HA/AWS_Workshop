@@ -1,99 +1,67 @@
 ---
-title : "Tạo Public subnet"
-date :  "`r Sys.Date()`" 
+title : "GuardDuty - Phát hiện sai phạm"
+date : "`r Sys.Date()`"
 weight : 2
 chapter : false
-pre : " <b> 2.1.2 </b> "
+pre : " <b> 2.2.2 </b> "
 ---
 
-#### Tạo Public subnet
+Một phát hiện của GuardDuty đại diện cho một vấn đề bảo mật tiềm ẩn được phát hiện trong mạng của bạn. GuardDuty tạo ra một phát hiện bất cứ khi nào nó phát hiện hoạt động bất thường và có khả năng độc hại trong môi trường AWS của bạn. Bạn có thể xem và quản lý các phát hiện của GuardDuty trên trang Findings trong bảng điều khiển GuardDuty hoặc bằng cách sử dụng các thao tác CLI hoặc API của GuardDuty.
 
-1. Click **Subnets**.
-  + Click **Create subnet**.
+#### Xem xét một phát hiện trong GuarDuty
+1. Điều hướng đến **Findings** trong Amazon GuardDuty bằng cách nhấp vào **Findings** trong bảng điều hướng bên trái.
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s1.png)
+Dưới đây là các phát hiện trong tài khoản AWS Workshop:
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s1b.png)
 
-![VPC](/images/2.prerequisite/003-createsubnet.png)
+2. Chọn một trong các phát hiện trên trang bằng cách nhấp vào hàng. Điều này sẽ mở tóm tắt phát hiện ở phía bên phải của trang. Chi tiết phát hiện thay đổi dựa trên loại phát hiện.
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s2.png)
 
-2. Tại trang **Create subnet**.
-  + Tại mục **VPC ID** click chọn **Lab VPC**.
-  + Tại mục **Subnet name** điền **Lab Public Subnet**.
-  + Tại mục **Availability Zone** chọn Availability zone đầu tiên.
-  + Tại mục **IPv4 CIRD block** điền **10.10.1.0/24**.
+Kiểm tra một phát hiện khác trong workshop:
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s2b.png)
 
-![VPC](/images/2.prerequisite/004-createsubnet.png)
-
-3. Kéo xuống cuối trang , click **Create subnet**.
-
-4. Click chọn **Lab Public Subnet**.
-  + Click **Actions**.
-  + Click **Edit subnet settings**.
-
-![VPC](/images/2.prerequisite/005-createsubnet.png)
-
-5. Click chọn **Enable auto-assign public IPv4 address**.
-  + Click **Save**.
-
-![VPC](/images/2.prerequisite/006-createsubnet.png)
-
-6. Click **Internet Gateways**.
-  + Click **Create internet gateway**.
-  
-![VPC](/images/2.prerequisite/007-createigw.png)
-
-7. Tại trang **Create internet gateway**.
-  + Tại mục **Name tag** điền **Lab IGW**.
-  + Click **Create internet gateway**.
-  
-![VPC](/images/2.prerequisite/008-createigw.png)
-
-8. Sau khi tạo thành công, click **Actions**.
-  + Click **Attach to VPC**.
- 
-![VPC](/images/2.prerequisite/009-createigw.png)
-
-9. Tại trang **Attach to VPC**.
-  + Tại mục **Available VPCs** chọn **Lab VPC**.
-  + Click **Attach internet gateway**.
-  + Kiểm tra quá trình attach thành công như hình dưới.
-
-![VPC](/images/2.prerequisite/010-createigw.png)
-
-10. Tiếp theo chúng ta sẽ tạo một custom route table để gán vào **Lab Public Subnet**.
-  + Click **Route Tables**.
-  + Click **Create route table**.
-
-![VPC](/images/2.prerequisite/011-creatertb.png)
-
-11. Tại trang **Create route table**.
-  + Tại mục **Name**, điền **Lab Publicrtb**.
-  + Tại mục **VPC**, chọn **Lab VPC**.
-  + Click **Create route table**.
-
-12. Sau khi tạo route table thành công.
-  + Click **Edit routes**.
-  
-![VPC](/images/2.prerequisite/012-creatertb.png)
-
-13. Tại trang **Edit routes**.
-  + Click **Add route**.
-  + Tại mục **Destination** điền 0.0.0.0/0
-  + Tại mục **Target** chọn **Internet Gateway** sau đó chọn **Lab IGW**.
-  + Click **Save changes**.
-
-![VPC](/images/2.prerequisite/013-creatertb.png)
-
-14. Click tab **Subnet associations**.
-  + Click **Edit subnet associations** để tiến hành associate custom routable chúng ta vừa tạo vào **Lab Public Subnet**.
+3. Xem xét phát hiện mà bạn đã mở.
 
 
-![VPC](/images/2.prerequisite/014-creatertb.png)
+#### Hiểu về mức độ nghiêm trọng của phát hiện trong GuardDuty
 
-15. Tại trang **Edit subnet associations**. 
-  + Click chọn **Lab Public Subnet**.
-  + Click **Save associations**.
-
-![VPC](/images/2.prerequisite/015-creatertb.png)
-
-16. Kiểm tra thông tin route table đã được associate với **Lab Public Subnet** và thông tin route đi internet đã được trỏ đến Internet Gateway như hình dưới.
+4. Tìm **Severity** của phát hiện mà bạn đã chọn.
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s4.png)
 
 
-![VPC](/images/2.prerequisite/016-creatertb.png)
+5. Nếu bạn muốn xem hoặc tải xuống phát hiện dưới dạng JSON, bạn có thể nhấp vào **Finding ID** ở đầu bản tóm tắt phát hiện.
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s5a.png)
+
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s5b.png)
+
+
+6. Nhấp vào **X** ở góc trên bên phải của bản tóm tắt phát hiện để đóng nó.
+
+#### Searching and Filtering GuardDuty Findings
+
+7. Nhấp vào thanh Tìm kiếm nơi có ghi **Add filter criteria**.
+
+
+
+8. Nhập **Severity** vào thanh tìm kiếm và nhấp vào **Severity**, sau đó mở ra một menu phụ với các tùy chọn Low, Medium, và High.
+
+
+9. Đánh dấu vào ô **High** và nhấp **Apply**. TĐiều này sẽ cập nhật danh sách các phát hiện hiển thị tương ứng.
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s9a.png)
+
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s9b.png)
+#### Quản lý phát hiện GuardDuty
+10. Với một phát hiện được chọn, nhấp vào menu thả xuống **Actions** (góc trên bên phải của trang). Nhấp **"Archive"** để lưu trữ phát hiện.
+
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s10.png)
+
+11. Lưu trữ phát hiện sẽ ẩn nó khỏi danh sách các phát hiện hiện tại. Để xem nó, nhấp vào menu thả xuống **"Current"**, và chọn **"Archived"** để xem phát hiện mà bạn vừa lưu trữ.
+
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s11a.png)
+
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s11b.png)
+
+12.  Để hủy lưu trữ phát hiện, chọn nó, và sau đó nhấp lại vào menu thả xuống **Actions** (góc trên bên phải của trang). Lần này, nhấp **"Unarchive"** để hủy lưu trữ phát hiện.
+
+
+![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s2.png)

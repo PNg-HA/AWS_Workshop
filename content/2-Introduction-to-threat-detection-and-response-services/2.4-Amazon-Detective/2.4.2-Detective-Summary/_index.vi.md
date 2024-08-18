@@ -1,99 +1,23 @@
 ---
-title : "Tạo Public subnet"
-date :  "`r Sys.Date()`" 
+title : "Detective - Tóm tắt"
+date : "`r Sys.Date()`"
 weight : 2
 chapter : false
-pre : " <b> 2.1.2 </b> "
+pre : " <b> 2.4.2 </b> "
 ---
+Sử dụng trang Summary trong Amazon Detective để xác định các thực thể cần điều tra nguồn gốc của hoạt động trong 24 giờ trước đó. Trang Amazon Detective Summary giúp bạn xác định các thực thể liên quan đến các loại hoạt động bất thường cụ thể. Đây là một trong số nhiều điểm khởi đầu có thể có cho một cuộc điều tra.
 
-#### Tạo Public subnet
+Để hiển thị trang Summary, trong bảng điều hướng của Detective, chọn Summary. Trang Summary cũng được hiển thị mặc định khi bạn lần đầu mở bảng điều khiển của Detective.
 
-1. Click **Subnets**.
-  + Click **Create subnet**.
+Từ trang Summary bạn có thể xác định các thực thể đáp ứng các tiêu chí sau:
+- Các cuộc điều tra cho thấy các sự kiện bảo mật tiềm ẩn được Detective xác định.
+- Các thực thể tham gia vào hoạt động diễn ra ở các vị trí địa lý mới được quan sát.
+- Các thực thể thực hiện số lượng gọi API lớn nhất.
+- Các EC2 instance có lưu lượng truy cập lớn nhất.
+- Các cụm container có số lượng container lớn nhất.
 
-![VPC](/images/2.prerequisite/003-createsubnet.png)
+Từ mỗi bảng trang Summary, bạn có thể chuyển đến một thực thể được chọn.
 
-2. Tại trang **Create subnet**.
-  + Tại mục **VPC ID** click chọn **Lab VPC**.
-  + Tại mục **Subnet name** điền **Lab Public Subnet**.
-  + Tại mục **Availability Zone** chọn Availability zone đầu tiên.
-  + Tại mục **IPv4 CIRD block** điền **10.10.1.0/24**.
+Khi bạn xem xét trang Summary, bạn có thể điều chỉnh Phạm vi thời gian để xem hoạt động trong bất kỳ khung thời gian 24 giờ nào trong 365 ngày trước đó. Khi bạn thay đổi Ngày và giờ Bắt đầu, Ngày và giờ Kết thúc sẽ tự động được cập nhật thành 24 giờ sau thời gian bắt đầu bạn đã chọn.
 
-![VPC](/images/2.prerequisite/004-createsubnet.png)
-
-3. Kéo xuống cuối trang , click **Create subnet**.
-
-4. Click chọn **Lab Public Subnet**.
-  + Click **Actions**.
-  + Click **Edit subnet settings**.
-
-![VPC](/images/2.prerequisite/005-createsubnet.png)
-
-5. Click chọn **Enable auto-assign public IPv4 address**.
-  + Click **Save**.
-
-![VPC](/images/2.prerequisite/006-createsubnet.png)
-
-6. Click **Internet Gateways**.
-  + Click **Create internet gateway**.
-  
-![VPC](/images/2.prerequisite/007-createigw.png)
-
-7. Tại trang **Create internet gateway**.
-  + Tại mục **Name tag** điền **Lab IGW**.
-  + Click **Create internet gateway**.
-  
-![VPC](/images/2.prerequisite/008-createigw.png)
-
-8. Sau khi tạo thành công, click **Actions**.
-  + Click **Attach to VPC**.
- 
-![VPC](/images/2.prerequisite/009-createigw.png)
-
-9. Tại trang **Attach to VPC**.
-  + Tại mục **Available VPCs** chọn **Lab VPC**.
-  + Click **Attach internet gateway**.
-  + Kiểm tra quá trình attach thành công như hình dưới.
-
-![VPC](/images/2.prerequisite/010-createigw.png)
-
-10. Tiếp theo chúng ta sẽ tạo một custom route table để gán vào **Lab Public Subnet**.
-  + Click **Route Tables**.
-  + Click **Create route table**.
-
-![VPC](/images/2.prerequisite/011-creatertb.png)
-
-11. Tại trang **Create route table**.
-  + Tại mục **Name**, điền **Lab Publicrtb**.
-  + Tại mục **VPC**, chọn **Lab VPC**.
-  + Click **Create route table**.
-
-12. Sau khi tạo route table thành công.
-  + Click **Edit routes**.
-  
-![VPC](/images/2.prerequisite/012-creatertb.png)
-
-13. Tại trang **Edit routes**.
-  + Click **Add route**.
-  + Tại mục **Destination** điền 0.0.0.0/0
-  + Tại mục **Target** chọn **Internet Gateway** sau đó chọn **Lab IGW**.
-  + Click **Save changes**.
-
-![VPC](/images/2.prerequisite/013-creatertb.png)
-
-14. Click tab **Subnet associations**.
-  + Click **Edit subnet associations** để tiến hành associate custom routable chúng ta vừa tạo vào **Lab Public Subnet**.
-
-
-![VPC](/images/2.prerequisite/014-creatertb.png)
-
-15. Tại trang **Edit subnet associations**. 
-  + Click chọn **Lab Public Subnet**.
-  + Click **Save associations**.
-
-![VPC](/images/2.prerequisite/015-creatertb.png)
-
-16. Kiểm tra thông tin route table đã được associate với **Lab Public Subnet** và thông tin route đi internet đã được trỏ đến Internet Gateway như hình dưới.
-
-
-![VPC](/images/2.prerequisite/016-creatertb.png)
+Với Detective, bạn có thể truy cập dữ liệu sự kiện lịch sử lên đến một năm. Dữ liệu này có sẵn thông qua một tập hợp trực quan hóa hiển thị các thay đổi về loại và khối lượng hoạt động trong khoảng thời gian đã chọn. Detective liên kết những thay đổi này với những phát hiện của GuardDuty.
