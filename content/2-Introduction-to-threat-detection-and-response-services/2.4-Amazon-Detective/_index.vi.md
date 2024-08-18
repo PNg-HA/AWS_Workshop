@@ -13,4 +13,4 @@ pre : " <b> 2.4 </b> "
   - [Detective - Điều tra](2.4.4-Detective-Investigations/)
   - [Detective - Nhóm phát hiện](2.4.5-Detective-Finding-Groups/)
   - [Detective - Giá cả](2.4.6-Detective-Pricing/)
-  - [Detective - Nhật ký kiểm toán EKS](2.4.7-Detective-EKS-Audit-Logs/)
+  - [Detective - Kiểm toán log EKS](2.4.7-Detective-EKS-Audit-Logs/)
