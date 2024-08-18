@@ -8,7 +8,7 @@ pre = "<b>8. </b>"
 
 We will take the following steps to delete the resources we created in this exercise.
 
-#### Delete Automated Security Response solution
+#### Delete Automated Security Response solution 
 
 1. Remove the aws-sharr-member.template from each member account.
 
