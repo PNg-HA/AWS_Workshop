@@ -19,3 +19,5 @@ pre : " <b> 2.3.6 </b> "
 
 
 3. Xem lại chi phí dự kiến ​​của bạn. Chi phí dự kiến ​​dựa trên việc sử dụng tài khoản trong 30 ngày qua. Nếu tài khoản đã hoạt động với Inspector dưới 30 ngày, chúng tôi sẽ ngoại suy chi phí trong 30 ngày dựa trên mức sử dụng hiện tại.
+
+![VPC](/images/2/2.3/2.3.6/s3.png)

@@ -15,7 +15,7 @@ pre : " <b> 2.3.2 </b> "
 
 ![VPC](/images/2/2.3/2.3.2/s2.png)
 
-1. Trong bảng điều khiển, hãy kiểm tra **Risk Based Remediations** ngần đầu trang. Phần khắc phục dựa trên rủi ro hiển thị năm phần mềm hàng đầu với các lỗ hổng nghiêm trọng ảnh hưởng đến nhiều tài nguyên nhất trong môi trường của bạn. Khắc phục những phần mềm này có thể giảm đáng kể số lượng rủi ro nghiêm trọng đối với môi trường của bạn. Chọn tên  phần mềm để xem chi tiết lỗ hổng liên quan và các tài nguyên bị ảnh hưởng.
+3. Trong bảng điều khiển, hãy kiểm tra **Risk Based Remediations** gần đầu trang. Phần khắc phục dựa trên rủi ro hiển thị năm phần mềm hàng đầu với các lỗ hổng nghiêm trọng ảnh hưởng đến nhiều tài nguyên nhất trong môi trường của bạn. Khắc phục những phần mềm này có thể giảm đáng kể số lượng rủi ro nghiêm trọng đối với môi trường của bạn. Chọn tên  phần mềm để xem chi tiết lỗ hổng liên quan và các tài nguyên bị ảnh hưởng.
 ![VPC](/images/2/2.3/2.3.2/s3.png)
 
 

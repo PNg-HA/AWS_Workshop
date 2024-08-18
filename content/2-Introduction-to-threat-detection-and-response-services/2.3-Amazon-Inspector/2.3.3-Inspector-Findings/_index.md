@@ -17,10 +17,11 @@ pre : " <b> 2.3.3 </b> "
 
 3. You can create a filter on each tab to focus on specific types of findings. Try filtering on a resource tag. Click the field, **Add filter**. Select **Resource tag**. Keep in mind, filters are case sensitive. Input **"Environment"** for Key. Input "**Development**" for **Value**. Click **Apply**. This shows findings for resources with a certain tag applied.
 
+![VPC](/images/2/2.3/2.3.3/s3.png)
 
 4. Now remove that filter you just added by clicking **Clear filters**.
 
-
+<!-- 
 
 5. Add a new filter. Click the field, **Add filter**. Select **Resource tag**. Keep in mind, filters are case sensitive. Input "**Name**" for Key. Input "**EC2InstanceDev3**" for **Value**. This will display only findings for EC2 instance(s) named "EC2InstanceDev3". You can optionally try adding multiple filters at the same time to narrow your search.
 
@@ -48,4 +49,4 @@ pre : " <b> 2.3.3 </b> "
 11. The finding states "User-provided inputs must be sanitized before they are logged. An attacker can use unsensitized input to break a log's integrity, forge log entries, or bypass log monitors." The details in the report include the information about the resource and suggested remediation. Read the suggested remediation. As a challenge, come back later if you have time and try to remediate the issue WITHOUT deleting the function.
 
 
-12. Close out of the finding and remove all the filters by clicking **Clear filters** again.
+12. Close out of the finding and remove all the filters by clicking **Clear filters** again. -->

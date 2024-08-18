@@ -19,3 +19,5 @@ pre : " <b> 2.3.6 </b> "
 
 
 3. Review your projected cost. Projected cost is based on account usage for the last 30 days. If the account has been active with Inspector for less than 30 days, we extrapolate the costs for 30 days based on the current usage.
+
+![VPC](/images/2/2.3/2.3.6/s3.png)

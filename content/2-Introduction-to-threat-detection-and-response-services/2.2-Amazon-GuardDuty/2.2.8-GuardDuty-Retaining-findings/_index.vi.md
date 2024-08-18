@@ -6,7 +6,6 @@ chapter : false
 pre : " <b> 2.2.8 </b> "
 ---
 
-#### Cấu hình SNS topic
 
 GuardDuty giữ lại các phát hiện được tạo ra trong một khoảng thời gian 90 ngày. GuardDuty xuất các phát hiện đang hoạt động đến Amazon EventBridge. Bạn có thể tùy chọn xuất các phát hiện được tạo ra đến một Amazon Simple Storage Service (Amazon S3) bucket. Điều này sẽ giúp bạn theo dõi dữ liệu lịch sử về các hoạt động đáng nghi trong tài khoản của bạn và đánh giá xem các bước khắc phục được khuyến nghị có thành công hay không.
 
