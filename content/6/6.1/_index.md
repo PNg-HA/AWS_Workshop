@@ -20,18 +20,19 @@ Session Manager is a managed service that provides you with one-click secure acc
 
 
 3. Select the GuardDuty-ICE-Instance and click Start session. This will start a shell session that you will use to fetch the active security credentials on the instance.
-
+![VPC](/images/6/6.1/s3.png)
 
 4. In the shell, run the following command:
 
 ```
 TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/
 ```
-
+![VPC](/images/6/6.1/s4.png)
+Then run this:
 ```
 curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/security-credentials/GDWorkshop-EC2-Compromised
 ```
-
+![VPC](/images/6/6.1/s4b.png)
 5. Make note of the AccessKeyID, SecretAccessKey, and Token. Now that you have retrieved the IAM temporary security credentials from the EC2 instance, use them to setup an AWS CLI profile on your local machine. Then we'll use the profile to make API calls.
 
 
@@ -76,12 +77,13 @@ Answer: This command should return an AccessDenied error.
 ```
 aws iam create-user --user-name Chuck --profile badbob
 ```
-
+![VPC](/images/6/6.1/s7.png)
 8. What about DynamoDB? Try the following commands.
 
 ```aws dynamodb list-tables --profile badbob```
 
 ```aws dynamodb describe-table --table-name GuardDuty-Example-Customer-DB --profile badbob```
+![VPC](/images/6/6.1/s8.png)
 
 {{%notice warning%}}
 The role and instance profile being used here does not conform to least-priviledge principles. Learn more here: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege 
@@ -95,11 +97,12 @@ Continue to run the other commands:
 ```aws dynamodb scan --table-name GuardDuty-Example-Customer-DB --profile badbob```
 
 ```aws dynamodb delete-table --table-name GuardDuty-Example-Customer-DB --profile badbob```
+![VPC](/images/6/6.1/s9.png)
 
 Check resources after deleting:
 ```aws dynamodb list-tables --profile badbob```
 
-
+![VPC](/images/6/6.1/s9b.png)
 
 10.  Do you have access to Systems Manager Parameter Store? Answer: No.
 
@@ -110,7 +113,7 @@ Check resources after deleting:
 ```aws ssm get-parameters --names "gd_prod_dbpwd_sample" --with-decryption --profile badbob```
 
 ```aws ssm delete-parameter --name "gd_prod_dbpwd_sample" --profile badbob```
-
+![VPC](/images/6/6.1/s10.png)
 ### Investigate the GuardDuty finding
 {{%notice warning%}}
 It can take up to 30 minutes to see the finding from these actions in the GuardDuty console. We recommend working on the next module and coming back to this step later.
@@ -130,8 +133,9 @@ You have been assigned a GuardDuty finding to investigate and remediate. The Gua
 
 
 13. Click on the UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS finding to view the full details. Looking at the finding details you can see that this is a HIGH severity finding. This finding informs you of attempts to run AWS API operations from a host outside of EC2, using temporary AWS credentials that were created on an EC2 instance in your AWS account. This indicates your EC2 instance has been compromised, and the temporary credentials from the instance have been exfiltrated to a remote host outside of AWS.
-
-
+![VPC](/images/6/6.1/s13.png)
+![VPC](/images/6/6.1/s13b.png)
+![VPC](/images/6/6.1/s13c.png)
 #### Review the automated remediation
 In this scenario, there is already automated remediation for this finding type set up using Amazon EventBridge and AWS Lambda. AWS Lambda is a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers. You can trigger Lambda from over 200 AWS services, and only pay for what you use. Amazon EventBridge is a serverless event bus that makes it easier to build event-driven applications at scale using events generated from your applications and AWS services. EventBridge delivers a stream of real-time data from event sources to targets like AWS Lambda. Let's review the automation and see if it worked!
 
@@ -140,7 +144,9 @@ In this scenario, there is already automated remediation for this finding type s
 
 
 15. Click on the rule Name that was configured for this particular finding, GuardDuty-Event-IAMUser-InstanceCredentialExfiltration. Take a look at the Event Pattern. Event patterns have the same structure as the events they match. Rules use event patterns to select events and send them to targets. An event pattern either matches an event or it doesn't. Here you can see we are only matching events with the type "UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS" from "aws.guardduty".
+![VPC](/images/6/6.1/s15.png)
 
+JSON result:
 ```
 {
   "source": ["aws.guardduty"],
@@ -152,7 +158,7 @@ In this scenario, there is already automated remediation for this finding type s
 
 16. When an event matches the Event pattern seen above, it can be sent to Targets. Click on the Targets tab. This rule is configured to send these findings to a Lambda function and an SNS topic.
 
-
+![VPC](/images/6/6.1/s16.png)
 17. Let's check out the Lambda function that we are sending these findings to. Go to the Lambda console  and click the function named GDWorkshop-Remediation-InstanceCredentialExfiltration. The Lambda function retrieves the Role name from the finding details and then attaches an IAM policy that revokes all active sessions for the role.
 
 ```
@@ -232,3 +238,5 @@ It may take a few minutes for the remediation to complete.
 
 
 25. Under the the Permissions tab, click the RevokeOldSessions policy. Notice the explicit deny all.
+
+![VPC](/images/6/6.1/s25.png)

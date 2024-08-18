@@ -25,7 +25,9 @@ Malware Protection offers two types of scans to detect potentially malicious act
 
 
 5. In the field Add filter criteria select Finding Type and type "Execution:EC2/MaliciousFile". Click Apply.
-
+![VPC](/images/6/6.5/s5a.png)
+Result:
+![VPC](/images/6/6.5/s5b.png)
 6. Click on one of the matching findings to view details. Take a few minutes to review the finding and identify the affected EC2 instance, the malware file path and file name, and other information about the finding.
 
 ![VPC](/images/6/6.5/s6.png)
@@ -98,7 +100,7 @@ If you want to detect the presence of malware in your Amazon EC2 instances on-de
 
 
 12. You need the Amazon Resource Name (ARN) of the EC2 instance in order to initiate an on-demand malware scan. The ARN looks like "arn:aws:ec2:{region}:{account ID}:instance/{instance ID}". Construct the ARN using the information from the finding.
-
+![VPC](/images/6/6.5/s12.png)
 
 {{%notice tip%}}
 Your resource ID should look like "arn:aws:ec2:us-east-1:012345678901:instance/i-123456xxyyzzaaabb2"
@@ -112,7 +114,7 @@ Your resource ID should look like "arn:aws:ec2:us-east-1:012345678901:instance/i
 
 
 15. Input the EC2 instance ARN, then click Confirm.
-
+![VPC](/images/6/6.5/s15.png)
 
 16. Now refresh the page, you will see a new scan ID with scan type as ‘On demand’ with a scan status of ‘Running’.
 

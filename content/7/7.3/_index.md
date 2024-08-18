@@ -65,7 +65,7 @@ In this section, you will install Jenkins and the Amazon Inspector SBOM Generato
 12.  Verify the Jenkins service is running.
 ```sudo systemctl status jenkins```
 
-
+![VPC](/images/7/7.3/s12.png)
 13. Click Terminate.
 
 14.	Return to the Instances page in the [EC2 console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running;tag:Name=Jenkins).  
@@ -93,7 +93,7 @@ In this section, you will install Jenkins and the Amazon Inspector SBOM Generato
 
 
 22.	Click Save rules.
-
+![VPC](/images/7/7.3/s22.png)
 
 #### Configure an IAM role for the Jenkins CI/CD integration
 23. We need to create an IAM role that allows access to the Amazon Scan API, that scans the software bill of materials, in Jenkins. Open the IAM console. https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/home 
@@ -126,7 +126,7 @@ In this section, you will install Jenkins and the Amazon Inspector SBOM Generato
 
 
 28.	On the Review and create page, input "InspectorCICDscan-policy" for the Policy name. This policy will be attached to the role you’ll create in a few steps.
-
+![VPC](/images/7/7.3/s28.png)
 
 29.	Click Create policy.
 
@@ -159,7 +159,7 @@ In this section, you will install Jenkins and the Amazon Inspector SBOM Generato
 }
 ```
 
-
+![VPC](/images/7/7.3/s34.png)
 35. Click Next.
 
 
@@ -169,7 +169,7 @@ In this section, you will install Jenkins and the Amazon Inspector SBOM Generato
 
 37. Give the role the name "InspectorCICDscan-role". Then click Create Role.
 
-
+![VPC](/images/7/7.3/s37.png)
 {{%notice tip%}}
 This IAM permission setup is used for the workshop, but may not be applicable to your own environment. In the workshop, the role attached to the EC2 instance that is hosting Jenkins, is given trust to the newly created InspectorCICDscan-role. The InspectorCICDscan-role will be used by Jenkins. Therefore, when Jenkins uses the InspectorCICDscan-role, it will assume the IAM role attached to the EC2 instance, which has permissions to the Inspector Scan service.
 {{%/notice%}}
@@ -192,7 +192,7 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 42. We will need to get the initial administrator password to log into Jenkins.
 ```sudo cat /var/lib/jenkins/secrets/initialAdminPassword```
 
-
+![VPC](/images/7/7.3/s42.png)
 43. Copy the result. This is the initial Jenkins admin password. You will need this in a later step.
 
 
@@ -207,15 +207,17 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 46. Under the Details tab, copy the public IP address under Public IPv4 address.
 
 47. In a new browser tab, paste the IP address and add ":8080" to it. It should look similar to "xx.xx.xx.xx:8080".
-
+![VPC](/images/7/7.3/s47.png)
 
 48. Input the initial admin password from earlier, and click Continue.
+![VPC](/images/7/7.3/s48.png)
 
 
 49. From the Customize Jenkins page, click Install suggested plugins.
 
 
 50. Once the installation is complete, the Create First Admin User page will open. Input your information, and then select Save and Continue.
+![VPC](/images/7/7.3/s50.png)
 
 
 51. On the Instance Configuration page, click Save and Finish.
@@ -227,6 +229,7 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 
 
 53. From the navigation, open Manage Jenkins.
+![VPC](/images/7/7.3/s53.png)
 
 
 54. Under System Configuration, open Plugins.
@@ -243,6 +246,7 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 
 57. Select the checkbox next to Amazon Inspector Scanner, and then click Install.
 
+![VPC](/images/7/7.3/s57.png)
 
 
 58. Wait for the installation to complete. At the bottom of the page, click Go back to the top page.
@@ -256,6 +260,7 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 
 
 61. Click on Built-In Node.
+![VPC](/images/7/7.3/s61.png)
 
 
 62. Open Script Console from the navigation.
@@ -265,16 +270,16 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 ```System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")```
 
 64. Click Run.
-
+![VPC](/images/7/7.3/s64.png)
 
 #### Build a Jenkins job
 65.	Go to the Jenkins dashboard using the link in the top left, and select Create a job.
-
+![VPC](/images/7/7.3/s65.png)
 
 66.	Under Enter an item name input "InspectorScan".
 
 67.	Select Freestyle project, and then click OK.
-
+![VPC](/images/7/7.3/s67.png)
 
 68.	Scroll down to the Build Steps section, click the dropdown Add build step, and choose Amazon Inspector Scan.
 
@@ -291,18 +296,21 @@ This IAM permission setup is used for the workshop, but may not be applicable to
 
 
 73.	Paste the ARN of your IAM role into the Jenkins build configuration page.
-
+![VPC](/images/7/7.3/s73.png)
 
 74.	Click Save.
 
 
 75.	This will bring you to a dashboard for your Jenkins build job. From the navigation, click Build Now to create your first build. If you run into an issue with the build, try clicking Build Now again or ask your facilitator for assistance.
-
+![VPC](/images/7/7.3/s75.png)
 #### Review the build for vulnerabilities
 76. Under Build History, look for a green checkmark to indicate a successful build. Click on the green checkmark.
-
+![VPC](/images/7/7.3/s76.png)
 
 77. This will bring you to the console output of the Jenkins job. You can see that Inspector scanned the image and provides links to reports. Click the link next to Build Artifacts.
+![VPC](/images/7/7.3/s77.png)
 
 
 78. Click index.html. If there are any vulnerabilities, they will show in the report.
+
+![VPC](/images/7/7.3/s78.png)

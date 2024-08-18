@@ -1,5 +1,5 @@
 ---
-title : "Vulnerability management for serverless applications"
+title : "Patching EC2 with Patch Manager"
 date : "`r Sys.Date()`"
 weight : 1
 chapter : false
@@ -7,7 +7,7 @@ pre : " <b> 7.1 </b> "
 ---
 
 1. Find the number of security findings by product in Security Hub by opening the Insights page and clicking into Insight: 23. Top products by counts of findings. https://us-east-1.console.aws.amazon.com/securityhub/home?region=us-east-1#/insights/arn:aws:securityhub:::insight/securityhub/default/28 
-
+![VPC](/images/7/7.1/s1.png)
 
 2. Notice that a significant portion of the security findings in your environment are coming from Inspector.
 
@@ -15,11 +15,11 @@ pre : " <b> 7.1 </b> "
 
 3. Click Inspector to see the list of individual findings. Based on the title of these findings, it appears most of them, if not all of them, are software vulnerabilities.
 
-
+![VPC](/images/7/7.1/s3.png)
 
 4. Navigate to the Inspector console. https://us-east-1.console.aws.amazon.com/inspector/v2/home?region=us-east-1#/dashboard 
 
-
+![VPC](/images/7/7.1/s4.png)
 
 5. From the Inspector dashboard, you can quickly see that most of your EC2 instances and Lambda functions are being scanned. You can also see the vulnerabilities impacting the most instances and images.
 
@@ -52,10 +52,10 @@ In this section you will:
 
 
 7. Click Start with an overview, under the "Create patch policy" button.
-
+![VPC](/images/7/7.1/s7.png)
 
 8. Click the tab, Patch baselines, and then select Create patch baseline.
-
+![VPC](/images/7/7.1/s8.png)
 
 9. On the "Create patch baseline" page, input the Name "AmazonLinux2SecAndNonSecBaseline" in the section Patch baseline details.
 
@@ -70,7 +70,7 @@ In this section you will:
 
 12. Confirm that Operating system rule 1 looks like the following image.
 
-
+![VPC](/images/7/7.1/s12.png)
 
 13. Click Add rule to create "Operating system rule 2".
 
@@ -81,12 +81,13 @@ In this section you will:
 
 15. Confirm that Operating system rule 2 looks like the following image.
 
-
+![VPC](/images/7/7.1/s15.png)
 
 16. At the bottom of the page, click Create patch baseline. You should see a banner at the top of the page stating "Create patch baseline request succeeded". This patch baseline will only scan for or install updates based on the criteria defined within the patch approval rules. If an EC2 instance is missing a patch based on the criteria specified within the patch baseline, the instance will be flagged as noncompliant.
 
-
-
+![VPC](/images/7/7.1/s16.png)
+Result:
+![VPC](/images/7/7.1/s16r.png)
 #### Scan your instances with AWS-RunPatchBaseline via Run Command
 Using Run Command, a capability of AWS Systems Manager, you can remotely and securely manage the configuration of your managed nodes. A managed node is any Amazon Elastic Compute Cloud (Amazon EC2) instance or non-EC2 machine in your hybrid and multi-cloud environment that has been configured for Systems Manager. Run Command allows you to automate common administrative tasks and perform one-time configuration changes at scale.
 
@@ -104,7 +105,7 @@ You can learn more about the AWS-RunPatchBaseline SSM document under the Documen
 
 
 19. Search for and select the AWS-RunPatchBaseline.
-
+![VPC](/images/7/7.1/s19.png)
 
 20. Under Command parameters, make sure "Scan" is the Operation selected. Leave all the other default parameters.
 
@@ -113,38 +114,40 @@ You can learn more about the AWS-RunPatchBaseline SSM document under the Documen
 
 
 22. Click Add next to the key value pair you just entered.
-
+![VPC](/images/7/7.1/s22.png)
 
 23. Under Output options deselect Enable an S3 bucket.
 
-
+![VPC](/images/7/7.1/s23.png)
 
 24. Click Run at the bottom of the page. Refresh the page until the overall status is "Success".
-
+![VPC](/images/7/7.1/s24.png)
 
 25. Under Targets and outputs, click the Instance ID of one of the EC2 instances targeted (that has the key-value pair you specified) to view the output from the command execution. Take a minute to review the outputs of each step.
-
-
-
+![VPC](/images/7/7.1/s25.png)
+Observe step 2:
+![VPC](/images/7/7.1/s25_step2.png)
+Observe step 3:
+![VPC](/images/7/7.1/s25_step3.png)
 #### Review patch compliance for managed nodes
 
 26. Return to the Patch Manager dashboard using the navigation in Systems Manager. https://us-east-1.console.aws.amazon.com/systems-manager/patch-manager/dashboard?region=us-east-1 
-
+![VPC](/images/7/7.1/s26.png)
 
 27. Here you'll notice that some of your EC2 instances are not compliant and multiple nodes are missing patches.
 
 
 28. Open the Compliance reporting tab and review the instances listed along with their compliance status and other information, such as missing patches.
-
+![VPC](/images/7/7.1/28.png)
 
 29. Select one of the EC2 instances that has a compliance status of Not compliant.
 
 
 30. Click the link for that instance in the Security non-compliant count column.
-
+![VPC](/images/7/7.1/s30.png)
 
 31. This page shows the patch summary for the instance. You can optionally select missing patches to see more details.
-
+![VPC](/images/7/7.1/s31.png)
 
 #### Install missing patches using Run Command
 32. Return to the Run Command page in Systems Manager and click the button for Run Command.
@@ -157,22 +160,24 @@ You can learn more about the AWS-RunPatchBaseline SSM document under the Documen
 
 
 35. Again, under Target selection, set Tag key to "Environment" and Tag value to "Development". Click Add.
-
+![VPC](/images/7/7.1/s35.png)
 
 36. Expand the Rate control section and set Concurrency targets to 1 and Error threshold to 1.
 
-
+![VPC](/images/7/7.1/s36.png)
 
 37. Deselect Enable an S3 bucket under Output options.
 
 
 38. Click the button to Run at the bottom of the page. This will take 3-5 minutes to complete. If any updates are installed by Patch Manager, the patched instance is rebooted by default. Refresh the page until you see "Success".
-
-
+Observe step 1, 2:
+![VPC](/images/7/7.1/s38_step1-2.png)
+Observe step 3:
+![VPC](/images/7/7.1/s38_step3.png)
 39. To check what instances are still missing patches, return to the Patch Manager dashboard and open the Compliance reporting tab. You should see there are no missing patches!
 
 
-#### Schedule patch operations using patch policies
+<!-- #### Schedule patch operations using patch policies
 A patch policy is a configuration you set up using Quick Setup, a capability of AWS Systems Manager. Patch policies provide more extensive and more centralized control over your patching operations than is available with other methods of configuring patching. A patch policy defines the schedule and baseline to use when automatically patching your nodes and applications.
 
 Instead of using other methods of patching your nodes, use a patch policy to take advantage of these major features:
@@ -244,4 +249,4 @@ If the AWS Quick Setup is displayed prompting you to Get started with Quick Setu
 58. Wait 2-3 minutes for the status to show "Success".
 
 
-59. Open the association starting with "AWS-QuickSetup-PatchPolicy-ScanForPatches-LA-" again. Review the information under each tab, starting with Description and ending with Execution history.
+59. Open the association starting with "AWS-QuickSetup-PatchPolicy-ScanForPatches-LA-" again. Review the information under each tab, starting with Description and ending with Execution history. -->
