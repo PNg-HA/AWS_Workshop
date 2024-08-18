@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 2.2 </b> "
 ---
 
-### Content
+### Nội dung
   - [GuardDuty - Tổng quan](2.2.1-GuardDuty-Overview/)
   - [GuardDuty - Phát hiện sai phạm](2.2.2-GuardDuty-Findings/)
   - [GuardDuty - Protection plans](2.2.3-GuardDuty-Protection-plans/)

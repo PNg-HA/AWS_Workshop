@@ -12,7 +12,7 @@ pre : " <b> 2.2.4 </b> "
 1. Truy cập Amazon S3 trong AWS Console.
 
 
-2. Tìm bucket có chứa "**-threatlistbucket-**" trong tên và nhấp vào tên đó.
+2. Tìm bucket có chứa "**-threatlistbucket-**" trong tên và chọn tên đó.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s2.png)
 
 Đây là bucket mà tài khoản AWS Workshop đã thiết lập.
@@ -33,7 +33,7 @@ pre : " <b> 2.2.4 </b> "
 
 
 
-7. Nhấp vào nút **Add a threat IP list**.
+7. Chọn nút **Add a threat IP list**.
 
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s7.png)
 
@@ -47,10 +47,10 @@ pre : " <b> 2.2.4 </b> "
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s10.png)
 
 
-11. Nhấp vào **I Agree** và sau đó nhấp vào **Add list**
+11. Chọn **I Agree** và sau đó chọn **Add list**
 
 
-12. Bạn sẽ cần kích hoạt danh sách sau khi nó đã được thêm vào GuardDuty. Chọn danh sách mới thêm. Nhấp vào **Actions**, và sau đó chọn **Activate**.
+12. Bạn sẽ cần kích hoạt danh sách sau khi nó đã được thêm vào GuardDuty. Chọn danh sách mới thêm. Chọn **Actions**, và sau đó chọn **Activate**.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.4-GuardDuty-Building-your-own-threat-list/s12.png)
 
 

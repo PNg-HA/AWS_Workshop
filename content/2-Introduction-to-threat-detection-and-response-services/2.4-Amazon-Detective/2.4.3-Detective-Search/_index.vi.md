@@ -13,10 +13,10 @@ pre : " <b> 2.4.3 </b> "
 
 
 
-2. Ví dụ, thử tìm kiếm role mà bạn đang sử dụng. Đối với **Select type**, chọn **AWS Role**. Sau đó nhập "WSParticipantRole" và nhấp vào **Search**.
+2. Ví dụ, thử tìm kiếm role mà bạn đang sử dụng. Đối với **Select type**, chọn **AWS Role**. Sau đó nhập "WSParticipantRole" và chọn **Search**.
 ![VPC](/images/2/2.4/2.4.3/s2.png)
 
 
-3. Nhấp vào **Principal ID** để xem cách WSParticipantRole đã được sử dụng. Hãy dành thời gian để xem lại các hình ảnh và tab trên trang này. Chú ý thời gian phạm vi ở góc trên bên phải. Điều này có giống như những gì bạn đã làm cho đến nay trong hội thảo không? Nó nên như vậy!
+3. Chọn **Principal ID** để xem cách WSParticipantRole đã được sử dụng. Hãy dành thời gian để xem lại các hình ảnh và tab trên trang này. Chú ý thời gian phạm vi ở góc trên bên phải. Điều này có giống như những gì bạn đã làm cho đến nay trong hội thảo không? Nó nên như vậy!
 
 ![VPC](/images/2/2.4/2.4.3/s2b.png)

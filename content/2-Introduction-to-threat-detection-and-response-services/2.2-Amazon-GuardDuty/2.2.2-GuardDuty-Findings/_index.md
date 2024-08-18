@@ -58,7 +58,7 @@ Check another finding in the workshop:
 11. Archiving the finding will hide it from the list of Current findings. To view it, click the **"Current"** dropdown, and select **"Archived"** to see the finding you just archived.
 
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s11a.png)
-
+Result:
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s11b.png)
 
 12. To unarchive the finding, select it, and then click the **Actions** dropdown again (top right of the page). This time, click **"Unarchive"** to unarchive the finding.

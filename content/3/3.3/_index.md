@@ -21,6 +21,6 @@ One of the partner integrations available is Cloud Custodian. Cloud Custodian en
 
 ![VPC](/images/3/3.3/s2.png)
 3. Click **Accept findings**. This will put in place a service policy allowing the partner solution to send finding information into this account. For the purposes of this workshop a Cloud Custodian instance is already set up to automatically send findings to the integration you just enabled. To use other partner integrations in your account, you would still need to complete the Configure step in the partner solution so findings that are created by the partner solution are sent to Security Hub.
-Now accepting findings
+
 
 You can click on See findings to view new findings from Cloud Custodian. It can take 5-10 minutes for them to appear.

@@ -11,19 +11,19 @@ pre : " <b> 2.2.5 </b> "
 1. Từ bảng điều khiển GuardDuty, mở trang **Findings**.
 
 
-2. Nhấp vào nút **Suppress Findings**.
+2. Chọn nút **Suppress Findings**.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s2.png)
 
 
 
-3. Quy tắc ẩn nên bao gồm hai tiêu chí lọc. Tiêu chí đầu tiên nên sử dụng thuộc tính Loại phát hiện với giá trị là Recon:EC2/Portscan. Trong trường **Add filter criteria**, chọn **Finding Type** và nhập **"Recon:EC2/Portscan"**. Nhấp vào **Apply**.
+3. Quy tắc ẩn nên bao gồm hai tiêu chí lọc. Tiêu chí đầu tiên nên sử dụng thuộc tính Loại phát hiện với giá trị là Recon:EC2/Portscan. Trong trường **Add filter criteria**, chọn **Finding Type** và nhập **"Recon:EC2/Portscan"**. Chọn **Apply**.
 
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s3.png)
 
 4. Lưu ý rằng sau khi thêm bộ lọc đầu tiên, bản xem trước ở dưới cùng của trang sẽ hiển thị các phát hiện sẽ bị ẩn bởi quy tắc này. Để đảm bảo rằng bạn không vô tình ẩn một phát hiện mà bạn muốn nhận thông báo, hãy thêm tiêu chí lọc thứ hai để thu hẹp quy tắc.
 
 
-5. Tiêu chí lọc thứ hai nên khớp với instance hoặc các instance lưu trữ các công cụ đánh giá lỗ hổng này. Bạn có thể sử dụng thuộc tính Instance image ID  hoặc thuộc tính Tag value attribute tùy thuộc vào tiêu chí nào có thể nhận diện các instance lưu trữ các công cụ này. Nhấp vào **Add filter criteria** một lần nữa, và chọn **Instance Tag Value** nhập "**Scanner**". Nhấp vào **Apply**.
+5. Tiêu chí lọc thứ hai nên khớp với instance hoặc các instance lưu trữ các công cụ đánh giá lỗ hổng này. Bạn có thể sử dụng thuộc tính Instance image ID  hoặc thuộc tính Tag value attribute tùy thuộc vào tiêu chí nào có thể nhận diện các instance lưu trữ các công cụ này. Chọn **Add filter criteria** một lần nữa, và chọn **Instance Tag Value** nhập "**Scanner**". Chọn **Apply**.
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s5.png)
 
 
@@ -38,4 +38,4 @@ pre : " <b> 2.2.5 </b> "
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.5-GuardDuty-Suppressing-findings/s8.png)
 
 
-9. Nhấp vào **Save**.
+9. Chọn **Save**.

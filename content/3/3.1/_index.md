@@ -18,7 +18,7 @@ The Integrations page in the AWS Management Console provides access to all of th
 
 
 2. Take a few minutes to review the insights generated on the Summary page. Can you find the most common threat types identified in your environment? These findings are being aggregated in Security Hub from Amazon GuardDuty.
-Security Hub widgets
+
 ![VPC](/images/3/3.1/s2.png)
 3. Open the Integrations page in Security Hub. Scroll through the integrations available. 
 ![VPC](/images/3/3.1/s3a.png)

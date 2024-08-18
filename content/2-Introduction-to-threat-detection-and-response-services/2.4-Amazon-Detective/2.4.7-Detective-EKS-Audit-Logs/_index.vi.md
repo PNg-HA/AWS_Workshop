@@ -15,7 +15,7 @@ pre : " <b> 2.4.7 </b> "
 
 
 
-3. Nhấp vào **Edit** bên cạnh **Optional source packages**.
+3. Chọn **Edit** bên cạnh **Optional source packages**.
 ![VPC](/images/2/2.4/2.4.7/s3.png)
 
 

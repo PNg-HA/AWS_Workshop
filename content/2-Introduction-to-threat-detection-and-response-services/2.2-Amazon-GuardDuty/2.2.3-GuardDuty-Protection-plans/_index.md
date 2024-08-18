@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 2.2.3 </b> "
 ---
 #### Prequisite
-Make sure the EC2 instance has the SSM Management Role.
+Make sure the EC2 instance has the SSM Management Role (instance profile). For how to add instance profile to an EC2 instance, please refer more in https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-permissions.html#attach-instance-profile.
 #### Amazon S3 protection in Amazon GuardDuty
 
 1. Visit the **S3 Protection** page under Protection plans in the GuardDuty console.

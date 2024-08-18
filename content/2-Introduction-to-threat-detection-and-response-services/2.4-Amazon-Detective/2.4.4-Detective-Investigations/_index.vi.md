@@ -15,7 +15,7 @@ pre : " <b> 2.4.4 </b> "
 
 
 
-3. Nhấp vào tên role.
+3. Chọn tên role.
 ![VPC](/images/2/2.4/2.4.4/s3.png)
 
 
@@ -40,7 +40,7 @@ pre : " <b> 2.4.4 </b> "
 
 
 
-10. Nhấp vào **Run investigation**.
+10. Chọn **Run investigation**.
 ![VPC](/images/2/2.4/2.4.4/s11.png)
 
 
@@ -49,7 +49,7 @@ pre : " <b> 2.4.4 </b> "
 
 
 
-12. Nhấp vào ID của cuộc điều tra để xem kết quả. Tùy thuộc vào thời gian mà tài khoản này đã được cung cấp, bạn có thể thấy "We did not observe uncommon behavior...". Tuy nhiên, nếu có điều gì đó đã được phát hiện, bạn sẽ thấy báo cáo chứa phần Indicators of Compromise sbao gồm các chi tiết liên quan đến một hoặc nhiều indicators of compromise. Tóm tắt điều tra làm nổi bật các indicators bất thường cần được chú ý, cho phạm vi thời gian được chọn. Bằng cách sử dụng bản tóm tắt, bạn có thể nhanh chóng xác định nguyên nhân cốt lõi của các vấn đề bảo mật tiềm ẩn, xác định các mẫu và hiểu rõ các tài nguyên bị ảnh hưởng bởi các sự kiện bảo mật.
+12. Chọn ID của cuộc điều tra để xem kết quả. Tùy thuộc vào thời gian mà tài khoản này đã được cung cấp, bạn có thể thấy "We did not observe uncommon behavior...". Tuy nhiên, nếu có điều gì đó đã được phát hiện, bạn sẽ thấy báo cáo chứa phần Indicators of Compromise sbao gồm các chi tiết liên quan đến một hoặc nhiều indicators of compromise. Tóm tắt điều tra làm nổi bật các indicators bất thường cần được chú ý, cho phạm vi thời gian được chọn. Bằng cách sử dụng bản tóm tắt, bạn có thể nhanh chóng xác định nguyên nhân cốt lõi của các vấn đề bảo mật tiềm ẩn, xác định các mẫu và hiểu rõ các tài nguyên bị ảnh hưởng bởi các sự kiện bảo mật.
 
 ![VPC](/images/2/2.4/2.4.4/s12b.png)
 ![VPC](/images/2/2.4/2.4.4/s12c.png)

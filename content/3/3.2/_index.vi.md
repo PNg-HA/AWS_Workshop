@@ -1,20 +1,10 @@
 ---
-title : "Tạo kết nối đến máy chủ EC2 Private"
-date :  "`r Sys.Date()`" 
-weight : 2 
+title : "Tổng hợp phát hiện từ nhiều tài khoản AWS"
+date : "`r Sys.Date()`"
+weight : 2
 chapter : false
 pre : " <b> 3.2. </b> "
 ---
-Đối với **Windows instance** nằm trong **private subnet**, không có **public IP**, không có **internet gateway** nên không thể đi ra ngoài **internet.**\
-Với loại instance này, cách làm truyền thống là ta sẽ sử dụng kỹ thuật Bastion host tốn nhiều chi phí và công sức, nhưng ở đây chúng ta sẽ sử dụng Session Manager với loại này.\
-Cơ bản là **private instance** vẫn phải mở cổng **TCP 443** tới **System Manager**, nhưng không cho kết nối đó đi ra ngoài internet mà chỉ cho đi trong chính VPC của mình, nên đảm bảo được vấn đề bảo mật.\
-Để làm được điều đó, ta phải đưa endpoint của System Manager vào trong VPC, nghĩa là sử dụng **VPC interface endpoint:** 
+Khi bạn sử dụng cả Security Hub và AWS Organizations cùng nhau, bạn có thể tự động kích hoạt Security Hub cho tất cả các tài khoản của bạn, bao gồm cả các tài khoản mới khi chúng được thêm vào. Điều này làm tăng vi kiểm tra và phát hiện của Security Hub cung cấp cái nhìn tổng quan và chính xác hơn về tình trạng bảo mật tổng thể của bạn. Bằng cách sử dụng tính năng quản trị viên ủy quyền của Security Hub cùng với cấu hình trung tâm, bạn đạt được cái nhìn tập trung về bảo mật của bạn trên AWS qua các dịch vụ AWS và dịch vụ đối tác, trên các tài khoản và các regions.
 
-![ConnectPrivate](/images/arc-03.png) 
-
-**VPC interface endpoint** được gắn với subnet nên cách làm này không những với **private subnet** mà còn có thể làm với **public subnet**, nghĩa là với **public subnet**, bạn hoàn toàn có thể không cho **TCP 443** đi ra ngoài internet.
-
-### Nội dung:
-   - [Kích hoạt DNS hostnames](./3.2.1-enablevpcdns/)
-   - [Tạo VPC Endpoint](./3.2.2-createvpcendpoint/)
-   - [Kết nối Private Instance](./3.3.3-connectec2/)
+**Lưu ý cho độc giả**: Mặc dù workshop nói rằng "At this time, we are unable to demonstrate multi-account aggregation in this workshop". Tuy nhiên, trong phần **Automated Security Response on AWS** sơ đồ kiến trúc cho thấy rằng các stack CloudFormation đã được triển khai ở nhiều tài khoản AWS.

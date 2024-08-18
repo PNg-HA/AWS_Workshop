@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 2.2.3 </b> "
 ---
 #### Điều kiện tiên quyết
-Đảm bảo rằng EC2 instance có SSM Management Role.
+Đảm bảo rằng EC2 instance có SSM Management Role. Để biết cách thêm instance profile vào EC2 instance, vui lòng tham khảo thêm tại https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-permissions.html#attach-instance-profile.
 #### S3 Protection trong Amazon GuardDuty
 
 1. Truy cập trang **S3 Protection** dưới phần Protection plans trong bảng điều khiển GuardDuty.

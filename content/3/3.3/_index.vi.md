@@ -1,20 +1,26 @@
 ---
-title : "Tạo kết nối đến máy chủ EC2 Private"
-date :  "`r Sys.Date()`" 
-weight : 2 
+title : "Tập hợp các phát hiện từ các giải pháp của đối tác AWS"
+date : "`r Sys.Date()`"
+weight : 3
 chapter : false
-pre : " <b> 3.2. </b> "
+pre : " <b> 3.3. </b> "
 ---
-Đối với **Windows instance** nằm trong **private subnet**, không có **public IP**, không có **internet gateway** nên không thể đi ra ngoài **internet.**\
-Với loại instance này, cách làm truyền thống là ta sẽ sử dụng kỹ thuật Bastion host tốn nhiều chi phí và công sức, nhưng ở đây chúng ta sẽ sử dụng Session Manager với loại này.\
-Cơ bản là **private instance** vẫn phải mở cổng **TCP 443** tới **System Manager**, nhưng không cho kết nối đó đi ra ngoài internet mà chỉ cho đi trong chính VPC của mình, nên đảm bảo được vấn đề bảo mật.\
-Để làm được điều đó, ta phải đưa endpoint của System Manager vào trong VPC, nghĩa là sử dụng **VPC interface endpoint:** 
+AWS Security Hub có thể tổng hợp dữ liệu phát hiện bảo mật từ nhiều dịch vụ AWS và từ các giải pháp bảo mật của AWS Partner Network (APN) được hỗ trợ. Việc tổng hợp này cung cấp cái nhìn tổng quát về bảo mật và tuân thủ trong toàn bộ môi trường AWS của bạn.
 
-![ConnectPrivate](/images/arc-03.png) 
+Bạn cũng có thể gửi các phát hiện được tạo ra từ các sản phẩm bảo mật tùy chỉnh của riêng bạn.
 
-**VPC interface endpoint** được gắn với subnet nên cách làm này không những với **private subnet** mà còn có thể làm với **public subnet**, nghĩa là với **public subnet**, bạn hoàn toàn có thể không cho **TCP 443** đi ra ngoài internet.
+Từ các tích hợp sản phẩm AWS và đối tác được hỗ trợ, Security Hub chỉ nhận và hợp nhất các phát hiện được tạo ra sau khi bạn bật Security Hub trong các tài khoản AWS của bạn. Dịch vụ này không nhận và hợp nhất các phát hiện bảo mật được tạo ra trước khi bạn bật Security Hub.\
 
-### Nội dung:
-   - [Kích hoạt DNS hostnames](./3.2.1-enablevpcdns/)
-   - [Tạo VPC Endpoint](./3.2.2-createvpcendpoint/)
-   - [Kết nối Private Instance](./3.3.3-connectec2/)
+Một trong các tích hợp đối tác có sẵn là Cloud Custodian. Cloud Custodian cho phép bạn quản lý các tài nguyên đám mây của mình bằng cách lọc, gán thẻ và sau đó thực hiện các hành động trên chúng. YAML DSL cho phép định nghĩa các quy tắc để có cơ sở hạ tầng đám mây được quản lý tốt, bảo mật và tối ưu hóa chi phí. Để biết thêm thông tin, hãy truy cập https://cloudcustodian.io/ 
+
+#### Nhận các phát hiện từ Cloud Custodian
+1. Mở trang **Integrations** trong Security Hub và tìm kiếm **Cloud Custodian**.
+![VPC](/images/3/3.3/s1.png)
+
+2. Chọn **Accept Findings**. Xem xét các quyền cần thiết cho tích hợp.
+
+![VPC](/images/3/3.3/s2.png)
+3. Chọn **Accept findings**. Điều này sẽ thiết lập một chính sách dịch vụ cho phép giải pháp đối tác gửi thông tin phát hiện vào tài khoản này. Đối với mục đích của workshop này, một phiên bản Cloud Custodian đã được thiết lập để tự động gửi các phát hiện đến tích hợp bạn vừa bật. Để sử dụng các tích hợp đối tác khác trong tài khoản của bạn, bạn vẫn cần hoàn thành bước cấu hình trong giải pháp đối tác để các phát hiện được tạo ra bởi giải pháp đối tác được gửi đến Security Hub.
+
+
+Bạn có thể chọn See findings để xem các phát hiện mới từ Cloud Custodian. Có thể mất 5-10 phút để chúng xuất hiện.
