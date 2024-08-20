@@ -48,7 +48,7 @@ You will need the AWS CLI installed on your local machine for the next set of st
 {{%/notice%}}
 
 
-6. From a command prompt, run the following commands (replacing <AccessKeyId>, <SecretAccessKey>, and <Token> with your credentials). Make sure the region corresponds to the region you have been working in.
+6. From a command prompt, run the following commands (replacing `<AccessKeyId>`, `<SecretAccessKey>`, and `<Token>` with your credentials). Make sure the region corresponds to the region you have been working in.
 
 ```
 aws configure set profile.badbob.region us-east-1
