@@ -12,4 +12,4 @@ pre : " <b> 2.3 </b> "
   - [Inspector - Các phát hiện](2.3.3-Inspector-Findings/)
   - [Inspector - Tìm kiếm cơ sở dữ liệu lỗ hổng bảo mật](2.3.4-Inspector-Vulnerability-database-search/)
   - [Inspector - Ẩn các phát hiện](2.3.5-Inspector-Suppressing-findings/)
-  - [Inspector - Giá cả](2.3.6-Inspector-Pricing/)
+  - [Inspector - Chi phí](2.3.6-Inspector-Pricing/)
