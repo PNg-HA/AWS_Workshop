@@ -1,5 +1,5 @@
 ---
-title : "Đối phó với S3 Bucket bị xâm phạm"
+title : "Ứng phó với S3 Bucket bị xâm phạm"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false

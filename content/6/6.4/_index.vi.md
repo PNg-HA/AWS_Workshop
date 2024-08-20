@@ -1,5 +1,5 @@
 ---
-title : "Đối phó khi một hàm Lambda gọi đến IP độc hại"
+title : "Ứng phó khi một hàm Lambda gọi đến IP độc hại"
 date : "`r Sys.Date()`"
 weight : 4
 chapter : false

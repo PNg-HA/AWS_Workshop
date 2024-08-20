@@ -1,5 +1,5 @@
 ---
-title : "Đối phó khi thông tin xác thực IAM bị xâm phạm"
+title : "Ứng phó khi thông tin xác thực IAM bị xâm phạm"
 date : "`r Sys.Date()`"
 weight : 3
 chapter : false

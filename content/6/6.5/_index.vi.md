@@ -1,5 +1,5 @@
 ---
-title : "Đối phó với mã độc trên Amazon Elastic Block Store"
+title : "Ứng phó với mã độc trên Amazon Elastic Block Store"
 date : "`r Sys.Date()`"
 weight : 5
 chapter : false

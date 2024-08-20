@@ -1,5 +1,5 @@
 ---
-title : "Đối phó đối với việc rò rỉ thông tin xác thực IAM Role"
+title : "Ứng phó đối với việc rò rỉ thông tin xác thực IAM Role"
 date : "`r Sys.Date()`"
 weight : 1
 chapter : false
