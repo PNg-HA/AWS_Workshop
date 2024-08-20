@@ -1,5 +1,5 @@
 ---
-title : "Setting up notifications"
+title : "Thiết lập thông báo"
 date : "`r Sys.Date()`"
 weight : 1
 chapter : false

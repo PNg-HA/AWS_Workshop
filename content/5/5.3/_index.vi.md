@@ -1,5 +1,5 @@
 ---
-title : "Automated Security Response on AWS"
+title : "Tự động ứng phó bảo mật trên AWS"
 date : "`r Sys.Date()`"
 weight : 3
 chapter : false

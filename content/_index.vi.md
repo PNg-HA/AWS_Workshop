@@ -13,10 +13,10 @@ Workshop này được thiết kế để cung cấp cho bạn một cái nhìn 
 
 ### Content
  1. [Introduction ](1-Workshop-Instructions/)
- 2. [Introduction to threat detection and response services](2-Introduction-to-threat-detection-and-response-services/)
- 3. [Integrating AWS Services and Partner Solutions](3/)
- 4. [Managing and Prioritizing Security Findings](4/)
- 5. [Automating Notifications and Response](5/)
- 6. [Security Simulations and Scenarios](6/)
- 7. [Software Vulnerability Management](7/)
- 8. [Clean up resource](8/)
+ 2. [Giới thiệu về các dịch vụ phát hiện và ứng phó mối đe dọa](2-Introduction-to-threat-detection-and-response-services/)
+ 3. [Tích hợp Dịch vụ AWS và Giải pháp Đối tác](3/)
+ 4. [Quản lý và Ưu tiên các phát hiện bảo mật](4/)
+ 5. [Tự động hóa thông báo và ứng phó](5/)
+ 6. [Mô phỏng kịch bản bảo mật](6/)
+ 7. [Quản lý Lỗ hổng Phần mềm](7/)
+ 8. [Dọn dẹp tài nguyên](8/)

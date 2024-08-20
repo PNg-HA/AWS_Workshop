@@ -1,5 +1,5 @@
 ---
-title : "Giới thiệu về các dịch vụ phát hiện và ứng phó mối đe dọa "
+title : "Giới thiệu về các dịch vụ phát hiện và ứng phó mối đe dọa"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false

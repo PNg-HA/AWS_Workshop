@@ -10,7 +10,7 @@ Workshop này được thiết kế để cung cấp cho bạn một cái nhìn 
   
 ### Các bài lab
 
-#### Introduction to Threat Detection and Response service
+#### Giới thiệu về các dịch vụ phát hiện và ứng phó mối đe dọa
 | Mục | Chủ đề                                             | Độ khó | Dịch vụ liên quan     |
 |--------|---------------------------------------------------|-------|--------------|
 |        | **AWS Security Hub**                              |       |              |
@@ -44,7 +44,7 @@ Workshop này được thiết kế để cung cấp cho bạn một cái nhìn 
 | 2.4.6  | Detective - Pricing                               | 100   | Detective    |
 | 2.4.7  | Detective - EKS Audit Logs                        | 100   | Detective    |
 
-#### Integrating AWS Dịch vụ liên quan and Partner Solutions
+#### Tích hợp Dịch vụ AWS và Giải pháp Đối tác
 | Mục | Chủ đề                                           | Độ khó | Dịch vụ liên quan                    |
 |--------|-------------------------------------------------|-------|-----------------------------|
 | 3.1    | Centralizing findings from AWS security services| 100   | Security Hub, GuardDuty     |
@@ -53,14 +53,14 @@ Workshop này được thiết kế để cung cấp cho bạn một cái nhìn 
 | 3.4    | Cross-region finding aggregation                | 200   | Security Hub                |
 | 3.5    | Building your own Security Hub integration      | 100   | Security Hub                |
 
-#### Managing and Prioritizing Security Findings
+#### Quản lý và Ưu tiên các phát hiện bảo mật
 | Mục | Chủ đề                                           | Độ khó |
 |--------|-------------------------------------------------|-------|
 | 4.1    | Prioritizing findings at scale with automations | 100   |
 | 4.2    | Suppressing findings at scale with automations  | 100   |
 | 4.3    | Using insights for prioritization and metrics   | 200   |
 
-#### Automating Notifications and Response
+#### Tự động hóa thông báo và ứng phó
 | Mục | Chủ đề                                           | Độ khó | Dịch vụ liên quan                            |
 |--------|-------------------------------------------------|-------|-------------------------------------|
 | 5.1    | Setting up notifications                        | 200   | Security Hub                        |
@@ -69,7 +69,7 @@ Workshop này được thiết kế để cung cấp cho bạn một cái nhìn 
 | 5.4    | Building your own automated response            | 300   | Security Hub, GuardDuty             |
 | 5.5    | Enriching security findings with investigative data | 400   | Security Hub, GuardDuty, Detective  |
 
-#### Security Simulations and Scenarios
+#### Mô phỏng kịch bản bảo mật
 | Mục | Chủ đề                                           | Độ khó | Dịch vụ liên quan                    |
 |--------|-------------------------------------------------|-------|-----------------------------|
 | 6.1    | Respond to IAM Role credential exfiltration     | 300   | GuardDuty                   |
@@ -79,7 +79,7 @@ Workshop này được thiết kế để cung cấp cho bạn một cái nhìn 
 | 6.5    | Respond to Malware on Amazon Elastic Block Store | 200  | GuardDuty                   |
 | 6.6    | Respond to a compromised EC2 instance           | 200   | GuardDuty, Detective        |
 
-#### Software Vulnerability Management
+#### Quản lý Lỗ hổng Phần mềm
 | Mục | Chủ đề                                           | Độ khó | Dịch vụ liên quan                          |
 |--------|-------------------------------------------------|-------|-----------------------------------|
 | 7.1    | Patching EC2 with Patch Manager                 | 300   | Inspector, Systems Manager        |

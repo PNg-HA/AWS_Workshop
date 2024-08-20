@@ -1,5 +1,5 @@
 ---
-title : "Enriching security findings with investigative data"
+title : "Làm giàu kết quả bảo mật với dữ liệu điều tra"
 date : "`r Sys.Date()`"
 weight : 5
 chapter : false

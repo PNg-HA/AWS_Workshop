@@ -1,5 +1,5 @@
 ---
-title : "Set up a weekly vulnerability summary email"
+title : "Thiết lập email tổng kết lỗ hổng hàng tuần"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false
