@@ -1,5 +1,5 @@
 ---
-title : "Ẩn các phát hiện quy mô lớn bằng tự động hóa"
+title : "Tự động ẩn các phát hiện sai phạm với quy mô lớn"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false
