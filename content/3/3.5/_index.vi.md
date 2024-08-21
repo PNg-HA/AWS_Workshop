@@ -1,5 +1,5 @@
 ---
-title : "Xây dựng tích hợp Security Hub của riêng bạn"
+title : "Xây dựng riêng giải pháp tích hợp Security Hub"
 date : "`r Sys.Date()`"
 weight : 5
 chapter : false
