@@ -138,7 +138,7 @@ Observe step 3:
 
 
 28. Open the Compliance reporting tab and review the instances listed along with their compliance status and other information, such as missing patches.
-![VPC](/images/7/7.1/28.png)
+![VPC](/images/7/7.1/s28.png)
 
 29. Select one of the EC2 instances that has a compliance status of Not compliant.
 

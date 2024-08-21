@@ -52,7 +52,7 @@ Bước đầu tiên bạn sẽ thiết lập là nâng cao mức độ nghiêm 
 ![VPC](/images/4/4.1/s13.png)
 
 #### Tự động thêm các trường do người dùng định nghĩa vào cảnh báo sản xuất
-Có những trường hợp bạn có thể muốn xác định các cảnh báo trên các tài nguyên sản xuất, nhưng không nâng cao mức độ nghiêm trọng. Một cách tiếp cận để thực hiện điều này là thêm ghi chú và các trường do người dùng định nghĩa. Quy tắc tự động hóa tiếp theo bạn sẽ thiết lập là thêm ghi chú và các trường do người dùng định nghĩa vào bất kỳ phát hiện nào từ các tài khoản chúng tôi xác định là môi trường sản xuất.
+Có những trường hợp bạn có thể muốn xác định các cảnh báo trên các tài nguyên trong môi trường sản xuất, nhưng không nâng cao mức độ nghiêm trọng. Một cách tiếp cận để thực hiện điều này là thêm ghi chú và các trường do người dùng định nghĩa. Quy tắc tự động hóa tiếp theo bạn sẽ thiết lập là thêm ghi chú và các trường do người dùng định nghĩa vào bất kỳ phát hiện nào từ các tài khoản chúng tôi xác định là môi trường sản xuất.
 
 14. Quay lại trang **Automations** trong in Security Hub.
 
@@ -98,7 +98,7 @@ Một rule khác:
 ![VPC](/images/4/4.1/s24a.png)
 
 #### Tự động thêm các trường do người dùng định nghĩa vào các phát hiện phù hợp với mục tiêu của tổ chức
-Tiếp theo, thiết lập tự động hóa tương tự như rule tự động hóa trước đó, nhưng thay vì thêm các trường do người dùng định nghĩa vào các phát hiện trong các tài khoản sản xuất, thêm chúng vào các phát hiện đáp ứng tiêu chí của mục tiêu của tổ chức. Trong trường hợp này, mục tiêu của tổ chức sẽ là bảo mật các AWS và IAM cccount. Để thực hiện điều này, tiêu chí tự động hóa của bạn sẽ là các phát hiện từ các kiểm soát Security Hub cho"Account" và "IAM". 
+Tiếp theo, thiết lập tự động hóa tương tự như rule tự động hóa trước đó, nhưng thay vì thêm các trường do người dùng định nghĩa vào các phát hiện trong các tài khoản thuộc khâu sản xuất, ta sẽ thêm chúng vào các phát hiện đáp ứng tiêu chí của mục tiêu của tổ chức. Trong trường hợp này, mục tiêu của tổ chức sẽ là bảo mật các AWS và IAM cccount. Để thực hiện điều này, tiêu chí tự động hóa của bạn sẽ là các phát hiện từ các kiểm soát Security Hub cho"Account" và "IAM". 
 
 35. (Mục 35 là từ Workshop, không phải lỗi từ tác giả) Quay lại trang **Automations** trong Security Hub.
 
@@ -127,7 +127,7 @@ Tiếp theo, thiết lập tự động hóa tương tự như rule tự động
 
 
 
-43. Dưới ô nhập **Value**, chọn **Add another value**. Điều này sẽ tạo một Operator và Value thứ hai cho cùng một Key.
+43. Phía dưới ô nhập **Value**, chọn **Add another value**. Điều này sẽ tạo một Operator và Value thứ hai cho cùng một Key.
 
 
 44. Đối với **Operator** và **Value** thứ hai, nhập **PREFIX** và "security-control/IAM", tương ứng.
