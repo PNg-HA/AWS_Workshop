@@ -6,7 +6,7 @@ chapter = false
 pre = "<b>8. </b>"
 +++
 
-We will take the following steps to delete the resources we created in this exercise.
+This workshop is created in the AWS workshop template, so acctually you can just delete resource related to section 5.3. We will take the following steps to delete the resources we created in this exercise.
 
 #### Delete Automated Security Response solution 
 
