@@ -6,6 +6,17 @@ chapter : false
 pre : " <b> 2.1 </b> "
 ---
 
+![Security Hub workflow](/images/2/2.1-AWS-Security-Hub/s0.png) 
+
+
+Security Hub is a cloud security posture management service that continually performs automated security best practice checks and seamlessly aggregates security findings from AWS and third-party services to enable automated response.
+
+- Automated, continuous best practice checks
+- AWS Foundational Security Best Practices (FSBP) standard, CIS, and more
+- Simple deployment, scalable up to 10K accounts
+- AWS and 3rd-party services findings aggregation across accounts and Regions
+- Automated response, and enrichment actions
+
 ### Content
   - [Security Hub - Overview](2.1.1-Security-Hub-Overview/)
   - [Security Hub - Dashboard](2.1.2-Security-Hub-Dashboard/)

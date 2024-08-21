@@ -1,5 +1,5 @@
 ---
-title : "GuardDuty - Phát hiện sai phạm"
+title : "GuardDuty - Phát hiện bảo mật"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false
@@ -37,7 +37,7 @@ Kiểm tra một phát hiện khác trong workshop:
 
 6. Chọn **X** ở góc trên bên phải của bản tóm tắt phát hiện để đóng nó.
 
-#### Tìm và lọc các phát hiện sai phạm của GuardDuty
+#### Tìm và lọc các phát hiện bảo mật của GuardDuty
 
 7. Chọn thanh Tìm kiếm nơi có ghi **Add filter criteria**.
 
@@ -51,7 +51,7 @@ Kiểm tra một phát hiện khác trong workshop:
 
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s9b.png)
 
-#### Quản lý các phát hiện sai phạm của GuardDuty
+#### Quản lý các phát hiện bảo mật của GuardDuty
 10. Với một phát hiện được chọn, chọn menu thả xuống **Actions** (góc trên bên phải của trang). Nhấp **"Archive"** để lưu trữ phát hiện.
 
 ![VPC](/images/2/2.2-Amazon-GuardDuty/2.2.2-GuardDuty-Findings/s10.png)
