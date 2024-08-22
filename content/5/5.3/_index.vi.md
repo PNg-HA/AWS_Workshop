@@ -10,7 +10,7 @@ pre : " <b> 5.3 </b> "
 {{%/notice%}}
 
 {{%notice info%}}
-Trong workshop này, chỉ sử dụng một tài khoản nên giải pháp này không hiển thị tất cả các tính năng của nó. Để xem toàn bộ kịch bản của giải pháp này, vui lòng xem triển khai của tôi tại [GitHub repo này](https://github.com/PNg-HA/CSPM-with-AWS-Security-Hub).
+Trong workshop này, chỉ sử dụng một tài khoản nên giải pháp này không hiển thị tất cả các tính năng của nó. Để xem toàn bộ kịch bản của giải pháp này, vui lòng xem triển khai của tôi tại [GitHub repo này](https://github.com/PNg-HA/CSPM-with-AWS-Security-Hub) hoặc section "Deep dive to the solution" bên dưới.
 {{%/notice%}}
 
 
@@ -122,16 +122,21 @@ Phiên bản **yaml** của bước này:
 
 #### Demo
 ##### Prerequisite
+2 AWS accounts: administrator and member in an AWS Organization
 ![Prerequisite](/images/5/5.3/d4.png)
 
-##### Behind the scene: Orchestrator
+##### Behind the scene: Logic Orchestrator
+Orchestrator, một chức năng của AWS, sử dụng dữ liệu từ phát hiện bảo mật để xác định tài khoản và biện pháp khắc phục nào sẽ thực hiện, xác minh rằng biện pháp khắc phục đang hoạt động trong tài khoản đó, thực hiện biện pháp đó và theo dõi cho đến khi hoàn tất.
 ![Orchestrator](/images/5/5.3/d5.png)
 
+Quá trình khắc phục thành công sẽ diễn ra theo trình tự sau:
+![Orchestrator](/images/5/5.3/d6.png)
+
 ##### Scenarios
-Link demo: https://www.youtube.com/playlist?list=PL7IdJecfX87jHfO43NYd6MXL8mBYWBAIf
-1.1. Các Security groups không nên cho phép ingress từ 0.0.0.0/0 đến port 22 - trong member \
-1.2. Các Security groups không nên cho phép ingress từ 0.0.0.0/0 đến port 22 - trong admin \
-2. Đảm bảo chính sách mật khẩu IAM yêu cầu ít nhất một chữ số \
-3. RDS DB clusters nên được cấu hình cho nhiều AZs \
-4. Mã hóa mặc định của EBS nên được kích hoạt \
-5. Các S3 general purpose buckets nên bật cài đặt chặn truy cập công khai
+Link demo: https://www.youtube.com/playlist?list=PL7IdJecfX87jHfO43NYd6MXL8mBYWBAIf \
+1.1. Các Security groups không nên cho phép ingress từ 0.0.0.0/0 đến port 22 - trong member (EC2.13)\
+1.2. Các Security groups không nên cho phép ingress từ 0.0.0.0/0 đến port 22 - trong admin (EC2.13)\
+2. Đảm bảo chính sách mật khẩu IAM yêu cầu ít nhất một chữ số (IAM.14)\
+3. RDS DB clusters nên được cấu hình cho nhiều AZs (RDS.5)\
+4. Mã hóa mặc định của EBS nên được kích hoạt (EC2.7)\
+5. Các S3 general purpose buckets nên bật cài đặt chặn truy cập công khai (S3.1)

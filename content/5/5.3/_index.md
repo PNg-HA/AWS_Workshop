@@ -11,7 +11,7 @@ pre : " <b> 5.3 </b> "
 {{%/notice%}}
 
 {{%notice info%}}
-In this workshop, only one account is used so this solution does not show all its features. For the whole scenario of this solution, please review my own deploytment at [this GitHub repo](https://github.com/PNg-HA/CSPM-with-AWS-Security-Hub).
+In this workshop, only one account is used so this solution does not show all its features. For the whole scenario of this solution, please review my own deploytment at [this GitHub repo](https://github.com/PNg-HA/CSPM-with-AWS-Security-Hub) or section "Deep dive to the solution" below.
 {{%/notice%}}
 
 ![S3](/images/5/5.3/automated-security-response-on-aws.png)
@@ -129,16 +129,21 @@ The remediation runbook will trigger Amazon EC2 API to remove inbound rules that
 
 #### Demo
 ##### Prerequisite
+2 AWS accounts: administrator and member in an AWS Organization
 ![Prerequisite](/images/5/5.3/d4.png)
 
-##### Behind the scene: Orchestrator
+##### Behind the scene: Logic of Orchestrator
+The Orchestrator, an AWS Step Function, uses finding data to determine which account and remediation to execute, verifies that the remediation is active in that account, executes it, and monitors until completion.
 ![Orchestrator](/images/5/5.3/d5.png)
 
+A successful remediation will have the following flow:
+![Orchestrator](/images/5/5.3/d6.png)
+
 ##### Scenarios
-Link demo: https://www.youtube.com/playlist?list=PL7IdJecfX87jHfO43NYd6MXL8mBYWBAIf
-1.1. Security groups should not allow ingress from 0.0.0.0/0 to port 22 - in member \
-1.2. Security groups should not allow ingress from 0.0.0.0/0 to port 22 - in admin \
-2. Ensure IAM password policy requires at least one number \
-3. RDS DB clusters should be configured for multiple AZs \
-4. EBS default encryption should be enabled \
-5. S3 general purpose buckets should have block public access settings enabled  
+Link demo: https://www.youtube.com/playlist?list=PL7IdJecfX87jHfO43NYd6MXL8mBYWBAIf \
+1.1. Security groups should not allow ingress from 0.0.0.0/0 to port 22 - in member (EC2.13)\
+1.2. Security groups should not allow ingress from 0.0.0.0/0 to port 22 - in admin (EC2.13) \
+2. Ensure IAM password policy requires at least one number (IAM.14)\
+3. RDS DB clusters should be configured for multiple AZs (RDS.5)\
+4. EBS default encryption should be enabled (EC2.7)\
+5. S3 general purpose buckets should have block public access settings enabled (S3.1)
