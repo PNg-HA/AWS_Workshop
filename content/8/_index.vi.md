@@ -6,7 +6,7 @@ chapter = false
 pre = "<b>8. </b>"
 +++
 
-Chúng ta sẽ thực hiện các bước sau để xóa các tài nguyên đã tạo trong bài thực hành này.
+Workshop này được tạo trong AWS workshop template, vì vậy thực tế bạn chỉ phải xóa tài nguyên liên quan đến phần 5.3 và vô hiệu hóa bất kỳ tài nguyên nào bạn đã tích hợp với Security Hub. Ta sẽ thực hiện các bước sau để xóa các tài nguyên đã tạo trong bài tập này.
 
 #### Xóa giải pháp Automated Security Response
 
