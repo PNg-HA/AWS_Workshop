@@ -45,7 +45,7 @@ Trong kịch bản này, bạn sẽ viết một **Lambda function** để gọi
 
 11. Trong vài phút, bạn sẽ nhận được một email tại địa chỉ email bạn đã nhập. Xác nhận đăng ký bằng cách nhấp vào "Confirm subscription" trong email.
 
-#### Create the Lambda function to author the email
+#### Tạo hàm Lambda để soạn email
 
 12. Đi đến https://console.aws.amazon.com/lambda/home?#/create/function?intent=authorFromScratch 
 Trên trang **Create function**, đặt **Function name** là **weekly-vulnerability-email** và chọn **Node.js 20.x** cho **Runtime**.
@@ -156,7 +156,7 @@ export const handler = async (event, context) => {
 
 20. Nhấp vào **Save**.
 
-#### Set the permissions of the Lambda function
+#### Phân quyền Lambda function
 21. Bây giờ chúng ta cần cấu hình quyền cho **Lambda function** để nó có thể thực thi các lệnh cần thiết để gửi email của chúng ta. Dưới cùng tab **Configuration**, nhấp vào **Permissions** từ bảng điều hướng bên trái. Chúng ta cần sửa đổi vai trò thực thi cho **Lambda function** này.
 
 22. Nhấp vào **Role name**. Tên này sẽ bắt đầu bằng "weekly-vulnerability-email-role-". Điều này sẽ đưa bạn đến vai trò trong **Identity and Access Management (IAM)** console.
@@ -212,7 +212,7 @@ export const handler = async (event, context) => {
 **Lưu ý cho Người Tham Gia**: Nếu bạn không nhận được email, hãy kiểm tra kết quả thực thi để tìm lỗi. Đảm bảo rằng ARN của **SNS Topic** mà bạn đã cấu hình biến môi trường kết thúc bằng "weekly-vulnerability-email". Nếu có bất kỳ ký tự nào sau "email", hãy xóa chúng và lưu biến môi trường. Sau đó thử lại.
 {{%/notice%}}
 
-#### Schedule the weekly vulnerability summary email with EventBridge
+#### Lên lịch email tóm tắt lỗ hổng bảo mật hàng tuần với EventBridge
 35. Cuối cùng, chúng ta cần tạo một **EventBridge rule** sẽ gọi **Lambda function** mà chúng ta đã tạo hàng tuần. Mở **EventBridge**. https://us-east-1.console.aws.amazon.com/events/home
 
 36. Chọn **EventBridge Schedule** ở bên phải. Nhấp vào **Create schedule**.

@@ -13,7 +13,7 @@ Trong bối cảnh mối đe dọa đang thay đổi nhanh chóng ngày nay, vi�
 
 Trong module này, bạn sẽ xây dựng một giải pháp tích hợp **Detective** với **Security Hub** giúp bạn có cái nhìn tốt hơn về các chỉ báo mối đe dọa và dữ liệu điều tra trực tiếp từ **Security Hub**. Điều này cho phép bạn thực hiện các cuộc điều tra kịp thời hơn về các **findings** của **GuardDuty** từ một cái nhìn tập trung. Giải pháp sẽ tự động thực hiện làm giàu dữ liệu cho các **findings** có mức độ nghiêm trọng cao và trung bình và cung cấp cho bạn sự linh hoạt để khởi tạo các cuộc điều tra và làm giàu dữ liệu bổ sung theo yêu cầu. Bằng cách làm giàu các **findings** trong **Security Hub**, bạn có tùy chọn xem xét những **findings** đã được làm giàu trực tiếp trong **Security Hub console**, hoặc bạn có thể kích hoạt tích hợp để xem xét các **findings** đã được làm giàu trong giải pháp mà bạn chọn.
 
-#### The solution architecture
+#### Kiến trúc của giải pháp
 **Security Hub** tự động gửi tất cả các **findings** mới và tất cả các bản cập nhật cho các **findings** hiện có đến **EventBridge** dưới dạng các sự kiện **Security Hub Findings - Imported**. Mỗi sự kiện **Security Hub Findings - Imported** chứa một **finding** duy nhất. **Security Hub** cũng gửi các **findings** liên quan đến các **custom actions** đến **EventBridge** dưới dạng các sự kiện **Security Hub Findings - Custom Action**. Như được hiển thị trong sơ đồ kiến trúc dưới đây, bạn sẽ sử dụng **EventBridge Rules** để gọi một **Lambda function** cho mỗi **finding** mà bạn làm giàu. Bạn sẽ sử dụng một **EventBridge Rule** cho các sự kiện **Imported** để tự động khởi tạo **Lambda function** cho các **findings** có mức độ nghiêm trọng cao (và trung bình) được **Security Hub** tổng hợp từ **GuardDuty**. Bạn sẽ sử dụng một **EventBridge Rule** thứ hai cho các sự kiện **Custom Action** để khởi tạo các cuộc điều tra và làm giàu dữ liệu bổ sung theo yêu cầu. Cả hai **EventBridge Rules** sẽ hướng tới cùng một **Lambda function**. **Lambda function** sẽ gọi **Detective Investigation API**, đợi kết quả, sau đó gọi **Security Hub API** để cập nhật **finding**.
 
 ![S3](/images/5/5.5/arch-integration.png)
@@ -23,7 +23,7 @@ Trong module này, bạn sẽ xây dựng một giải pháp tích hợp **Detec
 **Scenario / Problem Statement**: Kể từ khi nhóm của bạn bật các dịch vụ bảo mật khác nhau của **AWS** và tổng hợp tất cả mọi thứ trong **Security Hub**, ban lãnh đạo của bạn đang yêu cầu các thông tin chi tiết từ tất cả dữ liệu đó. Cụ thể, bạn đã được yêu cầu rút ra các thông tin chi tiết về tuân thủ, cảnh báo có mức độ ưu tiên cao nhất, và các tài nguyên tạo ra số lượng cảnh báo bảo mật nhiều nhất.
 {{%/notice%}}
 
-#### Retrieve investigative data from Detective using Lambda
+#### Thu thập dữ liệu điều tra từ from Detective bằng Lambda
 Bạn có thể bắt đầu các cuộc điều tra trong **Detective** và truy xuất kết quả thông qua **API**. Để làm điều này, bạn sẽ sử dụng một **Lambda function** được viết bằng **JavaScript** (**Node.js 20.x**). **AWS Lambda** hỗ trợ nhiều ngôn ngữ lập trình, nhưng bạn sẽ sử dụng **JavaScript** trong ví dụ này.
 
 Để bắt đầu một cuộc điều tra, bạn phải cung cấp cho **API** một **Amazon Resource Name (ARN)** của một **IAM role** hoặc **user**, thời gian bắt đầu, thời gian kết thúc, và **ARN** của **Detective behavior graph**. **Detective API** sẽ truy xuất kết quả của cuộc điều tra bao gồm các chỉ số về việc bị xâm phạm (**IoC**), **TTPs** (chiến thuật, kỹ thuật và quy trình), và một điểm số mức độ nghiêm trọng theo danh mục. Điểm số mức độ nghiêm trọng được trả về được tính toán bằng cách sử dụng hai chiều; **confidence** và **impact**; trong đó **confidence** đại diện cho khả năng cao các sự kiện là bất thường và không phải là hành vi bình thường của người dùng. Chiều thứ hai là **impact**; điều này định lượng tác hại có thể xảy ra từ các sự kiện như một thước đo ảnh hưởng của **TTPs**.
@@ -344,7 +344,7 @@ Phương pháp thứ hai liên quan đến việc điều tra và làm giàu **f
 54. Ở bước **Review and create**, nhấp vào **Create rule**.
 ![VPC](/images/5/5.5/s54.png)
 
-#### Initiate an on-demand finding investigation
+#### Tiền hành phân tích phát hiện bảo mật on-demand
 55. Quay lại **Security Hub**. Mở trang **Findings**.
 
 55. Trong ô **Add filter input**, thêm một bộ lọc cho **Resource Type**. Đặt bộ lọc thành **Resource Type is AwsIamAccessKey** (phân biệt chữ hoa chữ thường). Nhấp vào **Apply**.
@@ -373,7 +373,7 @@ Chờ sau 5 phút để thấy cập nhật **node**:
 
 62. Bạn cũng có thể chuyển sang tab **History** trong chi tiết **finding** để xem sự kiện được đánh dấu thời gian với thay đổi **Note**.
 
-#### Surface investigated findings in a custom insight
+#### Phân tích phát hiện bảo mật trong một custom insight
 63. Nếu bạn muốn dễ dàng theo dõi tài nguyên và **findings** đã được điều tra thông qua bất kỳ phương pháp nào mà bạn đã triển khai, hãy tạo một **custom insight** mới trong **Security Hub**. Mở **Security Hub** và truy cập trang [Insights](https://us-east-1.console.aws.amazon.com/securityhub/home?region=us-east-1#/insights).
 
 64. Nhấp vào **Create insight**.

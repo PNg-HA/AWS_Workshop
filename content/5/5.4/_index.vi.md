@@ -14,7 +14,7 @@ Không giống như cách bạn đã thiết lập thông báo trước đó, b�
 
 Trong phần này, chúng ta sẽ hướng dẫn bạn cách tạo một **custom action** trong **Security Hub** sẽ kích hoạt một **EventBridge rule** để thực thi một **Lambda function**. Mục đích của **Lambda function** là để thay đổi **Security Group** cho một **EC2 instance**. Đây chỉ là một ví dụ về cách xây dựng tự động hóa của riêng bạn. Ví dụ này chưa sẵn sàng cho môi trường sản xuất.
 
-#### Create the Security Group
+#### Tạo Security Group
 
 1. Điều hướng đến **EC2 console** và mở trang [Security Groups](https://console.aws.amazon.com/ec2/home?#SecurityGroups) bằng cách sử dụng bảng điều hướng bên trái.
 

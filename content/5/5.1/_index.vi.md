@@ -36,7 +36,7 @@ Trong một kịch bản thực tế, ví dụ cụ thể này sẽ không hiệ
 ![VPC](/images/5/5.1/s6.png)
 
 
-#### Subscribe to the topic
+#### Đăng ký theo dõi topic
 
 7. Từ trang **high-severity-security-hub-findings topic**, nhấp vào **Create subscription**.
 
@@ -95,7 +95,7 @@ Bây giờ chúng ta đã đăng ký vào **SNS topic**, chúng ta sẵn sàng g
 ![VPC](/images/5/5.1/s23.png)
 
 
-#### Test the notifications
+#### Kiểm tra thông báo
 **EventBridge rule** mà chúng ta đã cấu hình sẽ đẩy một thông báo khi có bất kỳ cập nhật hoặc phát hiện mới trong **Security Hub** có nhãn mức độ nghiêm trọng "HIGH" hoặc "CRITICAL". Chúng ta có thể chờ một phát hiện mới hoặc cập nhật, nhưng sẽ nhanh hơn nếu chúng ta kiểm tra điều này bằng cách tự cập nhật một phát hiện. Một cách dễ dàng để làm điều này là thay đổi **Workflow status** của một phát hiện.
 
 Đối với findings, **workflow status** theo dõi tiến trình điều tra của bạn đối với một phát hiện. **Workflow status** cụ thể cho từng phát hiện. Nó không ảnh hưởng đến việc tạo ra các phát hiện mới.
@@ -118,7 +118,7 @@ Bây giờ chúng ta đã đăng ký vào **SNS topic**, chúng ta sẵn sàng g
 Notification:
 ![VPC](/images/5/5.1/s29b.png)
 
-#### Challenge
+#### Thách thức
 Đến đây bạn đã hiểu hầu hết các nguyên tắc cơ bản về cách **AWS Security Hub** hoạt động với **Amazon EventBridge**. Hãy kiểm tra kiến thức của bạn.
 
 Sau khi cấu hình thông báo cho tất cả các findings có mức độ nghiêm trọng **HIGH** và **CRITICAL**, bạn nhận ra rằng bạn đang nhận được quá nhiều thông báo giữa các thay đổi tuân thủ tài nguyên, giải quyết các phát hiện và đồng nghiệp thay đổi **workflow status** của findings.

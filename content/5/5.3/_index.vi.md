@@ -17,7 +17,7 @@ Trong workshop này, chỉ sử dụng một tài khoản nên giải pháp này
 ![S3](/images/5/5.3/automated-security-response-on-aws.png)
 
 
-#### Deploy Automated Security Response on AWS via CloudFormation
+#### Triển khai Automated Security Response trên AWS qua CloudFormation
 {{%notice warning%}}
 Giải pháp **ASR** yêu cầu triển khai 3 **CloudFormation templates**. Bạn có thể xem các template [tại đây](https://docs.aws.amazon.com/solutions/latest/automated-security-response-on-aws/solution-overview.html). Bạn có thể khởi chạy tất cả các stack cùng một lúc. Bạn không cần phải chờ một stack hoàn thành trước khi bắt đầu stack tiếp theo. Ba stack này sẽ mất 10 phút để hoàn thành. Các stack cũng sẽ khởi chạy nhiều **nested stacks** để tạo tất cả các tài nguyên cần thiết.
 {{%/notice%}}
@@ -89,13 +89,13 @@ Có thể mất khoảng 3 đến 5 phút để chạy và cập nhật. Sau đ�
 #### Workflow of the architecture
 Với **AWS Config rules** cho các tiêu chuẩn tuân thủ được hỗ trợ, **AWS Config** thực thi kiểm tra **security controls** và tạo **findings** nếu có các cấu hình không tuân thủ, bao gồm trong tài khoản quản trị và thành viên (trong **AWS Organization**). Các **findings** được tổng hợp bởi **AWS Security Hub**. Quản trị viên có thể kích hoạt **Custom Action** để khắc phục các **findings** tương ứng tự động hoặc thủ công. Các sự kiện này được kích hoạt trong các **EventBridge rules** tương ứng đến **Step Function Orchestrator**, điều hướng đến **playbooks remediation** tương ứng (ví dụ: findings cho **EC2.13** dẫn đến **EC2.13 playbook**). Dịch vụ **Amazon SQS** được sử dụng để thực thi nhiều biện pháp khắc phục song song. **Orchestrator** sẽ thông báo cho người dùng đã đăng ký về quy trình và kết quả khắc phục. Nó sẽ gọi **control runbook** tương ứng, cuối cùng sẽ gọi **remediation runbook** thích hợp cho các findings.
 
-#### An example of security control
+#### Ví dụ về security control
 Trong phần dive-deep này, mình sử dụng **security control EC2.13** để kiểm tra cấu hình tài nguyên và khắc phục nếu không tuân thủ. Có các ví dụ khắc phục khác bên dưới, nhưng luồng khắc phục tương tự như **EC2.13**.
 ![VPC](/images/5/5.3/d1.png)
 
 #### Control Runbook EC2.13
 ![VPC](/images/5/5.3/d2.png)
-##### First step
+##### Bước 1
 Bước đầu tiên của **Control Runbook** là phân tích các đầu vào nhận được từ **finding**:
 ![VPC](/images/5/5.3/d_step1.png)
 Phiên bản **yaml** của **runbook**:
@@ -110,7 +110,7 @@ Finding: '{{ Finding }}'
 And the expected output of this first step is:
 ![VPC](/images/5/5.3/d3.png)
 
-##### Second step
+##### Bước 2
 Trong bước 2, **control runbook** gọi **remediation runbook (SSM automation document)** có tên là **AWS-DisablePublicAccessForSecurityGroup**. Bạn có thể tham khảo thêm tại [AWS Systems Manager Automation runbook reference](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-aws-disablepublicaccessforsecuritygroup.html), và kiểm tra luồng logic tại [System Manager page - Document section](https://ap-southeast-1.console.aws.amazon.com/systems-manager/documents/AWS-DisablePublicAccessForSecurityGroup/description?region=ap-southeast-1#).
 
 ![VPC](/images/5/5.3/d_step2.png)
@@ -121,7 +121,7 @@ Phiên bản **yaml** của bước này:
 ![VPC](/images/5/5.3/d_step2c.png)
 
 #### Demo
-##### Prerequisite
+##### Yêu cầu trước
 2 AWS accounts: administrator and member in an AWS Organization
 ![Prerequisite](/images/5/5.3/d4.png)
 
@@ -132,11 +132,13 @@ Orchestrator, một chức năng của AWS, sử dụng dữ liệu từ phát h
 Quá trình khắc phục thành công sẽ diễn ra theo trình tự sau:
 ![Orchestrator](/images/5/5.3/d6.png)
 
-##### Scenarios
-Link demo: https://www.youtube.com/playlist?list=PL7IdJecfX87jHfO43NYd6MXL8mBYWBAIf \
+##### Kịch bản
+
 1.1. Các Security groups không nên cho phép ingress từ 0.0.0.0/0 đến port 22 - trong member (EC2.13)\
 1.2. Các Security groups không nên cho phép ingress từ 0.0.0.0/0 đến port 22 - trong admin (EC2.13)\
 2. Đảm bảo chính sách mật khẩu IAM yêu cầu ít nhất một chữ số (IAM.14)\
 3. RDS DB clusters nên được cấu hình cho nhiều AZs (RDS.5)\
 4. Mã hóa mặc định của EBS nên được kích hoạt (EC2.7)\
 5. Các S3 general purpose buckets nên bật cài đặt chặn truy cập công khai (S3.1)
+
+Link demo: https://www.youtube.com/playlist?list=PL7IdJecfX87jHfO43NYd6MXL8mBYWBAIf
