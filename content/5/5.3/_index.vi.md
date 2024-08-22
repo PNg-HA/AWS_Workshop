@@ -10,7 +10,7 @@ pre : " <b> 5.3 </b> "
 {{%/notice%}}
 
 {{%notice info%}}
-Trong workshop này, chỉ sử dụng một tài khoản nên giải pháp này không hiển thị tất cả các tính năng của nó. Để xem toàn bộ kịch bản của giải pháp này, vui lòng xem triển khai của tôi tại [GitHub repo này](https://github.com/PNg-HA/CSPM-with-AWS-Security-Hub) hoặc section "Deep dive to the solution" bên dưới.
+Trong workshop này, chỉ sử dụng một tài khoản nên giải pháp này không hiển thị tất cả các tính năng của nó. Để xem toàn bộ kịch bản của giải pháp này, vui lòng xem triển khai của mình tại [GitHub repo này](https://github.com/PNg-HA/CSPM-with-AWS-Security-Hub) hoặc section "Deep dive to the solution" bên dưới.
 {{%/notice%}}
 
 
@@ -90,7 +90,7 @@ Có thể mất khoảng 3 đến 5 phút để chạy và cập nhật. Sau đ�
 Với **AWS Config rules** cho các tiêu chuẩn tuân thủ được hỗ trợ, **AWS Config** thực thi kiểm tra **security controls** và tạo **findings** nếu có các cấu hình không tuân thủ, bao gồm trong tài khoản quản trị và thành viên (trong **AWS Organization**). Các **findings** được tổng hợp bởi **AWS Security Hub**. Quản trị viên có thể kích hoạt **Custom Action** để khắc phục các **findings** tương ứng tự động hoặc thủ công. Các sự kiện này được kích hoạt trong các **EventBridge rules** tương ứng đến **Step Function Orchestrator**, điều hướng đến **playbooks remediation** tương ứng (ví dụ: findings cho **EC2.13** dẫn đến **EC2.13 playbook**). Dịch vụ **Amazon SQS** được sử dụng để thực thi nhiều biện pháp khắc phục song song. **Orchestrator** sẽ thông báo cho người dùng đã đăng ký về quy trình và kết quả khắc phục. Nó sẽ gọi **control runbook** tương ứng, cuối cùng sẽ gọi **remediation runbook** thích hợp cho các findings.
 
 #### An example of security control
-Trong phần dive-deep này, tôi sử dụng **security control EC2.13** để kiểm tra cấu hình tài nguyên và khắc phục nếu không tuân thủ. Có các ví dụ khắc phục khác bên dưới, nhưng luồng khắc phục tương tự như **EC2.13**.
+Trong phần dive-deep này, mình sử dụng **security control EC2.13** để kiểm tra cấu hình tài nguyên và khắc phục nếu không tuân thủ. Có các ví dụ khắc phục khác bên dưới, nhưng luồng khắc phục tương tự như **EC2.13**.
 ![VPC](/images/5/5.3/d1.png)
 
 #### Control Runbook EC2.13
