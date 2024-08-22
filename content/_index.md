@@ -1,6 +1,7 @@
 ---
 title : "Threat Detection & Response Workshop"
 date :  "`r Sys.Date()`" 
+thumbnail: "images/thumbnail.jpg"
 weight : 1 
 chapter : false
 ---
