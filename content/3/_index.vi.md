@@ -6,7 +6,6 @@ chapter : false
 pre : " <b> 3. </b> "
 ---
 
-Trong bước này, chúng ta sẽ kết nối tới các máy chủ EC2 của mình, nằm trong cả public và private subnets.
 
 ### Content
 3.1. [Centralizing findings from AWS security services](3.1/) \

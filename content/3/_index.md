@@ -6,7 +6,6 @@ chapter : false
 pre : " <b> 3. </b> "
 ---
 
-In this step, we will connect to our EC2 servers, located in both the public and private subnets.
 
 ### Content
 3.1. [Centralizing findings from AWS security services](3.1/) \
